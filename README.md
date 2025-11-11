@@ -1,7 +1,6 @@
 ## Gabriel de Sá Mendes 
 
 Olá, Tudo Bem? Eu sou o , sou um programador Fullstack com conhecimentos em:
-
   <br>
 
   
