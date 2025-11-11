@@ -11,7 +11,7 @@ Olá, Tudo Bem? Eu sou o , sou um programador Fullstack com conhecimentos em:
   <img align="center" alt ="G-Postgres" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg">
 </div>
   
-  
+  <br>
   ![Gabriel Stats](https://github-readme-stats.vercel.app/api?username=GabrielGGC18&show_icons=true&theme=onedark)  
 
 
