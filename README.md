@@ -1,6 +1,13 @@
 ## Gabriel de Sá Mendes 
 
 Olá, Tudo Bem? Eu sou o , sou um programador Fullstack com conhecimentos em:
+
+  <br>
+
+  
+  ![Gabriel Stats](https://github-readme-stats.vercel.app/api?username=GabrielGGC18&show_icons=true&theme=onedark)  
+
+
 <div style="display: inline_block"> <br> 
   <img align="center" alt="G-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="G-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
@@ -11,10 +18,6 @@ Olá, Tudo Bem? Eu sou o , sou um programador Fullstack com conhecimentos em:
   <img align="center" alt ="G-Postgres" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg">
 </div>
   
-  <br>
-
-  
-  ![Gabriel Stats](https://github-readme-stats.vercel.app/api?username=GabrielGGC18&show_icons=true&theme=onedark)  
 
 
  <div> <br>
