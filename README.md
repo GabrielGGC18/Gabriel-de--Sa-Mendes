@@ -26,4 +26,4 @@ Olá, Tudo Bem? Eu sou o , sou um programador Fullstack com conhecimentos em:
 
     
     
-<div class="tenor-gif-embed" data-postid="19443137" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/pt-PT/view/desbanido-ednaldo-pereira-ednaldo-pereira-banido-gif-19443137">Desbanido Ednaldo GIF</a>from <a href="https://tenor.com/search/desbanido-gifs">Desbanido GIFs </a> </div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script> 
+<div class="tenor-gif-embed" data-postid="19443137" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"> <a href="https://tenor.com/pt-PT/view/desbanido-ednaldo-pereira-ednaldo-pereira-banido-gif-19443137"> <img src="https://tenor.com/pt-PT/view/desbanido-ednaldo-pereira-ednaldo-pereira-banido-gif-19443137"> Desbanido Ednaldo GIF</a>from <a href="https://tenor.com/search/desbanido-gifs">Desbanido GIFs </a> </div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script> 
