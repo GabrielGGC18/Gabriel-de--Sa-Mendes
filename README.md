@@ -23,4 +23,7 @@ Olá, Tudo Bem? Eu sou o , sou um programador Fullstack com conhecimentos em:
   <a href = "https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blanck"><img src="	https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank>" </a>
   <a href = "https://www.instagram.com/gabrieldsa_dev/#" target="_blanck"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank>" </a>                                                                                       
 </div>  
-<div class="tenor-gif-embed" data-postid="19443137" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/desbanido-ednaldo-pereira-ednaldo-pereira-banido-gif-19443137">Desbanido Ednaldo GIF</a>from <a href="https://tenor.com/search/desbanido-gifs">Desbanido GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script> 
+
+    
+    
+<div class="tenor-gif-embed" data-postid="19443137" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/desbanido-ednaldo-pereira-ednaldo-pereira-banido-gif-19443137">Desbanido Ednaldo GIF</a>from <a href="https://tenor.com/search/desbanido-gifs">Desbanido GIFs </a> </div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script> 
