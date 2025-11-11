@@ -9,4 +9,4 @@ Sou o Gabriel, sou um programador Fullstack com conhecimentos em:
   - <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python" />
   - <img src="https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white" alt="Postgtres" />
    
-  ![Gabriel Stats]
+  ![Gabriel Stats](https://github-readme-stats.vercel.app/api?username=Gabriel_icons=true&theme=dark)
