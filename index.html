@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, acadêmico de Engenharia de Software e Sistemas de Informação.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfólio - Gabriel de Sá Mendes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0ea5a4">
+    <!-- Fonte e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+   <!-- Navegação -->
+   <nav class="site-nav">
+     <div class="nav-inner">
+       <a class="brand" href="https://github.com/GabrielGGC18/GabrielGGC18">Gabriel Mendes </a>
+       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+       <ul class="nav-list" id="navList">
+         <li><a href="#sobre">Sobre</a></li>
+         <li><a href="#formacao">Formação</a></li>
+         <li><a href="#cursos">Cursos</a></li>
+         <li><a href="#contato" id="openContact">Contato</a></li>
+       </ul>
+     </div>
+   </nav>
+
+   <!-- Hero / Cabeçalho -->
+   <header class="hero">
+        <div class="hero-inner">
+            <img src="/assets/eu.jpeg" alt="Foto de Gabriel" class="perfil">
+            <div class="hero-text">
+                <h1>Gabriel de Sá Mendes</h1>
+                <p class="lead">Desenvolvedor• Acadêmico de Engenharia de Software e de Sistemas de Informação</p>
+                <p class="muted">Estagiário na Prefeitura de Palmas-TO — Foco em desenvolvimento Web, APIs e integrações.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#projects">Ver projetos</a>
+                    <a class="btn ghost" id="contactBtn" href="#contato">Entrar em contato</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-badges">
+            <span>JavaScript</span>
+            <span>TypeScript</span>
+            <span>React</span>
+            <span>Python / Django</span>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+        <section id="sobre" class="card">
+            <h2>Sobre Mim</h2>
+            <p>Olá! Me chamo <strong>Gabriel</strong>.<strong> Sou desenvolvedor </strong> com interesse em arquitetura de software, integração de sistemas e automações. Trabalho com <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>, <strong>Python (Django)</strong> e <strong>PostgreSQL</strong>, e estou sempre estudando e disposto a aprender novas tecnologias.</p>
+
+      <div class="skills" aria-hidden="false">
+        <div class="skill" data-skill="90" aria-label="JavaScript">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" alt="JavaScript">
+        </div>
+        <div class="skill" data-skill="90" aria-label="TypeScript">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg" alt="TypeScript">
+        </div>
+        <div class="skill" data-skill="90" aria-label="React">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React">
+        </div>
+        <div class="skill" data-skill="90" aria-label="HTML5">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5">
+        </div>
+        <div class="skill" data-skill="90" aria-label="CSS3">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="CSS3">
+        </div>
+        <div class="skill" data-skill="90" aria-label="Python">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
+        </div>
+        <div class="skill" data-skill="90" aria-label="PostgreSQL">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+        </div>
+        <div class="skill" data-skill="90" aria-label="Git">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
+        </div>
+      </div>
+        </section>
+
+        <section id="formacao" class="card">
+            <h2>Formação Acadêmica</h2>
+            <p>Acadêmico de <strong>Engenharia de Software(Centro Universitário Católica do Tocantins)</strong><br>
+                
+            Acadêmico de <strong> Sistemas de Informação(Universidade Estadual do Tocantins)</strong></p>
+        </section>
+
+        <section id="cursos" class="card">
+            <h2>Cursos</h2>
+            <p>Concluí cursos em HTML, CSS e JavaScript, com prática em design responsivo e boas práticas no front-end. 
+                Porém, busco uma capacitação e desenvolvimento no back-end, através de estudos de  frameworks modernos, padrões de arquitetura, criação e uilização de APis e o uso de banco de dados.</p>
+        </section>
+
+        <section id="projects" class="card">
+            <h2>Projetos</h2>
+            <p>Alguns projetos pessoais e acadêmicos:</p>
+            <div class="projects-grid">
+                <article class="project">
+                    <h3>Projeto Áres Startup</h3>
+                    <p>Esse é o Site da Áres Startup, uma empresa que surgiu para resolver o seu problema! Através de construção de Softwares, Sites, Automações e integrações com IA!
+                    </p>
+                    <div class ="projeto-ares">
+                        <a href="https://ares-project.vercel.app/" blank="true" target="_blank" rel="noopener noreferrer"></a>Áres Startup</a>
+                    </div>
+                </article>
+                <article class="project">
+                    <h3>Projeto Site Caminho e Fé</h3>
+                    <p>Um site que está em desenvolvimento para uso de fim cristão. O site está sendo construido em React + Python(django). Link do site:</p>
+                </article>
+                <article class="project">
+                    <h3>Projeto de POO</h3>
+                    <p>Uma aplicação de jogo de luta construido em python através da biblioteca do<strong>pygames</strong>. Também com a aplicação de conceitos de POO(programação orientada a objetos)
+                    aprendidos na faculdade. Conceitos como Polimorfismo, Abstracth method, builder...</p>
+                </article>
+                 <article class="project">
+                    <h3>MKDOCS </h3>
+                    <p>Uma aplicação da experiência obtida através do estágio, aplicando os conhecimentos de MKDOCS. Construindo documentações.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Contato -->
+    <div id="contactModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+        <h3>Entre em contato</h3>
+        <p>Envie uma mensagem rápida ou acesse meu <a href="https://github.com/GabrielGGC18/GabrielGGC18" target="_blank" rel="noopener">GitHub</a> / <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Obrigado! Seu contato foi registrado (exemplo).');">
+          <label>Nome<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Mensagem<textarea name="message" rows="4" required></textarea></label>
+          <div class="form-actions"><button class="btn primary" type="submit">Enviar</button></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="socials">
+            <a href="https://github.com/GabrielGGC18/GabrielGGC18" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          <small>© <span id="year"></span> Gabriel de Sá Mendes</small>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Voltar ao topo">↑</button>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
