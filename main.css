@@ -14,6 +14,7 @@
 body {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   margin: 0;
+  padding-top: 72px;
   background: var(--bg);
   color: #f1f5f9;
   -webkit-font-smoothing: antialiased;
@@ -21,11 +22,15 @@ body {
 
 /* NAV */
 .site-nav {
-  background: transparent;
-  padding: 16px 12px;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 40;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--card); /* fundo escuro fixo */
+  backdrop-filter: blur(8px);
+  padding: 16px 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 .nav-inner {
   max-width: 1100px;
@@ -77,6 +82,15 @@ body {
 }
 .nav-socials a:hover {
   color: var(--accent);
+}
+.socials a {
+  color: var(--accent);
+  margin-left: 14px;
+  font-size: 1.6rem; /* ícones maiores */
+  transition: color 0.2s;
+}
+.socials a:hover {
+  color: var(--accent-2);
 }
 
 /* HERO */
@@ -295,6 +309,24 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+/* Modal de foto */
+.foto-modal {
+  max-width: 600px;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.foto-expandida {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+#modalFoto[aria-hidden="false"] {
+  display: flex;
+}
+
 .contact-form label {
   display: block;
   margin-top: 10px;
@@ -308,3 +340,12 @@ body {
   border-radius: 8px;
   border: 1px solid #334155;
   background
+
+.footer-inner {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.socials {
+  margin-top: 8px;
+}

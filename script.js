@@ -93,3 +93,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Expansão da Foto
+const expandFoto = document.getElementById('expandFoto');
+const modalFoto = document.getElementById('modalFoto');
+const closeFoto = document.getElementById('closeFoto');
+
+if (expandFoto && modalFoto && closeFoto) {
+  expandFoto.addEventListener('click', () => {
+    modalFoto.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+  closeFoto.addEventListener('click', () => {
+    modalFoto.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'auto';
+  });
+  modalFoto.addEventListener('click', (e) => {
+    if (e.target === modalFoto) {
+      modalFoto.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
