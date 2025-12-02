@@ -1,0 +1,34 @@
+Cadastro <br> <br>
+
+
+Login <input type="text" id="campoLogin"><br><br>
+Senha <input type="password" id="campoSenha"><br><br>
+<input type="button" onclick="CadastrarUsuario()" value="Cadastrar">
+
+<script>
+  function CadastrarUsuario() {
+    var login = document.getElementById('campoLogin').value;
+    var senha = document.getElementById('campoSenha').value;
+
+    fetch('https://6925a4f582b59600d7248d88.mockapi.io/Usuarios', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ Login: login, Senha: senha })
+    })
+    .then(function(response) {
+      if (!response.ok) throw new Error('Falha no endpoint');
+      return response.json();
+    })
+    .then(function(data) {
+      console.log('Payload de retorno:', data);
+      alert('Usuário cadastrado com sucesso!');
+    })
+    .catch(function(err) {
+      console.error('Erro de operação:', err);
+      alert('Erro ao cadastrar usuário.');
+    });
+  }
+</script>
+
+</body>
+</html>
