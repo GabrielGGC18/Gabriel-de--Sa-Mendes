@@ -2,13 +2,15 @@
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, acadêmico de Engenharia de Software e Sistemas de Informação.">
+    <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, CEO da GSM Startup, acadêmico de Engenharia de Software e Sistemas de Informação.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Portfólio - Gabriel de Sá Mendes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0ea5a4">
-    <!-- Fonte e ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#3b82f6">
+    <meta property="og:title" content="Portfólio - Gabriel de Sá Mendes">
+    <meta property="og:description" content="Desenvolvedor Fullstack & CEO da GSM Startup">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -16,19 +18,20 @@
    <!-- Navegação -->
    <nav class="site-nav">
      <div class="nav-inner">
-       <a class="brand" href="https://github.com/GabrielGGC18/GabrielGGC18">Gabriel Mendes</a>
-       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+       <a class="brand" href="#"><span>Gabriel</span> Mendes</a>
+       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+         <span></span><span></span><span></span>
+       </button>
        <ul class="nav-list" id="navList">
          <li><a href="#sobre">Sobre</a></li>
          <li><a href="#formacao">Formação</a></li>
          <li><a href="#cursos">Cursos</a></li>
          <li><a href="#projects">Projetos</a></li>
          <li><a href="#contato" id="openContact">Contato</a></li>
-         <!-- Ícones sociais na nav -->
          <li class="nav-socials">
-            <a href="https://github.com/GabrielGGC18" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/GabrielGGC18" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
          </li>
        </ul>
      </div>
@@ -36,103 +39,237 @@
 
    <!-- Hero -->
    <header class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-inner">
-            <img src="/assets/eu.jpeg" alt="Foto de Gabriel" class="perfil" id="expandFoto">
+            <div class="perfil-wrapper">
+                <img src="/assets/foto.png" alt="Foto de Gabriel" class="perfil" id="expandFoto">
+                <span class="perfil-status"></span>
+            </div>
             <div class="hero-text">
-                <h1>Gabriel de Sá Mendes</h1>
-                <p class="lead">Desenvolvedor • Acadêmico de Engenharia de Software e de Sistemas de Informação</p>
-                <p class="muted">Estagiário na Prefeitura de Palmas-TO — Foco em desenvolvimento Web, APIs e integrações.</p>
+                <div class="hero-tag"><i class="fa-solid fa-circle-dot"></i> Disponível para oportunidades</div>
+                <h1>Gabriel <span class="gradient-text">de Sá Mendes</span></h1>
+                <p class="lead">Desenvolvedor Fullstack &amp; CEO da <a href="https://github.com/GabrielGGC18/GSMstartup" target="_blank" class="startup-link">GSM Startup</a></p>
+                <p class="muted">Acadêmico de Engenharia de Software e Sistemas de Informação · Estagiário na Prefeitura de Palmas-TO</p>
                 <div class="hero-actions">
-                    <a class="btn primary" href="#projects">Ver projetos</a>
-                    <a class="btn ghost" id="contactBtn" href="#contato">Entrar em contato</a>
+                    <a class="btn primary" href="#projects"><i class="fa-solid fa-code"></i> Ver projetos</a>
+                    <a class="btn ghost" id="contactBtn" href="#contato"><i class="fa-solid fa-envelope"></i> Contato</a>
                 </div>
             </div>
         </div>
         <div class="hero-badges">
-            <span>JavaScript</span>
-            <span>TypeScript</span>
-            <span>React</span>
-            <span>Python / Django</span>
+            <span><i class="fa-brands fa-js"></i> JavaScript</span>
+            <span><i class="fa-brands fa-react"></i> React</span>
+            <span><i class="fa-brands fa-python"></i> Python / Django</span>
+            <span><i class="fa-solid fa-database"></i> PostgreSQL</span>
+            <span><i class="fa-brands fa-node-js"></i> Node.js</span>
+            <span><i class="fa-solid fa-t"></i> TypeScript</span>
         </div>
     </header>
 
     <!-- Conteúdo principal -->
     <main class="container">
+
         <section id="sobre" class="card">
-            <h2>Sobre Mim</h2>
-            <p>Olá! Me chamo <strong>Gabriel</strong>. <strong>Sou desenvolvedor</strong> com interesse em arquitetura de software, integração de sistemas e automações. Trabalho com <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>, <strong>Python (Django)</strong> e <strong>PostgreSQL</strong>, e estou sempre estudando e disposto a aprender novas tecnologias.</p>
+            <h2><span class="section-icon"><i class="fa-solid fa-user"></i></span> Sobre Mim</h2>
+            <p>Olá! Me chamo <strong>Gabriel</strong>. Sou <strong>desenvolvedor fullstack</strong> e <strong>CEO da GSM Startup</strong>, com foco em arquitetura de software, integração de sistemas e automações. Trabalho com <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>, <strong>Python (Django)</strong> e <strong>PostgreSQL</strong>, e estou sempre estudando e disposto a aprender novas tecnologias.</p>
         </section>
 
         <section id="formacao" class="card">
-            <h2>Formação Acadêmica</h2>
-            <p>Acadêmico de <strong>Engenharia de Software (Centro Universitário Católica do Tocantins)</strong><br>
-            Acadêmico de <strong>Sistemas de Informação (Universidade Estadual do Tocantins)</strong></p>
+            <h2><span class="section-icon"><i class="fa-solid fa-graduation-cap"></i></span> Formação Acadêmica</h2>
+            <div class="edu-grid">
+                <div class="edu-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div>
+                        <strong>Engenharia de Software</strong>
+                        <span>Centro Universitário Católica do Tocantins</span>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div>
+                        <strong>Sistemas de Informação</strong>
+                        <span>Universidade Estadual do Tocantins</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="cursos" class="card">
-            <h2>Cursos e Certificados</h2>
+            <h2><span class="section-icon"><i class="fa-solid fa-certificate"></i></span> Cursos e Certificados</h2>
             <ul>
-                <li>Ciências de Dados</li>
-                <li>IA Generativa</li>
-                <li>Canva</li>
-                <li>Figma</li>
-                <li>Django</li>
-                <li>SQL</li>
+                <li><i class="fa-solid fa-chart-bar"></i> Ciências de Dados</li>
+                <li><i class="fa-solid fa-robot"></i> IA Generativa</li>
+                <li><i class="fa-solid fa-palette"></i> Canva</li>
+                <li><i class="fa-brands fa-figma"></i> Figma</li>
+                <li><i class="fa-brands fa-python"></i> Django</li>
+                <li><i class="fa-solid fa-database"></i> SQL</li>
             </ul>
         </section>
 
         <section id="projects" class="card">
-            <h2>Projetos e Repositórios</h2>
+            <h2><span class="section-icon"><i class="fa-solid fa-folder-open"></i></span> Projetos e Repositórios</h2>
             <div class="projects-grid">
+
+                <!-- GSM Startup (destaque) -->
+                <article class="project featured">
+                    <div class="project-img-wrapper">
+                        <img src="/assets/gsm.png" alt="GSM Startup" class="project-img">
+                        <div class="project-ceo-badge">
+                            <img src="/assets/foto.png" alt="Gabriel CEO" class="ceo-avatar">
+                            <span>CEO &amp; Fundador</span>
+                        </div>
+                    </div>
+                    <h3>GSM Startup</h3>
+                    <p>Startup de tecnologia focada em SaaS, AgroTech, Automação e Marketing Digital. Do campo ao digital.</p>
+                    <div class="project-tags">
+                        <span>Django</span><span>React</span><span>SaaS</span><span>AgroTech</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GabrielGGC18/GSMstartup" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                    </div>
+                </article>
+
+                <!-- Ticket Management -->
                 <article class="project">
-                    <img src="/assets/ares.png" alt="Projeto Áres" class="project-img">
+                    <div class="project-placeholder ticket-bg">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <h3>Ticket Management</h3>
+                    <p>Sistema de gerenciamento de tickets para controle e acompanhamento de chamados.</p>
+                    <div class="project-tags">
+                        <span>Web</span><span>Gestão</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GabrielGGC18/Ticket-management" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                    </div>
+                </article>
+
+                <!-- Áres Startup -->
+                <article class="project">
+                    <div class="project-img-wrapper">
+                        <img src="/assets/ares.png" alt="Projeto Áres" class="project-img">
+                    </div>
                     <h3>Áres Startup</h3>
                     <p>Site da Áres Startup, empresa focada em soluções digitais com IA.</p>
-                     <a href="https://ares-project.vercel.app/" target="_blank">Site</a>
-                    <a href="https://github.com/GabrielGGC18/Ares-project" target="_blank">Repositório</a>
+                    <div class="project-tags">
+                        <span>React</span><span>IA</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://ares-project.vercel.app/" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
+                        <a href="https://github.com/GabrielGGC18/Ares-project" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                    </div>
                 </article>
+
+                <!-- Caminho e Fé Católica -->
                 <article class="project">
-                    <img src="/assets/game.png" alt="Game Battle" class="project-img">
-                    <h3>Game Battle POO</h3>
-                    <p>Jogo de luta em Python com conceitos de POO.</p>
-                    <a href="https://github.com/GabrielGGC18/Game-battle-POO" target="_blank">Repositório</a>
+                    <div class="project-img-wrapper">
+                        <img src="/assets/projetov1.png" alt="Projeto Caminho e Fé Católica" class="project-img">
+                    </div>
+                    <h3>Caminho e Fé Católica</h3>
+                    <p>Plataforma web voltada à fé católica, com conteúdos e recursos para a comunidade.</p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://projetov1.vercel.app" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
+                        <a href="https://github.com/GabrielGGC18/Projetov1" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                    </div>
                 </article>
+
+                <!-- Force Up Fit -->
                 <article class="project">
-                    <img src="/assets/blog.png" alt="Blog Django" class="project-img">
-                    <h3>My First Blog Django</h3>
-                    <p>Blog desenvolvido em Django como prática inicial.</p>
-                    <a href="https://github.com/GabrielGGC18/My-first-blog-Django" target="_blank">Repositório</a>
-                </article>
-                <article class="project">
-                    <img src="/assets/forceup.png" alt="Force Up Fit" class="project-img">
+                    <div class="project-img-wrapper">
+                        <img src="/assets/forceup.png" alt="Force Up Fit" class="project-img">
+                    </div>
                     <h3>Force Up Fit</h3>
                     <p>Aplicação voltada para treinos e condicionamento físico.</p>
-                    <a href="https://gabrielggc18.github.io/Force-up-Fit-new/" target="_blank">Site</a>
-                    <a href="https://github.com/GabrielGGC18/Force-up-Fit-new" target="_blank">Repositório</a>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://gabrielggc18.github.io/Force-up-Fit-new/" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
+                        <a href="https://github.com/GabrielGGC18/Force-up-Fit-new" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                    </div>
                 </article>
+
+                <!-- Blog Django -->
                 <article class="project">
-                    <img src="/assets/projetov1.png" alt="Projeto Caminho e Fé" class="project-img">
-                    <h3>Projeto Caminho e Fé </h3>
-                    <p>Primeiros experimentos com desenvolvimento web. </p>
-                    <a href="https://github.com/GabrielGGC18/Projetov1" target="_blank">Repositório</a>
+                    <div class="project-img-wrapper">
+                        <img src="/assets/blog.png" alt="Blog Django" class="project-img">
+                    </div>
+                    <h3>My First Blog Django</h3>
+                    <p>Blog desenvolvido em Django como prática inicial com o framework.</p>
+                    <div class="project-tags">
+                        <span>Python</span><span>Django</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GabrielGGC18/My-first-blog-Django" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                    </div>
                 </article>
+
+                <!-- Game Battle -->
+                <article class="project">
+                    <div class="project-img-wrapper">
+                        <img src="/assets/game.png" alt="Game Battle POO" class="project-img">
+                    </div>
+                    <h3>Game Battle POO</h3>
+                    <p>Jogo de luta em Python com conceitos de programação orientada a objetos.</p>
+                    <div class="project-tags">
+                        <span>Python</span><span>POO</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GabrielGGC18/Game-battle-POO" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                    </div>
+                </article>
+
             </div>
         </section>
+
     </main>
 
     <!-- Rodapé -->
     <footer class="site-footer">
         <div class="footer-inner">
-          <small>© <span id="year"></span> Gabriel de Sá Mendes</small>
+          <small>© <span id="year"></span> Gabriel de Sá Mendes — Feito com <i class="fa-solid fa-heart" style="color:#ef4444"></i></small>
           <div class="socials">
-            <a href="https://github.com/GabrielGGC18" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.instagram.com/gabrieldsa_dev/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/GabrielGGC18" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/gabrieldsa_dev/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
           </div>
         </div>
     </footer>
 
-    <button id="backToTop" title="Voltar ao topo">↑</button>
+    <button id="backToTop" title="Voltar ao topo" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- Modal Foto -->
+    <div class="modal" id="modalFoto" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
+      <div class="modal-content foto-modal">
+        <button class="modal-close" id="closeFoto" aria-label="Fechar">×</button>
+        <img src="/assets/eu.jpeg" alt="Foto de Gabriel" class="foto-expandida">
+      </div>
+    </div>
+
+    <!-- Modal Contato -->
+    <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-label="Formulário de contato" aria-hidden="true">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+        <h3>Entre em Contato</h3>
+        <form class="contact-form" onsubmit="return false;">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome" autocomplete="name">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" rows="4" placeholder="Sua mensagem..."></textarea>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/GabrielGGC18" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="script.js" defer></script>
 </body>
 </html>
