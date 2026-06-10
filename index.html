@@ -4,31 +4,36 @@
     <meta charset="utf-8">
     <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, CEO da GSM Startup, acadêmico de Engenharia de Software e Sistemas de Informação.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Portfólio - Gabriel de Sá Mendes</title>
+    <title>Gabriel de Sá Mendes — Desenvolvedor Fullstack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#3b82f6">
-    <meta property="og:title" content="Portfólio - Gabriel de Sá Mendes">
+    <meta name="theme-color" content="#0a0e14">
+    <meta property="og:title" content="Gabriel de Sá Mendes — Desenvolvedor Fullstack">
     <meta property="og:description" content="Desenvolvedor Fullstack & CEO da GSM Startup">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+   <div class="bg-grid" aria-hidden="true"></div>
+   <div class="bg-glow" aria-hidden="true"></div>
+
    <!-- Navegação -->
    <nav class="site-nav">
      <div class="nav-inner">
-       <a class="brand" href="#"><span>Gabriel</span> Mendes</a>
+       <a class="brand" href="#"><span class="brand-mark">GM</span><span class="brand-name">gabriel<em>.mendes</em></span></a>
        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
          <span></span><span></span><span></span>
        </button>
        <ul class="nav-list" id="navList">
-         <li><a href="#sobre">Sobre</a></li>
-         <li><a href="#formacao">Formação</a></li>
-         <li><a href="#cursos">Cursos</a></li>
-         <li><a href="#projects">Projetos</a></li>
-         <li><a href="#contato" id="openContact">Contato</a></li>
+         <li><a href="#sobre"><span class="nav-num">01</span>Sobre</a></li>
+         <li><a href="#formacao"><span class="nav-num">02</span>Formação</a></li>
+         <li><a href="#cursos"><span class="nav-num">03</span>Cursos</a></li>
+         <li><a href="#projects"><span class="nav-num">04</span>Projetos</a></li>
+         <li><a href="#contato" id="openContact"><span class="nav-num">05</span>Contato</a></li>
          <li class="nav-socials">
             <a href="https://github.com/GabrielGGC18" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
             <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -40,43 +45,52 @@
 
    <!-- Hero -->
    <header class="hero">
-        <div class="hero-bg"></div>
         <div class="hero-inner">
-            <div class="perfil-wrapper">
-                <img src="/assets/foto.png" alt="Foto de Gabriel" class="perfil" id="expandFoto">
-                <span class="perfil-status"></span>
-            </div>
             <div class="hero-text">
-                <div class="hero-tag"><i class="fa-solid fa-circle-dot"></i> Disponível para oportunidades</div>
-                <h1>Gabriel <span class="gradient-text">de Sá Mendes</span></h1>
-                <p class="lead">Desenvolvedor Fullstack &amp; CEO da <a href="https://github.com/GabrielGGC18/GSMstartup" target="_blank" class="startup-link">GSM Startup</a></p>
-                <p class="muted">Acadêmico de Engenharia de Software e Sistemas de Informação · Estagiário na Prefeitura de Palmas-TO</p>
-                <div class="hero-actions">
-                    <a class="btn primary" href="#projects"><i class="fa-solid fa-code"></i> Ver projetos</a>
+                <p class="hero-kicker reveal"><span class="status-dot"></span> disponível para oportunidades</p>
+                <h1 class="reveal d-1">Gabriel<br><span class="outline">de Sá</span> Mendes</h1>
+                <p class="hero-role reveal d-2">Desenvolvedor <strong>Fullstack</strong> &nbsp;·&nbsp; CEO da <a href="https://github.com/GabrielGGC18/GSMstartup" target="_blank" class="startup-link">GSM Startup</a></p>
+                <p class="hero-sub reveal d-3">Acadêmico de Engenharia de Software e Sistemas de Informação<br>Estagiário na Prefeitura de Palmas-TO</p>
+                <div class="hero-actions reveal d-4">
+                    <a class="btn primary" href="#projects">Ver projetos <i class="fa-solid fa-arrow-right"></i></a>
                     <a class="btn ghost" id="contactBtn" href="#contato"><i class="fa-solid fa-envelope"></i> Contato</a>
                 </div>
             </div>
+            <div class="perfil-wrapper reveal d-2">
+                <div class="perfil-frame">
+                    <img src="/assets/foto.png" alt="Foto de Gabriel" class="perfil" id="expandFoto">
+                </div>
+                <span class="perfil-caption">// palmas — tocantins, brasil</span>
+            </div>
         </div>
-        <div class="hero-badges">
+        <div class="hero-badges reveal d-5">
             <span><i class="fa-brands fa-js"></i> JavaScript</span>
             <span><i class="fa-brands fa-react"></i> React</span>
             <span><i class="fa-brands fa-python"></i> Python / Django</span>
             <span><i class="fa-solid fa-database"></i> PostgreSQL</span>
             <span><i class="fa-brands fa-node-js"></i> Node.js</span>
-            <span><i class="fa-solid fa-t"></i> TypeScript</span>
+            <span><i class="fa-solid fa-code"></i> TypeScript</span>
         </div>
     </header>
 
     <!-- Conteúdo principal -->
     <main class="container">
 
-        <section id="sobre" class="card">
-            <h2><span class="section-icon"><i class="fa-solid fa-user"></i></span> Sobre Mim</h2>
-            <p>Olá! Me chamo <strong>Gabriel</strong>. Sou <strong>desenvolvedor fullstack</strong> e <strong>CEO da GSM Startup</strong>, com foco em arquitetura de software, integração de sistemas e automações. Trabalho com <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>, <strong>Python (Django)</strong> e <strong>PostgreSQL</strong>, e estou sempre estudando e disposto a aprender novas tecnologias.</p>
+        <section id="sobre" class="section reveal">
+            <div class="section-head">
+                <span class="section-num">01</span>
+                <h2>Sobre Mim</h2>
+                <span class="section-line"></span>
+            </div>
+            <p class="about-text">Olá! Me chamo <strong>Gabriel</strong>. Sou <strong>desenvolvedor fullstack</strong> e <strong>CEO da GSM Startup</strong>, com foco em arquitetura de software, integração de sistemas e automações. Trabalho com <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong>, <strong>Python (Django)</strong> e <strong>PostgreSQL</strong>, e estou sempre estudando e disposto a aprender novas tecnologias.</p>
         </section>
 
-        <section id="formacao" class="card">
-            <h2><span class="section-icon"><i class="fa-solid fa-graduation-cap"></i></span> Formação Acadêmica</h2>
+        <section id="formacao" class="section reveal">
+            <div class="section-head">
+                <span class="section-num">02</span>
+                <h2>Formação Acadêmica</h2>
+                <span class="section-line"></span>
+            </div>
             <div class="edu-grid">
                 <div class="edu-item">
                     <i class="fa-solid fa-building-columns"></i>
@@ -95,9 +109,13 @@
             </div>
         </section>
 
-        <section id="cursos" class="card">
-            <h2><span class="section-icon"><i class="fa-solid fa-certificate"></i></span> Cursos e Certificados</h2>
-            <ul>
+        <section id="cursos" class="section reveal">
+            <div class="section-head">
+                <span class="section-num">03</span>
+                <h2>Cursos e Certificados</h2>
+                <span class="section-line"></span>
+            </div>
+            <ul class="cursos-list">
                 <li><i class="fa-solid fa-chart-bar"></i> Ciências de Dados</li>
                 <li><i class="fa-solid fa-robot"></i> IA Generativa</li>
                 <li><i class="fa-solid fa-palette"></i> Canva</li>
@@ -107,8 +125,12 @@
             </ul>
         </section>
 
-        <section id="projects" class="card">
-            <h2><span class="section-icon"><i class="fa-solid fa-folder-open"></i></span> Projetos e Repositórios</h2>
+        <section id="projects" class="section reveal">
+            <div class="section-head">
+                <span class="section-num">04</span>
+                <h2>Projetos e Repositórios</h2>
+                <span class="section-line"></span>
+            </div>
             <div class="projects-grid">
 
                 <!-- GSM Startup (destaque) -->
@@ -120,29 +142,33 @@
                             <span>CEO &amp; Fundador</span>
                         </div>
                     </div>
-                    <h3>GSM Startup</h3>
-                    <p>Startup de tecnologia focada em SaaS, AgroTech, Automação e Marketing Digital. Do campo ao digital.</p>
-                    <div class="project-tags">
-                        <span>Django</span><span>React</span><span>SaaS</span><span>AgroTech</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/GabrielGGC18/GSMstartup" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
-                        <a href="https://gsm-startup.vercel.app/" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
+                    <div class="project-body">
+                        <h3>GSM Startup</h3>
+                        <p>Startup de tecnologia focada em SaaS, AgroTech, Automação e Marketing Digital. Do campo ao digital.</p>
+                        <div class="project-tags">
+                            <span>Django</span><span>React</span><span>SaaS</span><span>AgroTech</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/GabrielGGC18/GSMstartup" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                            <a href="https://gsm-startup.vercel.app/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Ticket Management -->
                 <article class="project">
-                    <div class="project-placeholder ticket-bg">
+                    <div class="project-placeholder ph-blue">
                         <i class="fa-solid fa-ticket"></i>
                     </div>
-                    <h3>Ticket Management</h3>
-                    <p>Sistema de gerenciamento de tickets para controle e acompanhamento de chamados.</p>
-                    <div class="project-tags">
-                        <span>Web</span><span>Gestão</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/GabrielGGC18/Ticket-management" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                    <div class="project-body">
+                        <h3>Ticket Management</h3>
+                        <p>Sistema de gerenciamento de tickets para controle e acompanhamento de chamados.</p>
+                        <div class="project-tags">
+                            <span>Web</span><span>Gestão</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/GabrielGGC18/Ticket-management" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                        </div>
                     </div>
                 </article>
 
@@ -151,14 +177,16 @@
                     <div class="project-img-wrapper">
                         <img src="/assets/ares.png" alt="Projeto Áres" class="project-img">
                     </div>
-                    <h3>Áres Startup</h3>
-                    <p>Site da Áres Startup, empresa focada em soluções digitais com IA.</p>
-                    <div class="project-tags">
-                        <span>React</span><span>IA</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://ares-project.vercel.app/" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
-                        <a href="https://github.com/GabrielGGC18/Ares-project" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                    <div class="project-body">
+                        <h3>Áres Startup</h3>
+                        <p>Site da Áres Startup, empresa focada em soluções digitais com IA.</p>
+                        <div class="project-tags">
+                            <span>React</span><span>IA</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ares-project.vercel.app/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
+                            <a href="https://github.com/GabrielGGC18/Ares-project" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                        </div>
                     </div>
                 </article>
 
@@ -167,14 +195,16 @@
                     <div class="project-img-wrapper">
                         <img src="/assets/projetov1.png" alt="Projeto Caminho e Fé Católica" class="project-img">
                     </div>
-                    <h3>Caminho e Fé Católica</h3>
-                    <p>Plataforma web voltada à fé católica, com conteúdos e recursos para a comunidade.</p>
-                    <div class="project-tags">
-                        <span>HTML</span><span>CSS</span><span>JS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://projetov1-56sv.vercel.app/" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
-                        <a href="https://github.com/GabrielGGC18/Projetov1" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                    <div class="project-body">
+                        <h3>Caminho e Fé Católica</h3>
+                        <p>Plataforma web voltada à fé católica, com conteúdos e recursos para a comunidade.</p>
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://projetov1-56sv.vercel.app/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
+                            <a href="https://github.com/GabrielGGC18/Projetov1" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                        </div>
                     </div>
                 </article>
 
@@ -183,14 +213,16 @@
                     <div class="project-img-wrapper">
                         <img src="/assets/forceup.png" alt="Force Up Fit" class="project-img">
                     </div>
-                    <h3>Force Up Fit</h3>
-                    <p>Aplicação voltada para treinos e condicionamento físico.</p>
-                    <div class="project-tags">
-                        <span>HTML</span><span>CSS</span><span>JS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://gabrielggc18.github.io/Force-up-Fit-new/" target="_blank"><i class="fa-solid fa-globe"></i> Site</a>
-                        <a href="https://github.com/GabrielGGC18/Force-up-Fit-new" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                    <div class="project-body">
+                        <h3>Force Up Fit</h3>
+                        <p>Aplicação voltada para treinos e condicionamento físico.</p>
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://gabrielggc18.github.io/Force-up-Fit-new/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
+                            <a href="https://github.com/GabrielGGC18/Force-up-Fit-new" target="_blank"><i class="fa-brands fa-github"></i> Repo</a>
+                        </div>
                     </div>
                 </article>
 
@@ -199,13 +231,15 @@
                     <div class="project-img-wrapper">
                         <img src="/assets/blog.png" alt="Blog Django" class="project-img">
                     </div>
-                    <h3>My First Blog Django</h3>
-                    <p>Blog desenvolvido em Django como prática inicial com o framework.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>Django</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/GabrielGGC18/My-first-blog-Django" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                    <div class="project-body">
+                        <h3>My First Blog Django</h3>
+                        <p>Blog desenvolvido em Django como prática inicial com o framework.</p>
+                        <div class="project-tags">
+                            <span>Python</span><span>Django</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/GabrielGGC18/My-first-blog-Django" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                        </div>
                     </div>
                 </article>
 
@@ -214,13 +248,49 @@
                     <div class="project-img-wrapper">
                         <img src="/assets/game.png" alt="Game Battle POO" class="project-img">
                     </div>
-                    <h3>Game Battle POO</h3>
-                    <p>Jogo de luta em Python com conceitos de programação orientada a objetos.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>POO</span>
+                    <div class="project-body">
+                        <h3>Game Battle POO</h3>
+                        <p>Jogo de luta em Python com conceitos de programação orientada a objetos.</p>
+                        <div class="project-tags">
+                            <span>Python</span><span>POO</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/GabrielGGC18/Game-battle-POO" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/GabrielGGC18/Game-battle-POO" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                </article>
+
+                <!-- WordPress Automação -->
+                <article class="project">
+                    <div class="project-placeholder ph-wp">
+                        <i class="fa-brands fa-wordpress"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>Automação WordPress</h3>
+                        <p>Script Python que automatiza upload de fotos, vinculação como imagem destacada em posts e captura de screenshots via GitHub Actions.</p>
+                        <div class="project-tags">
+                            <span>Python</span><span>WordPress</span><span>GitHub Actions</span><span>Automação</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/GabrielGGC18/Script-Teste" target="_blank"><i class="fa-brands fa-github"></i> Repositório</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Script Automação Serviços -->
+                <article class="project">
+                    <div class="project-placeholder ph-dark">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>Script de Automação Serviços</h3>
+                        <p>Script Python para cadastro automatizado de serviços, otimizando processos administrativos e reduzindo trabalho manual.</p>
+                        <div class="project-tags">
+                            <span>Python</span><span>Automação</span><span>Scripts</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span>
+                        </div>
                     </div>
                 </article>
 
@@ -232,7 +302,7 @@
     <!-- Rodapé -->
     <footer class="site-footer">
         <div class="footer-inner">
-          <small>© <span id="year"></span> Gabriel de Sá Mendes</small>
+          <small>© <span id="year"></span> Gabriel de Sá Mendes — feito com café e código</small>
           <div class="socials">
             <a href="https://github.com/GabrielGGC18" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
             <a href="https://www.instagram.com/gabrieldsa_dev/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>

@@ -65,20 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Animação das skills
-  const skills = document.querySelectorAll('.skill');
-  function animateSkills() {
-    skills.forEach(skill => {
-      const value = parseInt(skill.getAttribute('data-skill') || '0', 10);
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress++;
-        skill.style.background = `linear-gradient(90deg, var(--accent) ${progress}%, rgba(59,130,246,0.06) ${progress}%)`;
-        if (progress >= value) clearInterval(interval);
-      }, 10);
-    });
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
   }
-  animateSkills();
 
   // Scroll suave para âncoras
   document.querySelectorAll('a[href^="#"]').forEach(link => {
