@@ -68,40 +68,6 @@
   }, { threshold: 0.4 });
   $$('.bar').forEach((el) => barObs.observe(el));
 
-  /* ---------- Contadores ---------- */
-  const animateCount = (el, target) => {
-    const dur = 1200, start = performance.now();
-    const tick = (now) => {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased);
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (!en.isIntersecting) return;
-      const target = Number(en.target.dataset.count) || 0;
-      if (target > 0) animateCount(en.target, target);
-      countObs.unobserve(en.target);
-    });
-  }, { threshold: 0.5 });
-  $$('.count').forEach((el) => countObs.observe(el));
-
-  /* ---------- Stats ao vivo do GitHub ---------- */
-  const statRepos = $('#statRepos');
-  if (statRepos) {
-    fetch('https://api.github.com/users/GabrielGGC18')
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('github ' + r.status))))
-      .then((d) => {
-        const n = Number(d.public_repos) || 0;
-        statRepos.dataset.count = String(n);
-        animateCount(statRepos, n);
-      })
-      .catch(() => { statRepos.textContent = '30+'; });
-  }
-
   /* ---------- Typewriter ---------- */
   const typed = $('#typed');
   if (typed) {
