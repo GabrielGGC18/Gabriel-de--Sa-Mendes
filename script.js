@@ -21,10 +21,12 @@
   const applyTheme = (t) => {
     document.documentElement.setAttribute('data-theme', t);
     if (themeIcon) themeIcon.className = t === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    if (themeBtn) themeBtn.setAttribute('aria-pressed', String(t === 'light'));
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', t === 'light' ? '#f6f7fb' : '#0a0e14');
   };
-  applyTheme(readTheme() || 'dark');
+  // o script inline no <head> já escolheu o tema (salvo ou do sistema)
+  applyTheme(readTheme() || document.documentElement.getAttribute('data-theme') || 'dark');
   if (themeBtn) themeBtn.addEventListener('click', () => {
     const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
     applyTheme(next);
@@ -33,18 +35,23 @@
 
   /* ---------- Menu mobile ---------- */
   const navToggle = $('#navToggle'), navList = $('#navList');
+  const mobileNav = matchMedia('(max-width: 940px)');
+  const setNav = (open) => {
+    if (!navToggle || !navList) return;
+    navList.classList.toggle('is-open', open);
+    navToggle.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    // menu fechado no mobile não deve receber foco por Tab
+    navList.inert = mobileNav.matches && !open;
+  };
   if (navToggle && navList) {
-    navToggle.addEventListener('click', () => {
-      const open = navList.classList.toggle('is-open');
-      navToggle.classList.toggle('is-open', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    navList.addEventListener('click', (e) => {
-      if (e.target.closest('a')) {
-        navList.classList.remove('is-open');
-        navToggle.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
+    setNav(false);
+    mobileNav.addEventListener('change', () => setNav(false));
+    navToggle.addEventListener('click', () => setNav(!navList.classList.contains('is-open')));
+    navList.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false); });
+    document.addEventListener('click', (e) => {
+      if (navList.classList.contains('is-open') && !e.target.closest('#siteNav')) setNav(false);
     });
   }
 
@@ -76,7 +83,7 @@
       'Python · Django · FastAPI',
       'React · TypeScript',
       'Automação & Integrações',
-      'CEO da GSM Startup'
+      'CEO da Mídia Startup'
     ];
     if (reduced) {
       typed.textContent = roles[0];
@@ -121,36 +128,93 @@
 
   if (backToTop) backToTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ---------- Filtros de projeto ---------- */
-  const grid = $('#projectsGrid'), emptyState = $('#emptyState');
-  $$('#filters .filter').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      $$('#filters .filter').forEach((b) => {
-        b.classList.toggle('is-active', b === btn);
-        b.setAttribute('aria-selected', String(b === btn));
-      });
-      const f = btn.dataset.filter;
-      let shown = 0;
-      $$('.project', grid).forEach((card) => {
-        const tags = (card.dataset.tags || '').split(' ');
-        const ok = f === 'all' || tags.includes(f);
-        card.classList.toggle('is-hidden', !ok);
-        if (ok) shown++;
-      });
-      if (emptyState) emptyState.hidden = shown > 0;
-    });
-  });
-
-  /* ---------- Spotlight nos cards ---------- */
+  /* ---------- Cards: holofote + inclinação 3D com reflexo ----------
+     Mesma ideia do SpotlightCard/TiltedCard da Mídia Startup: o brilho segue
+     o mouse e o card inclina em perspectiva. Só com mouse; no toque é card comum. */
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (!reduced) {
     $$('.project').forEach((card) => {
       card.addEventListener('pointermove', (e) => {
         const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
         card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        if (!finePointer) return;
+        card.style.setProperty('--gx', (px + 0.5) * 100 + '%');
+        card.style.setProperty('--gy', (py + 0.5) * 100 + '%');
+        // cards grandes inclinam menos para não exagerar
+        const amp = Math.min(8, 2600 / r.width);
+        card.style.transform = `perspective(900px) rotateX(${(-py * amp).toFixed(2)}deg) rotateY(${(px * amp).toFixed(2)}deg) scale(1.02)`;
       });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
     });
   }
+
+  /* ---------- Entrada dos cards em cascata ---------- */
+  const animateIn = (cards) => {
+    if (reduced) return;
+    cards.forEach((card, i) => {
+      card.classList.remove('card-in');
+      card.style.setProperty('--d', Math.min(i, 8) * 60 + 'ms');
+      void card.offsetWidth; // reinicia a animação
+      card.classList.add('card-in');
+    });
+  };
+  if (!reduced && 'IntersectionObserver' in window) {
+    const cardObs = new IntersectionObserver((entries) => {
+      const batch = entries.filter((en) => en.isIntersecting).map((en) => en.target);
+      batch.forEach((c) => { c.classList.remove('card-wait'); cardObs.unobserve(c); });
+      animateIn(batch);
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px' });
+    $$('.project').forEach((c) => { c.classList.add('card-wait'); cardObs.observe(c); });
+  }
+
+  /* ---------- Filtros de projeto ---------- */
+  const grid = $('#projectsGrid'), emptyState = $('#emptyState'), showMore = $('#showMore');
+  const LIMIT = 8;
+  let filter = 'all', expanded = false;
+  const renderProjects = () => {
+    let matched = 0;
+    const appeared = [];
+    $$('.project', grid).forEach((card) => {
+      const tags = (card.dataset.tags || '').split(' ');
+      const ok = filter === 'all' || tags.includes(filter);
+      if (ok) matched++;
+      // em "Todos" mostramos só os primeiros até o usuário pedir o resto
+      const collapsed = filter === 'all' && !expanded && matched > LIMIT;
+      const hide = !ok || collapsed;
+      if (!hide && card.classList.contains('is-hidden') && !card.classList.contains('card-wait')) appeared.push(card);
+      card.classList.toggle('is-hidden', hide);
+    });
+    animateIn(appeared);
+    if (emptyState) emptyState.hidden = matched > 0;
+    if (showMore) {
+      const extra = matched - LIMIT;
+      showMore.hidden = filter !== 'all' || extra <= 0 || expanded;
+      showMore.querySelector('span').textContent = `Ver todos os projetos (+${extra})`;
+      showMore.setAttribute('aria-expanded', String(expanded));
+    }
+  };
+  $$('#filters .filter').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      $$('#filters .filter').forEach((b) => {
+        b.classList.toggle('is-active', b === btn);
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      filter = btn.dataset.filter;
+      renderProjects();
+    });
+  });
+  if (showMore) showMore.addEventListener('click', () => {
+    const firstHidden = $('.project.is-hidden', grid);
+    expanded = true;
+    renderProjects();
+    // leva o foco para o primeiro card revelado
+    const focusable = firstHidden && firstHidden.querySelector('a');
+    if (focusable) focusable.focus({ preventScroll: true });
+  });
+  renderProjects();
 
   /* ---------- Tilt na foto ---------- */
   const tiltEl = $('[data-tilt]');
@@ -160,6 +224,8 @@
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
       tiltEl.style.transform = `perspective(800px) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
+      tiltEl.style.setProperty('--gx', (px + 0.5) * 100 + '%');
+      tiltEl.style.setProperty('--gy', (py + 0.5) * 100 + '%');
     });
     tiltEl.addEventListener('pointerleave', () => { tiltEl.style.transform = ''; });
   }
@@ -175,6 +241,64 @@
     });
   }
 
+  /* ---------- Em produção: pilha de cards que se revezam (CardSwap) ----------
+     O card da frente vai para o fundo a cada INTERVAL. Pausa com mouse/foco em
+     cima ou fora da tela; clicar num card de trás (ou na lista) traz ele à frente. */
+  const swap = $('#swap'), showList = $('#showcaseList');
+  if (swap) {
+    const cards = $$('.swap-card', swap);
+    const buttons = showList ? $$('button', showList) : [];
+    const INTERVAL = 4200;
+    let order = cards.map((_, i) => i), timer = null, hovering = false, onScreen = false;
+    const paint = () => {
+      cards.forEach((card, i) => {
+        const pos = order.indexOf(i);
+        card.style.setProperty('--pos', pos);
+        card.style.zIndex = cards.length - pos;
+        card.classList.toggle('is-front', pos === 0);
+        card.inert = pos !== 0;
+        card.setAttribute('aria-hidden', String(pos !== 0));
+      });
+      buttons.forEach((btn) => {
+        const on = Number(btn.dataset.idx) === order[0];
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', String(on));
+        if (on) { btn.classList.remove('is-timing'); void btn.offsetWidth; }
+      });
+      syncTimer();
+    };
+    const bringFront = (idx) => { order = [idx, ...order.filter((i) => i !== idx)]; paint(); };
+    const next = () => { order = [...order.slice(1), order[0]]; paint(); };
+    function syncTimer() {
+      clearInterval(timer); timer = null;
+      const running = !reduced && !hovering && onScreen;
+      buttons.forEach((b) => b.classList.toggle('is-timing', running && b.classList.contains('is-active')));
+      showList && showList.style.setProperty('--swap-ms', INTERVAL + 'ms');
+      if (running) timer = setInterval(next, INTERVAL);
+    }
+    // o card inteiro fica 'inert' quando está atrás; o clique é capturado na pilha
+    swap.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      const rect = (c) => c.getBoundingClientRect();
+      const hit = [...cards].sort((a, b) => order.indexOf(a.dataset.idx * 1) - order.indexOf(b.dataset.idx * 1))
+        .find((c) => { const r = rect(c); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; });
+      if (hit && !hit.classList.contains('is-front')) bringFront(Number(hit.dataset.idx));
+    });
+    buttons.forEach((btn) => btn.addEventListener('click', () => bringFront(Number(btn.dataset.idx))));
+    const pause = (v) => { hovering = v; syncTimer(); };
+    [swap, showList].forEach((el) => {
+      if (!el) return;
+      el.addEventListener('pointerenter', () => pause(true));
+      el.addEventListener('pointerleave', () => pause(false));
+      el.addEventListener('focusin', () => pause(true));
+      el.addEventListener('focusout', () => pause(false));
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; syncTimer(); }, { threshold: 0.3 }).observe(swap);
+    }
+    paint();
+  }
+
   /* ---------- Cursor glow ---------- */
   const glow = $('#cursorGlow');
   if (glow && !reduced) {
@@ -187,12 +311,18 @@
   const canvas = $('#bgCanvas');
   if (canvas && !reduced) {
     const ctx = canvas.getContext('2d');
-    let w, h, dots = [];
+    let w = 0, h, dots = [];
     const DENSITY = 14000, MAXD = 130;
     const resize = () => {
-      w = canvas.width = innerWidth;
-      h = canvas.height = innerHeight;
-      const count = Math.min(90, Math.floor((w * h) / DENSITY));
+      // no mobile a barra de endereço muda só a altura ao rolar: não recria os pontos
+      const widthChanged = innerWidth !== w;
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      w = innerWidth; h = innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (!widthChanged && dots.length) return;
+      const count = Math.min(w < 700 ? 40 : 90, Math.floor((w * h) / DENSITY));
       dots = Array.from({ length: count }, () => ({
         x: Math.random() * w, y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.28, vy: (Math.random() - 0.5) * 0.28
@@ -227,21 +357,39 @@
   }
 
   /* ---------- Modais ---------- */
+  const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
+  let lastFocus = null;
   const openModal = (m) => {
     if (!m) return;
+    if (!m.classList.contains('open')) lastFocus = document.activeElement;
+    $$('.modal.open').forEach((o) => { if (o !== m) { o.classList.remove('open'); o.setAttribute('aria-hidden', 'true'); } });
     m.classList.add('open');
     m.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    const first = $$(FOCUSABLE, m).find((el) => !el.classList.contains('modal-close')) || $(FOCUSABLE, m);
+    if (first) setTimeout(() => first.focus(), 40);
   };
   const closeModal = (m) => {
-    if (!m) return;
+    if (!m || !m.classList.contains('open')) return;
     m.classList.remove('open');
     m.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
   };
+  // mantém o Tab dentro do modal aberto
+  addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const m = $('.modal.open');
+    if (!m) return;
+    const els = $$(FOCUSABLE, m).filter((el) => el.offsetParent !== null);
+    if (!els.length) return;
+    const first = els[0], last = els[els.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   const contactModal = $('#contactModal'), fotoModal = $('#modalFoto'), paletteModal = $('#paletteModal');
 
-  [['#contactBtn', contactModal], ['#openContact', contactModal], ['#expandFoto', fotoModal]]
+  [['#openContact', contactModal], ['#expandFoto', fotoModal]]
     .forEach(([sel, modal]) => {
       const el = $(sel);
       if (el) el.addEventListener('click', (e) => { e.preventDefault(); openModal(modal); });
@@ -272,11 +420,23 @@
       const email = $('#email').value.trim();
       const msg = $('#mensagem').value.trim();
       if (!nome || !email || !msg) { toast('Preencha todos os campos.'); return; }
-      const body = `Nome: ${nome}%0D%0AE-mail: ${email}%0D%0A%0D%0A${encodeURIComponent(msg)}`;
+      const body = encodeURIComponent(`Nome: ${nome}\r\nE-mail: ${email}\r\n\r\n${msg}`);
       location.href = `mailto:bexcbr@gmail.com?subject=${encodeURIComponent('Contato via portfólio — ' + nome)}&body=${body}`;
       toast('Abrindo seu cliente de e-mail…');
     });
   }
+
+  /* ---------- Copiar e-mail ---------- */
+  const copyEmail = $('#copyEmail');
+  if (copyEmail) copyEmail.addEventListener('click', async () => {
+    const addr = copyEmail.dataset.email;
+    try {
+      await navigator.clipboard.writeText(addr);
+      toast('E-mail copiado!');
+    } catch {
+      location.href = 'mailto:' + addr;
+    }
+  });
 
   /* ---------- Command palette (Ctrl/Cmd + K) ---------- */
   const paletteInput = $('#paletteInput'), paletteResults = $('#paletteResults');
@@ -284,7 +444,9 @@
     { icon: 'fa-solid fa-user',        label: 'Sobre Mim',        hint: 'seção', action: () => go('#sobre') },
     { icon: 'fa-solid fa-layer-group', label: 'Stack e Ferramentas', hint: 'seção', action: () => go('#stack') },
     { icon: 'fa-solid fa-graduation-cap', label: 'Formação e Cursos', hint: 'seção', action: () => go('#formacao') },
+    { icon: 'fa-solid fa-rocket',      label: 'Em produção',      hint: 'seção', action: () => go('#producao') },
     { icon: 'fa-solid fa-folder-open', label: 'Projetos',         hint: 'seção', action: () => go('#projects') },
+    { icon: 'fa-solid fa-at',          label: 'Contato',          hint: 'seção', action: () => go('#contato') },
     { icon: 'fa-solid fa-envelope',    label: 'Abrir contato',    hint: 'ação',  action: () => openModal(contactModal) },
     { icon: 'fa-solid fa-circle-half-stroke', label: 'Alternar tema', hint: 'ação', action: () => themeBtn && themeBtn.click() },
     { icon: 'fa-brands fa-github',     label: 'GitHub',           hint: 'link',  action: () => open('https://github.com/GabrielGGC18', '_blank') },
@@ -302,13 +464,15 @@
   });
 
   let sel = 0, filtered = items;
-  const go = (hash) => { const t = $(hash); if (t) t.scrollIntoView({ behavior: 'smooth' }); };
+  const go = (hash) => { const t = $(hash); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); };
   const renderPalette = () => {
     paletteResults.innerHTML = '';
     filtered.forEach((it, i) => {
       const li = document.createElement('li');
       li.className = i === sel ? 'is-sel' : '';
+      li.id = 'pal-' + i;
       li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', String(i === sel));
       li.innerHTML = `<i class="${it.icon}"></i><span></span><small>${it.hint}</small>`;
       li.querySelector('span').textContent = it.label;
       li.addEventListener('click', () => { closeModal(paletteModal); it.action(); });
@@ -319,6 +483,11 @@
       li.textContent = 'Nada encontrado.';
       paletteResults.appendChild(li);
     }
+    if (filtered.length) {
+      paletteInput.setAttribute('aria-activedescendant', 'pal-' + sel);
+      const cur = $('#pal-' + sel);
+      if (cur) cur.scrollIntoView({ block: 'nearest' });
+    } else paletteInput.removeAttribute('aria-activedescendant');
   };
   const openPalette = () => {
     sel = 0; filtered = items;
@@ -327,7 +496,8 @@
     openModal(paletteModal);
     setTimeout(() => paletteInput.focus(), 40);
   };
-  const paletteBtn = $('#paletteBtn');
+  const paletteBtn = $('#paletteBtn'), paletteKbd = $('#paletteKbd');
+  if (paletteKbd && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) paletteKbd.textContent = '⌘K';
   if (paletteBtn) paletteBtn.addEventListener('click', openPalette);
 
   if (paletteInput) {
@@ -346,10 +516,13 @@
 
   addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
-    if (e.key === 'Escape') $$('.modal.open').forEach(closeModal);
+    if (e.key === 'Escape') {
+      $$('.modal.open').forEach(closeModal);
+      if (navList && navList.classList.contains('is-open')) { setNav(false); navToggle.focus(); }
+    }
   });
 
-  /* ---------- Konami: modo "matrix" no console ---------- */
+  /* ---------- Assinatura no console ---------- */
   console.log('%cGabriel de Sá Mendes', 'font:700 18px sans-serif;color:#5eead4');
   console.log('%cCurioso? Dá uma olhada no código: https://github.com/GabrielGGC18', 'color:#8b97a8');
 })();
