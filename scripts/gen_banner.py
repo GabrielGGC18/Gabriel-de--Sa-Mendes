@@ -7,12 +7,13 @@ FRAMES = 72          # quadros da rotação do cubo
 DUR_ROT = 14         # segundos por volta
 OUT = sys.argv[1]
 
-BG = "#0a0e14"
-INK = "#e8edf4"
-MUTED = "#8b97a8"
-TEAL = "#5eead4"
-SKY = "#38bdf8"
-VIOLET = "#a78bfa"
+# identidade "Jalapão": capim dourado, duna ao pôr do sol e fervedouro
+BG = "#0d0b0a"
+INK = "#f4ede3"
+MUTED = "#a69a8b"
+TEAL = "#f2b33d"     # dourado (nome antigo mantido para não mexer no resto)
+SKY = "#ff6a3d"      # duna
+VIOLET = "#3fd6b8"   # fervedouro
 
 
 def f(v):
@@ -129,9 +130,9 @@ layers = []
 for i in range(DEPTH, 0, -1):
     mix = i / DEPTH
     # do teal escuro (perto da face) ao azul-noite (fundo da extrusão)
-    r = int(0x13 + (0x0b - 0x13) * mix)
-    g = int(0x4e + (0x1a - 0x4e) * mix)
-    b = int(0x4a + (0x2b - 0x4a) * mix)
+    r = int(0x6b + (0x1c - 0x6b) * mix)
+    g = int(0x32 + (0x10 - 0x32) * mix)
+    b = int(0x12 + (0x0a - 0x12) * mix)
     color = f"#{r:02x}{g:02x}{b:02x}"
     dx = i * 0.9
     dy = i * 0.9
@@ -170,9 +171,9 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
 </style>
 <defs>
   <linearGradient id="face" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="{TEAL}"/>
-    <stop offset=".5" stop-color="{SKY}"/>
-    <stop offset="1" stop-color="{VIOLET}"/>
+    <stop offset="0" stop-color="#ffd27a"/>
+    <stop offset=".45" stop-color="{TEAL}"/>
+    <stop offset="1" stop-color="{SKY}"/>
   </linearGradient>
   <linearGradient id="shine" y1="0" y2="0" gradientUnits="userSpaceOnUse" x1="-300" x2="-60">
     <stop offset="0" stop-color="#fff" stop-opacity="0"/>
@@ -192,14 +193,19 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
     <stop offset="1" stop-color="{BG}" stop-opacity="1"/>
   </linearGradient>
   <radialGradient id="halo">
-    <stop offset="0" stop-color="{SKY}" stop-opacity=".35"/>
-    <stop offset=".6" stop-color="{VIOLET}" stop-opacity=".08"/>
-    <stop offset="1" stop-color="{VIOLET}" stop-opacity="0"/>
+    <stop offset="0" stop-color="{SKY}" stop-opacity=".3"/>
+    <stop offset=".6" stop-color="{SKY}" stop-opacity=".06"/>
+    <stop offset="1" stop-color="{SKY}" stop-opacity="0"/>
   </radialGradient>
   <radialGradient id="horizonGlow" cx=".5" cy="1" r=".6">
-    <stop offset="0" stop-color="{TEAL}" stop-opacity=".22"/>
-    <stop offset="1" stop-color="{TEAL}" stop-opacity="0"/>
+    <stop offset="0" stop-color="{SKY}" stop-opacity=".22"/>
+    <stop offset="1" stop-color="{SKY}" stop-opacity="0"/>
   </radialGradient>
+  <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="{TEAL}"/>
+    <stop offset="1" stop-color="{SKY}"/>
+  </linearGradient>
+  <clipPath id="sky"><rect x="0" y="0" width="{W}" height="{HORIZON}"/></clipPath>
   <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
     <feGaussianBlur stdDeviation="2.2" result="b"/>
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -221,6 +227,17 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
   <rect x="0" y="{HORIZON}" width="{W}" height="{H - HORIZON}" fill="url(#floorFade)"/>
   <rect x="0" y="{HORIZON}" width="{W}" height="{H - HORIZON}" fill="url(#sideFade)"/>
   <line x1="0" y1="{HORIZON}" x2="{W}" y2="{HORIZON}" stroke="{TEAL}" stroke-opacity=".35"/>
+
+  <!-- sol nascendo no horizonte, com faixas -->
+  <g clip-path="url(#sky)">
+    <circle cx="{CX}" cy="{HORIZON}" r="78" fill="url(#sun)" opacity=".9"/>
+    <g fill="{BG}">
+      <rect x="{CX - 80}" y="{HORIZON - 9}" width="160" height="5"/>
+      <rect x="{CX - 80}" y="{HORIZON - 21}" width="160" height="4"/>
+      <rect x="{CX - 80}" y="{HORIZON - 33}" width="160" height="3"/>
+      <rect x="{CX - 80}" y="{HORIZON - 45}" width="160" height="2"/>
+    </g>
+  </g>
 
   <!-- sombra do cubo no piso -->
   <ellipse class="shadow" cx="{CX}" cy="{HORIZON + 22}" rx="52" ry="6" fill="{SKY}" opacity=".3" filter="url(#glow)"/>

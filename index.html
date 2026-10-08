@@ -5,7 +5,7 @@
     <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, CEO da Mídia Startup, acadêmico de Engenharia de Software e Sistemas de Informação.">
     <title>Gabriel de Sá Mendes — Desenvolvedor Fullstack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0e14">
+    <meta name="theme-color" content="#0d0b0a">
     <link rel="canonical" href="https://gabriel-de-sa-mendes.vercel.app/">
     <meta property="og:title" content="Gabriel de Sá Mendes — Desenvolvedor Fullstack">
     <meta property="og:description" content="Desenvolvedor Fullstack & CEO da Mídia Startup. Python, Django, FastAPI, React e TypeScript.">
@@ -46,15 +46,15 @@
     <link rel="alternate icon" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
    <canvas class="bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
-   <div class="bg-grid" aria-hidden="true"></div>
    <div class="bg-glow" aria-hidden="true"></div>
+   <div class="bg-grain" aria-hidden="true"></div>
    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -68,14 +68,13 @@
              <defs>
                <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
                  <stop offset="0" stop-color="var(--accent)"/>
-                 <stop offset="0.55" stop-color="var(--accent-2)"/>
-                 <stop offset="1" stop-color="var(--accent-3)"/>
+                 <stop offset="1" stop-color="var(--accent-2)"/>
                </linearGradient>
              </defs>
              <rect class="brand-ring" x="2" y="2" width="60" height="60" rx="18" fill="none" stroke="url(#brandGrad)" stroke-width="2.5"/>
              <path class="brand-stroke" d="M42 22.5a13 13 0 1 0 0 19" fill="none" stroke="url(#brandGrad)" stroke-width="5" stroke-linecap="round"/>
              <path class="brand-stroke" d="M33 32h9v9" fill="none" stroke="url(#brandGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-             <circle class="brand-dot" cx="47.5" cy="17" r="3.5" fill="var(--accent)"/>
+             <circle class="brand-dot" cx="47.5" cy="17" r="3.5" fill="var(--accent-3)"/>
            </svg>
          </span>
          <span class="brand-name">gabriel<em>.mendes</em></span>
@@ -110,7 +109,7 @@
         <div class="hero-inner">
             <div class="hero-text">
                 <p class="hero-kicker reveal"><span class="status-dot"></span> disponível para oportunidades</p>
-                <h1 class="reveal d-1">Gabriel<br><span class="outline">de Sá</span> Mendes</h1>
+                <h1 class="reveal d-1">Gabriel<br><em class="serif">de Sá</em> Mendes</h1>
                 <p class="hero-role reveal d-2">
                   <span class="typed" id="typed" aria-live="polite"></span><span class="caret" aria-hidden="true"></span>
                 </p>
@@ -123,10 +122,44 @@
             </div>
 
             <div class="perfil-wrapper reveal d-2">
-                <div class="perfil-frame tilt" data-tilt>
-                    <button class="perfil-btn" id="expandFoto" aria-label="Ampliar foto"><img src="assets/foto.webp" alt="Foto de Gabriel de Sá Mendes" class="perfil" width="768" height="960" fetchpriority="high"></button>
-                    <div class="perfil-shine" aria-hidden="true"></div>
+                <!-- Cartão de identidade: gira sozinho entre a foto e o crachá dev -->
+                <div class="idcard" id="idcard" data-tilt>
+                  <div class="idcard-inner">
+                    <div class="idcard-face idcard-front">
+                      <button class="perfil-btn" id="expandFoto" aria-label="Ampliar foto"><img src="assets/foto.webp" alt="Foto de Gabriel de Sá Mendes" class="perfil" width="768" height="960" fetchpriority="high"></button>
+                      <div class="holo" aria-hidden="true"></div>
+                      <div class="idcard-label" aria-hidden="true">
+                        <span class="idcard-chip"></span>
+                        <span><strong>Gabriel de Sá</strong><small>full stack · palmas–to</small></span>
+                      </div>
+                    </div>
+                    <div class="idcard-face idcard-back">
+                      <div class="idcard-top">
+                        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="18" fill="none" stroke="url(#brandGrad)" stroke-width="3"/><path d="M42 22.5a13 13 0 1 0 0 19M33 32h9v9" fill="none" stroke="url(#brandGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>dev id</span><em>№ 018</em>
+                      </div>
+<pre class="idcard-code"><code><span class="k">const</span> <span class="v">gabriel</span> = {
+  cargo: <span class="s">"Full Stack"</span>,
+  base:  <span class="s">"Palmas · TO"</span>,
+  stack: [<span class="s">"Django"</span>, <span class="s">"React"</span>,
+          <span class="s">"FastAPI"</span>, <span class="s">"TS"</span>],
+  agora: <span class="s">"ATOM Canvas"</span>,
+  cafe:  <span class="n">Infinity</span>,
+};</code></pre>
+                      <div class="idcard-foot">
+                        <span>10°11′S · 48°20′O</span>
+                        <span class="barcode" aria-hidden="true"></span>
+                      </div>
+                      <div class="holo" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                  <button class="idcard-flip" id="idcardFlip" type="button" aria-label="Virar cartão" title="Virar cartão">
+                    <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="16"/><circle class="ring" cx="18" cy="18" r="16"/></svg>
+                    <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+                  </button>
                 </div>
+                <!-- Palco 3D: horizonte do Jalapão, piso em perspectiva e sólidos girando -->
+                <canvas class="stage" id="stage3d" aria-hidden="true"></canvas>
                 <span class="perfil-caption">// palmas — tocantins, brasil</span>
             </div>
         </div>
@@ -145,7 +178,7 @@
         <section id="sobre" class="section reveal">
             <div class="section-head">
                 <span class="section-num">01</span>
-                <h2>Sobre Mim</h2>
+                <h2>Sobre <em>mim</em></h2>
                 <span class="section-line"></span>
             </div>
             <div class="about-grid">
@@ -165,7 +198,7 @@
         <section id="stack" class="section reveal">
             <div class="section-head">
                 <span class="section-num">02</span>
-                <h2>Stack e Ferramentas</h2>
+                <h2>Stack e <em>ferramentas</em></h2>
                 <span class="section-line"></span>
             </div>
             <div class="stack-grid">
@@ -195,7 +228,7 @@
         <section id="formacao" class="section reveal">
             <div class="section-head">
                 <span class="section-num">03</span>
-                <h2>Formação e Cursos</h2>
+                <h2>Formação e <em>cursos</em></h2>
                 <span class="section-line"></span>
             </div>
             <div class="edu-grid">
@@ -227,7 +260,7 @@
         <section id="producao" class="section reveal">
             <div class="section-head">
                 <span class="section-num">04</span>
-                <h2>Em produção</h2>
+                <h2>Em <em>produção</em></h2>
                 <span class="section-line"></span>
             </div>
             <div class="showcase">
@@ -290,7 +323,7 @@
         <section id="projects" class="section reveal">
             <div class="section-head">
                 <span class="section-num">05</span>
-                <h2>Projetos e Repositórios</h2>
+                <h2>Projetos e <em>repositórios</em></h2>
                 <span class="section-line"></span>
             </div>
 
@@ -550,12 +583,12 @@
         <section id="contato" class="section reveal">
             <div class="section-head">
                 <span class="section-num">06</span>
-                <h2>Contato</h2>
+                <h2><em>Contato</em></h2>
                 <span class="section-line"></span>
             </div>
             <div class="contact-cta">
               <div>
-                <h3>Tem um projeto, vaga ou ideia?</h3>
+                <h3>Tem um projeto, vaga ou <em>ideia</em>?</h3>
                 <p>Estou aberto a oportunidades, freelas e parcerias. Respondo por e-mail ou LinkedIn — geralmente no mesmo dia.</p>
               </div>
               <div class="contact-cta-actions">
