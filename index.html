@@ -3,13 +3,45 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, CEO da GSM Startup, acadêmico de Engenharia de Software e Sistemas de Informação.">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Gabriel de Sá Mendes — Desenvolvedor Fullstack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0e14">
+    <link rel="canonical" href="https://gabriel-de-sa-mendes.vercel.app/">
     <meta property="og:title" content="Gabriel de Sá Mendes — Desenvolvedor Fullstack">
-    <meta property="og:description" content="Desenvolvedor Fullstack & CEO da GSM Startup">
+    <meta property="og:description" content="Desenvolvedor Fullstack & CEO da GSM Startup. Python, Django, FastAPI, React e TypeScript.">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://gabriel-de-sa-mendes.vercel.app/">
+    <meta property="og:image" content="https://gabriel-de-sa-mendes.vercel.app/assets/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>
+      /* Aplica o tema antes da pintura para evitar o "flash" do tema errado */
+      (function () {
+        var t;
+        try { t = localStorage.getItem('gsm-theme'); } catch (e) {}
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gabriel de Sá Mendes",
+      "jobTitle": "Desenvolvedor Fullstack",
+      "url": "https://gabriel-de-sa-mendes.vercel.app/",
+      "image": "https://gabriel-de-sa-mendes.vercel.app/assets/foto.webp",
+      "address": { "@type": "PostalAddress", "addressLocality": "Palmas", "addressRegion": "TO", "addressCountry": "BR" },
+      "worksFor": { "@type": "Organization", "name": "GSM Startup", "url": "https://gsm-startup.vercel.app/" },
+      "sameAs": [
+        "https://github.com/GabrielGGC18",
+        "https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/",
+        "https://www.instagram.com/gabrieldsa_mendes/"
+      ]
+    }
+    </script>
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
     <link rel="alternate icon" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +57,7 @@
    <div class="bg-glow" aria-hidden="true"></div>
    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-   <a class="skip-link" href="#sobre">Pular para o conteúdo</a>
+   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
    <!-- Navegação -->
    <nav class="site-nav" id="siteNav">
@@ -58,10 +90,10 @@
          <li><a href="#stack"><span class="nav-num">02</span>Stack</a></li>
          <li><a href="#formacao"><span class="nav-num">03</span>Formação</a></li>
          <li><a href="#projects"><span class="nav-num">04</span>Projetos</a></li>
-         <li><a href="#contato" id="openContact"><span class="nav-num">05</span>Contato</a></li>
+         <li><a href="#contato"><span class="nav-num">05</span>Contato</a></li>
          <li class="nav-tools">
-            <button class="icon-btn" id="paletteBtn" aria-label="Abrir busca rápida" title="Busca rápida (Ctrl + K)"><i class="fa-solid fa-magnifying-glass"></i><kbd>⌘K</kbd></button>
-            <button class="icon-btn" id="themeBtn" aria-label="Alternar tema" title="Alternar tema"><i class="fa-solid fa-moon"></i></button>
+            <button class="icon-btn" id="paletteBtn" aria-label="Abrir busca rápida" title="Busca rápida (Ctrl + K)"><i class="fa-solid fa-magnifying-glass"></i><kbd id="paletteKbd">Ctrl K</kbd></button>
+            <button class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" aria-pressed="false" title="Alternar tema"><i class="fa-solid fa-moon"></i></button>
          </li>
          <li class="nav-socials">
             <a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
@@ -91,7 +123,7 @@
 
             <div class="perfil-wrapper reveal d-2">
                 <div class="perfil-frame tilt" data-tilt>
-                    <img src="assets/foto.png" alt="Foto de Gabriel" class="perfil" id="expandFoto">
+                    <button class="perfil-btn" id="expandFoto" aria-label="Ampliar foto"><img src="assets/foto.webp" alt="Foto de Gabriel de Sá Mendes" class="perfil" width="720" height="960" fetchpriority="high"></button>
                     <div class="perfil-shine" aria-hidden="true"></div>
                 </div>
                 <span class="perfil-caption">// palmas — tocantins, brasil</span>
@@ -107,7 +139,7 @@
     </header>
 
     <!-- Conteúdo principal -->
-    <main class="container">
+    <main class="container" id="conteudo" tabindex="-1">
 
         <section id="sobre" class="section reveal">
             <div class="section-head">
@@ -197,15 +229,15 @@
                 <span class="section-line"></span>
             </div>
 
-            <div class="filters" id="filters" role="tablist" aria-label="Filtrar projetos">
-              <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-              <button class="filter" data-filter="python" role="tab" aria-selected="false">Python</button>
-              <button class="filter" data-filter="django" role="tab" aria-selected="false">Django</button>
-              <button class="filter" data-filter="fastapi" role="tab" aria-selected="false">FastAPI</button>
-              <button class="filter" data-filter="react" role="tab" aria-selected="false">React</button>
-              <button class="filter" data-filter="java" role="tab" aria-selected="false">Java</button>
-              <button class="filter" data-filter="ia" role="tab" aria-selected="false">IA</button>
-              <button class="filter" data-filter="automacao" role="tab" aria-selected="false">Automação</button>
+            <div class="filters" id="filters" role="group" aria-label="Filtrar projetos">
+              <button class="filter is-active" data-filter="all" aria-pressed="true">Todos</button>
+              <button class="filter" data-filter="python" aria-pressed="false">Python</button>
+              <button class="filter" data-filter="django" aria-pressed="false">Django</button>
+              <button class="filter" data-filter="fastapi" aria-pressed="false">FastAPI</button>
+              <button class="filter" data-filter="react" aria-pressed="false">React</button>
+              <button class="filter" data-filter="java" aria-pressed="false">Java</button>
+              <button class="filter" data-filter="ia" aria-pressed="false">IA</button>
+              <button class="filter" data-filter="automacao" aria-pressed="false">Automação</button>
             </div>
 
             <div class="projects-grid" id="projectsGrid">
@@ -213,9 +245,9 @@
                 <!-- GSM Startup (destaque) -->
                 <article class="project featured" data-tags="react django saas" data-title="GSM Startup">
                     <div class="project-img-wrapper">
-                        <img src="assets/gsm.png" alt="GSM Startup" class="project-img" loading="lazy">
+                        <img src="assets/gsm.webp" alt="GSM Startup" class="project-img" loading="lazy" decoding="async" width="1400" height="730">
                         <div class="project-ceo-badge">
-                            <img src="assets/foto.png" alt="" class="ceo-avatar">
+                            <img src="assets/avatar.webp" alt="" class="ceo-avatar" width="64" height="64">
                             <span>CEO &amp; Fundador</span>
                         </div>
                     </div>
@@ -312,7 +344,7 @@
                 <!-- Áres Startup -->
                 <article class="project" data-tags="react ia" data-title="Áres Startup">
                     <div class="project-img-wrapper">
-                        <img src="assets/ares.png" alt="Projeto Áres" class="project-img" loading="lazy">
+                        <img src="assets/ares.webp" alt="Projeto Áres" class="project-img" loading="lazy" decoding="async" width="900" height="467">
                     </div>
                     <div class="project-body">
                         <h3>Áres Startup</h3>
@@ -328,7 +360,7 @@
                 <!-- Caminho e Fé Católica -->
                 <article class="project" data-tags="react" data-title="Caminho e Fé Católica">
                     <div class="project-img-wrapper">
-                        <img src="assets/projetov1.png" alt="Projeto Caminho e Fé Católica" class="project-img" loading="lazy">
+                        <img src="assets/projetov1.webp" alt="Projeto Caminho e Fé Católica" class="project-img" loading="lazy" decoding="async" width="676" height="705">
                     </div>
                     <div class="project-body">
                         <h3>Caminho e Fé Católica</h3>
@@ -344,7 +376,7 @@
                 <!-- Force Up Fit -->
                 <article class="project" data-tags="react" data-title="Force Up Fit">
                     <div class="project-img-wrapper">
-                        <img src="assets/forceup.png" alt="Force Up Fit" class="project-img" loading="lazy">
+                        <img src="assets/forceup.webp" alt="Force Up Fit" class="project-img" loading="lazy" decoding="async" width="900" height="469">
                     </div>
                     <div class="project-body">
                         <h3>Force Up Fit</h3>
@@ -360,7 +392,7 @@
                 <!-- Blog Django -->
                 <article class="project" data-tags="python django" data-title="My First Blog Django">
                     <div class="project-img-wrapper">
-                        <img src="assets/blog.png" alt="Blog Django" class="project-img" loading="lazy">
+                        <img src="assets/blog.webp" alt="Blog Django" class="project-img" loading="lazy" decoding="async" width="900" height="572">
                     </div>
                     <div class="project-body">
                         <h3>My First Blog Django</h3>
@@ -375,7 +407,7 @@
                 <!-- Game Battle -->
                 <article class="project" data-tags="python" data-title="Game Battle POO">
                     <div class="project-img-wrapper">
-                        <img src="assets/game.png" alt="Game Battle POO" class="project-img" loading="lazy">
+                        <img src="assets/game.webp" alt="Game Battle POO" class="project-img" loading="lazy" decoding="async" width="900" height="596">
                     </div>
                     <div class="project-body">
                         <h3>Game Battle POO</h3>
@@ -415,6 +447,32 @@
 
             </div>
             <p class="empty-state" id="emptyState" hidden>Nenhum projeto com esse filtro.</p>
+            <div class="more-wrap">
+              <button class="btn ghost" id="showMore" hidden aria-controls="projectsGrid" aria-expanded="false"><i class="fa-solid fa-plus"></i> <span>Ver todos os projetos</span></button>
+            </div>
+        </section>
+
+        <section id="contato" class="section reveal">
+            <div class="section-head">
+                <span class="section-num">05</span>
+                <h2>Contato</h2>
+                <span class="section-line"></span>
+            </div>
+            <div class="contact-cta">
+              <div>
+                <h3>Tem um projeto, vaga ou ideia?</h3>
+                <p>Estou aberto a oportunidades, freelas e parcerias. Respondo por e-mail ou LinkedIn — geralmente no mesmo dia.</p>
+              </div>
+              <div class="contact-cta-actions">
+                <button class="btn primary magnetic" id="openContact" type="button"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</button>
+                <button class="btn ghost" id="copyEmail" type="button" data-email="bexcbr@gmail.com"><i class="fa-regular fa-copy"></i> <span>bexcbr@gmail.com</span></button>
+              </div>
+              <ul class="contact-cta-links">
+                <li><a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                <li><a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+              </ul>
+            </div>
         </section>
 
     </main>
@@ -425,7 +483,7 @@
           <small>© <span id="year"></span> Gabriel de Sá Mendes — feito com café e código</small>
           <div class="socials">
             <a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.instagram.com/gabrieldsa_dev/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
           </div>
         </div>
@@ -438,10 +496,10 @@
       <div class="modal-content palette-box">
         <div class="palette-input">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="paletteInput" placeholder="Buscar seção, projeto ou link…" autocomplete="off" aria-label="Buscar">
+          <input type="text" id="paletteInput" role="combobox" aria-expanded="true" aria-controls="paletteResults" aria-autocomplete="list" placeholder="Buscar seção, projeto ou link…" autocomplete="off" aria-label="Buscar">
           <kbd>ESC</kbd>
         </div>
-        <ul class="palette-results" id="paletteResults" role="listbox"></ul>
+        <ul class="palette-results" id="paletteResults" role="listbox" aria-label="Resultados"></ul>
       </div>
     </div>
 
@@ -449,15 +507,15 @@
     <div class="modal" id="modalFoto" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
       <div class="modal-content foto-modal">
         <button class="modal-close" id="closeFoto" aria-label="Fechar">×</button>
-        <img src="assets/foto.png" alt="Foto de Gabriel" class="foto-expandida">
+        <img src="assets/foto.webp" alt="Foto de Gabriel de Sá Mendes" class="foto-expandida" width="720" height="960" loading="lazy">
       </div>
     </div>
 
     <!-- Modal Contato -->
-    <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-label="Formulário de contato" aria-hidden="true">
+    <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
       <div class="modal-content">
         <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
-        <h3>Entre em Contato</h3>
+        <h3 id="contactTitle">Entre em Contato</h3>
         <form class="contact-form" id="contactForm">
           <label for="nome">Nome</label>
           <input type="text" id="nome" placeholder="Seu nome" autocomplete="name" required>
