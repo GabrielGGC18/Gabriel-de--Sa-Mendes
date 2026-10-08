@@ -83,7 +83,7 @@
       'Python · Django · FastAPI',
       'React · TypeScript',
       'Automação & Integrações',
-      'CEO da GSM Startup'
+      'CEO da Mídia Startup'
     ];
     if (reduced) {
       typed.textContent = roles[0];
@@ -128,20 +128,66 @@
 
   if (backToTop) backToTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
+  /* ---------- Cards: holofote + inclinação 3D com reflexo ----------
+     Mesma ideia do SpotlightCard/TiltedCard da Mídia Startup: o brilho segue
+     o mouse e o card inclina em perspectiva. Só com mouse; no toque é card comum. */
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!reduced) {
+    $$('.project').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        if (!finePointer) return;
+        card.style.setProperty('--gx', (px + 0.5) * 100 + '%');
+        card.style.setProperty('--gy', (py + 0.5) * 100 + '%');
+        // cards grandes inclinam menos para não exagerar
+        const amp = Math.min(8, 2600 / r.width);
+        card.style.transform = `perspective(900px) rotateX(${(-py * amp).toFixed(2)}deg) rotateY(${(px * amp).toFixed(2)}deg) scale(1.02)`;
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    });
+  }
+
+  /* ---------- Entrada dos cards em cascata ---------- */
+  const animateIn = (cards) => {
+    if (reduced) return;
+    cards.forEach((card, i) => {
+      card.classList.remove('card-in');
+      card.style.setProperty('--d', Math.min(i, 8) * 60 + 'ms');
+      void card.offsetWidth; // reinicia a animação
+      card.classList.add('card-in');
+    });
+  };
+  if (!reduced && 'IntersectionObserver' in window) {
+    const cardObs = new IntersectionObserver((entries) => {
+      const batch = entries.filter((en) => en.isIntersecting).map((en) => en.target);
+      batch.forEach((c) => { c.classList.remove('card-wait'); cardObs.unobserve(c); });
+      animateIn(batch);
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px' });
+    $$('.project').forEach((c) => { c.classList.add('card-wait'); cardObs.observe(c); });
+  }
+
   /* ---------- Filtros de projeto ---------- */
   const grid = $('#projectsGrid'), emptyState = $('#emptyState'), showMore = $('#showMore');
   const LIMIT = 8;
   let filter = 'all', expanded = false;
   const renderProjects = () => {
     let matched = 0;
+    const appeared = [];
     $$('.project', grid).forEach((card) => {
       const tags = (card.dataset.tags || '').split(' ');
       const ok = filter === 'all' || tags.includes(filter);
       if (ok) matched++;
       // em "Todos" mostramos só os primeiros até o usuário pedir o resto
       const collapsed = filter === 'all' && !expanded && matched > LIMIT;
-      card.classList.toggle('is-hidden', !ok || collapsed);
+      const hide = !ok || collapsed;
+      if (!hide && card.classList.contains('is-hidden') && !card.classList.contains('card-wait')) appeared.push(card);
+      card.classList.toggle('is-hidden', hide);
     });
+    animateIn(appeared);
     if (emptyState) emptyState.hidden = matched > 0;
     if (showMore) {
       const extra = matched - LIMIT;
@@ -170,17 +216,6 @@
   });
   renderProjects();
 
-  /* ---------- Spotlight nos cards ---------- */
-  if (!reduced) {
-    $$('.project').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
-
   /* ---------- Tilt na foto ---------- */
   const tiltEl = $('[data-tilt]');
   if (tiltEl && !reduced && matchMedia('(hover: hover)').matches) {
@@ -189,6 +224,8 @@
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
       tiltEl.style.transform = `perspective(800px) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
+      tiltEl.style.setProperty('--gx', (px + 0.5) * 100 + '%');
+      tiltEl.style.setProperty('--gy', (py + 0.5) * 100 + '%');
     });
     tiltEl.addEventListener('pointerleave', () => { tiltEl.style.transform = ''; });
   }
@@ -202,6 +239,64 @@
       });
       el.addEventListener('pointerleave', () => { el.style.transform = ''; });
     });
+  }
+
+  /* ---------- Em produção: pilha de cards que se revezam (CardSwap) ----------
+     O card da frente vai para o fundo a cada INTERVAL. Pausa com mouse/foco em
+     cima ou fora da tela; clicar num card de trás (ou na lista) traz ele à frente. */
+  const swap = $('#swap'), showList = $('#showcaseList');
+  if (swap) {
+    const cards = $$('.swap-card', swap);
+    const buttons = showList ? $$('button', showList) : [];
+    const INTERVAL = 4200;
+    let order = cards.map((_, i) => i), timer = null, hovering = false, onScreen = false;
+    const paint = () => {
+      cards.forEach((card, i) => {
+        const pos = order.indexOf(i);
+        card.style.setProperty('--pos', pos);
+        card.style.zIndex = cards.length - pos;
+        card.classList.toggle('is-front', pos === 0);
+        card.inert = pos !== 0;
+        card.setAttribute('aria-hidden', String(pos !== 0));
+      });
+      buttons.forEach((btn) => {
+        const on = Number(btn.dataset.idx) === order[0];
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', String(on));
+        if (on) { btn.classList.remove('is-timing'); void btn.offsetWidth; }
+      });
+      syncTimer();
+    };
+    const bringFront = (idx) => { order = [idx, ...order.filter((i) => i !== idx)]; paint(); };
+    const next = () => { order = [...order.slice(1), order[0]]; paint(); };
+    function syncTimer() {
+      clearInterval(timer); timer = null;
+      const running = !reduced && !hovering && onScreen;
+      buttons.forEach((b) => b.classList.toggle('is-timing', running && b.classList.contains('is-active')));
+      showList && showList.style.setProperty('--swap-ms', INTERVAL + 'ms');
+      if (running) timer = setInterval(next, INTERVAL);
+    }
+    // o card inteiro fica 'inert' quando está atrás; o clique é capturado na pilha
+    swap.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      const rect = (c) => c.getBoundingClientRect();
+      const hit = [...cards].sort((a, b) => order.indexOf(a.dataset.idx * 1) - order.indexOf(b.dataset.idx * 1))
+        .find((c) => { const r = rect(c); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; });
+      if (hit && !hit.classList.contains('is-front')) bringFront(Number(hit.dataset.idx));
+    });
+    buttons.forEach((btn) => btn.addEventListener('click', () => bringFront(Number(btn.dataset.idx))));
+    const pause = (v) => { hovering = v; syncTimer(); };
+    [swap, showList].forEach((el) => {
+      if (!el) return;
+      el.addEventListener('pointerenter', () => pause(true));
+      el.addEventListener('pointerleave', () => pause(false));
+      el.addEventListener('focusin', () => pause(true));
+      el.addEventListener('focusout', () => pause(false));
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; syncTimer(); }, { threshold: 0.3 }).observe(swap);
+    }
+    paint();
   }
 
   /* ---------- Cursor glow ---------- */
@@ -349,6 +444,7 @@
     { icon: 'fa-solid fa-user',        label: 'Sobre Mim',        hint: 'seção', action: () => go('#sobre') },
     { icon: 'fa-solid fa-layer-group', label: 'Stack e Ferramentas', hint: 'seção', action: () => go('#stack') },
     { icon: 'fa-solid fa-graduation-cap', label: 'Formação e Cursos', hint: 'seção', action: () => go('#formacao') },
+    { icon: 'fa-solid fa-rocket',      label: 'Em produção',      hint: 'seção', action: () => go('#producao') },
     { icon: 'fa-solid fa-folder-open', label: 'Projetos',         hint: 'seção', action: () => go('#projects') },
     { icon: 'fa-solid fa-at',          label: 'Contato',          hint: 'seção', action: () => go('#contato') },
     { icon: 'fa-solid fa-envelope',    label: 'Abrir contato',    hint: 'ação',  action: () => openModal(contactModal) },
