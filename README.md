@@ -19,8 +19,6 @@ Gosto de transformar processo manual em sistema e de estudar o que ainda não se
 ```python
 class Gabriel:
     base     = "Palmas, Tocantins 🇧🇷"
-    formacao = ["Engenharia de Software — Católica do Tocantins",
-                "Sistemas de Informação — UNITINS"]
     cargo    = "Desenvolvedor Full Stack · Estagiário na Prefeitura de Palmas"
     foco     = "Arquitetura de software, integrações e automações"
     agora    = "Construindo o ATOM, meu agente pessoal de IA"
