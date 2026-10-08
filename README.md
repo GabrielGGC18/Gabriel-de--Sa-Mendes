@@ -108,6 +108,4 @@ class Gabriel:
   <img src="https://raw.githubusercontent.com/GabrielGGC18/Gabriel-de--Sa-Mendes/output/snake.svg" alt="Cobrinha comendo o gráfico de contribuições" width="100%">
 </picture>
 
-<sub>Feito em Palmas, TO. Um commit de cada vez.</sub>
-
 </div>
