@@ -104,8 +104,8 @@ class Gabriel:
 
 <!-- Gerado a cada 12h por .github/workflows/snake.yml -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGGC18/Gabriel-de--Sa-Mendes/output/snake-dark.svg">
-  <img src="https://raw.githubusercontent.com/GabrielGGC18/Gabriel-de--Sa-Mendes/output/snake.svg" alt="Cobrinha comendo o gráfico de contribuições" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/snake-dark.svg">
+  <img src="assets/readme/snake.svg" alt="Cobrinha comendo o gráfico de contribuições" width="100%">
 </picture>
 
 </div>
