@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Gabriel de Sá Mendes — Desenvolvedor Fullstack. Sistemas, APIs e automações. Do conceito ao deploy.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Gabriel de Sá Mendes — Desenvolvedor Full Stack. Sistemas, APIs e automações. Do conceito ao deploy.">
 <!-- Gerado por um script; animação 100% SMIL/CSS para funcionar dentro do README do GitHub. -->
 <style>
   .sans { font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
@@ -181,7 +181,7 @@
   </g>
 
   <!-- textos -->
-  <text class="mono fade-up d1" x="62" y="62" font-size="12" letter-spacing="5" fill="#8b97a8">DESENVOLVEDOR FULLSTACK · CEO GSM STARTUP</text>
+  <text class="mono fade-up d1" x="62" y="62" font-size="12" letter-spacing="5" fill="#8b97a8">DESENVOLVEDOR FULL STACK</text>
 
   <g class="sans fade-up d2" font-size="50" font-weight="800" letter-spacing="1">
 <text x="60" y="128" fill="#0b1a2b">GABRIEL DE SÁ MENDES<animateTransform attributeName="transform" type="translate" dur="9s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines=".45 0 .55 1;.45 0 .55 1" values="8.1 8.1;-8.1 8.1;8.1 8.1"/></text>

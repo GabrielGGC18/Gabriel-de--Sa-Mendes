@@ -1,19 +1,18 @@
 <div align="center">
 
-<img src="assets/readme/banner.svg" alt="Gabriel de Sá Mendes — Desenvolvedor Fullstack. Sistemas, APIs e automações. Do conceito ao deploy." width="100%">
+<img src="assets/readme/banner.svg" alt="Gabriel de Sá Mendes — Desenvolvedor Full Stack. Sistemas, APIs e automações. Do conceito ao deploy." width="100%">
 
 <br><br>
 
 <a href="https://gabrielggc18.github.io/Gabriel-de--Sa-Mendes/"><img src="https://img.shields.io/badge/Portfólio-0a0e14?style=for-the-badge&logo=googlechrome&logoColor=5eead4" alt="Portfólio"></a>
 <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/"><img src="https://img.shields.io/badge/LinkedIn-0a0e14?style=for-the-badge&logo=linkedin&logoColor=38bdf8" alt="LinkedIn"></a>
 <a href="https://www.instagram.com/gabrieldsa_mendes/"><img src="https://img.shields.io/badge/Instagram-0a0e14?style=for-the-badge&logo=instagram&logoColor=a78bfa" alt="Instagram"></a>
-<a href="https://github.com/GabrielGGC18/GSMstartup"><img src="https://img.shields.io/badge/GSM_Startup-5eead4?style=for-the-badge&logo=rocket&logoColor=0a0e14" alt="GSM Startup"></a>
 
 </div>
 
 ## Sobre mim
 
-Olá! Me chamo **Gabriel**. Sou **desenvolvedor fullstack** e **CEO da [GSM Startup](https://github.com/GabrielGGC18/GSMstartup)**, com foco em arquitetura de software, integração de sistemas e automações. Trabalho com **Python (Django / FastAPI)**, **JavaScript / TypeScript**, **React** e **PostgreSQL**.
+Olá! Me chamo **Gabriel** e sou **desenvolvedor full stack**, com foco em arquitetura de software, APIs REST, integração de sistemas e automações. Trabalho com **Python (Django / FastAPI)**, **JavaScript / TypeScript**, **React** e **PostgreSQL**.
 
 Gosto de transformar processo manual em sistema e de estudar o que ainda não sei.
 
@@ -22,7 +21,7 @@ class Gabriel:
     base     = "Palmas, Tocantins 🇧🇷"
     formacao = ["Engenharia de Software — Católica do Tocantins",
                 "Sistemas de Informação — UNITINS"]
-    cargo    = "CEO da GSM Startup · Estagiário na Prefeitura de Palmas"
+    cargo    = "Desenvolvedor Full Stack · Estagiário na Prefeitura de Palmas"
     foco     = "Arquitetura de software, integrações e automações"
     agora    = "Construindo o ATOM, meu agente pessoal de IA"
     lema     = "Do conceito ao deploy."
@@ -80,10 +79,10 @@ class Gabriel:
 
 | Projeto | Descrição | Stack |
 | --- | --- | --- |
-| [**GSM Startup**](https://github.com/GabrielGGC18/GSMstartup) · [site](https://gsm-startup.vercel.app/) | Startup de tecnologia focada em SaaS, AgroTech, automação e marketing digital. Do campo ao digital. | Django, React |
-| [**Mídia 63**](https://github.com/GabrielGGC18/Midia63) | Portal de notícias em produção: publicação editorial, área administrativa, integrações e deploy em VPS. | Django, PostgreSQL, Nginx |
-| [**ATOM**](https://github.com/GabrielGGC18/Atom-Agent) | Agente pessoal de IA que orquestra sub-agentes e skills, com memória persistente e roteamento de tarefas. | Python, IA |
-| [**Mídia Finanças**](https://github.com/GabrielGGC18/MIDIAFINANCAS) | Gestão financeira do Mídia 63: receitas, despesas e relatórios. | Python, Django |
+| [**GSM Startup**](https://gsm-startup.vercel.app/) | Startup de tecnologia focada em SaaS, AgroTech, automação e marketing digital. Do campo ao digital. | Django, React |
+| **Mídia 63** | Portal de notícias em produção: publicação editorial, área administrativa, integrações e deploy em VPS. | Django, PostgreSQL, Nginx |
+| [**ATOM**](https://github.com/GabrielGGC18/Atom-) | Agente pessoal de IA que orquestra sub-agentes e skills, com memória persistente e roteamento de tarefas. | Python, IA |
+| [**Force Up Fit**](https://gabrielggc18.github.io/Force-up-Fit-new/) | Aplicação voltada para treinos e condicionamento físico. | HTML, CSS, JavaScript |
 | [**FastAPI**](https://github.com/GabrielGGC18/FastAPI) | APIs REST com rotas assíncronas, Pydantic, versionamento e boas práticas de arquitetura. | Python, FastAPI |
 | [**Portfólio**](https://github.com/GabrielGGC18/Gabriel-de--Sa-Mendes) | Este repositório: meu site autoral, vitrine dos meus projetos. | HTML, CSS, JavaScript |
 

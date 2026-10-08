@@ -142,7 +142,7 @@ for i in range(DEPTH, 0, -1):
         f'values="{f(dx)} {f(dy)};{f(-dx)} {f(dy)};{f(dx)} {f(dy)}"/></text>')
 title_layers = "\n".join(layers)
 
-svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Gabriel de Sá Mendes — Desenvolvedor Fullstack. Sistemas, APIs e automações. Do conceito ao deploy.">
+svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Gabriel de Sá Mendes — Desenvolvedor Full Stack. Sistemas, APIs e automações. Do conceito ao deploy.">
 <!-- Gerado por um script; animação 100% SMIL/CSS para funcionar dentro do README do GitHub. -->
 <style>
   .sans {{ font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; }}
@@ -236,7 +236,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
   </g>
 
   <!-- textos -->
-  <text class="mono fade-up d1" x="{TX + 2}" y="62" font-size="12" letter-spacing="5" fill="{MUTED}">DESENVOLVEDOR FULLSTACK · CEO GSM STARTUP</text>
+  <text class="mono fade-up d1" x="{TX + 2}" y="62" font-size="12" letter-spacing="5" fill="{MUTED}">DESENVOLVEDOR FULL STACK</text>
 
   <g class="sans fade-up d2" font-size="50" font-weight="800" letter-spacing="1">
 {title_layers}
