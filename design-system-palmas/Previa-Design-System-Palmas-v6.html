@@ -1754,6 +1754,7 @@ dialog { border-radius: var(--component-dialog-radius); }
   --fx-yellow: var(--primitive-color-brand-yellow);
   --fx-yellow-soft: #ffe08a;
   --fx-sky: #5aa8ff;
+  --fx-azure: 61 150 242; /* tom extra de azul da navbar (canto esquerdo) */
   --fx-ease: cubic-bezier(.2, .8, .2, 1);
 }
 
@@ -1761,10 +1762,29 @@ html { scroll-padding-top: 88px; }
 
 /* ——— Navbar: azul · branco · amarelo ——————————————————————————— */
 
-.portal-header { position: sticky; top: 0; z-index: 40; }
+.portal-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  /* margem lateral do miolo: ancora o canto azul (esquerda) e as faixas (junto do botão) */
+  --fx-margin: max(24px, calc((100vw - 1200px) / 2));
+  --fx-edge: var(--fx-margin);
+  --fx-wash-a: .9;
+  /* canto esquerdo: azul que se dissolve no branco antes do logo, com a mesma inclinação das faixas */
+  --fx-wash: linear-gradient(117deg,
+    rgb(var(--fx-azure) / var(--fx-wash-a)) 0,
+    rgb(var(--fx-azure) / calc(var(--fx-wash-a) * .55)) calc(var(--fx-edge) * .36),
+    rgb(var(--fx-azure) / calc(var(--fx-wash-a) * .18)) calc(var(--fx-edge) * .68),
+    rgb(var(--fx-azure) / 0) calc(var(--fx-edge) * .9));
+}
+@media (max-width: 1499px) {
+  /* margem pequena: o logo fica perto da borda, então o azul fica mais leve */
+  .portal-header { --fx-edge: 150px; --fx-wash-a: .38; }
+}
 
 .portal-header .marca {
   background:
+    var(--fx-wash),
     radial-gradient(58% 170% at 95% -35%, rgb(245 197 66 / .30), transparent 62%),
     linear-gradient(105deg, #fff 0%, #fff 58%, #fffbee 100%);
   overflow: hidden;
@@ -1772,14 +1792,19 @@ html { scroll-padding-top: 88px; }
   transition: background-color .3s var(--fx-ease), box-shadow .3s var(--fx-ease);
 }
 
-/* faixas diagonais amarelas (com um toque de azul) que "respiram" */
+/* faixas diagonais nítidas (amarelo + azul, cada uma com seu degradê), ancoradas no botão */
 .portal-header .marca::before {
-  inset: 0 -60px;
+  inset: 0 auto 0 auto;
+  right: calc(var(--fx-margin) - 100px);
+  width: 420px;
   background: linear-gradient(117deg,
-    transparent 0 72%,
-    rgb(245 197 66 / .62) 72% 73.6%, transparent 73.6% 76%,
-    rgb(245 197 66 / .38) 76% 77.2%, transparent 77.2% 79.5%,
-    rgb(20 86 184 / .18) 79.5% 80.4%, transparent 80.4% 100%);
+    transparent 199px, #ffe08a 200.5px, #f5c542 219px, transparent 220.5px,
+    transparent 229px, #f5c542 230.5px, #e3a516 241px, transparent 242.5px,
+    transparent 251px, var(--fx-band-1, #58a9ff) 252.5px, var(--fx-band-2, #1456b8) 275px, transparent 276.5px,
+    transparent 287px, #f5c542 288.5px, #ffe08a 293px, transparent 294.5px,
+    transparent 303px, #f5c542 304.5px, #f5c542 307px, transparent 308.5px);
+  -webkit-mask-image: none;
+  mask-image: none;
   animation: fx-beam-drift 9s ease-in-out infinite alternate;
 }
 
@@ -1817,7 +1842,7 @@ html { scroll-padding-top: 88px; }
 .portal-header .marca-brasao { transition: width .3s var(--fx-ease), height .3s var(--fx-ease); }
 
 .portal-header.is-scrolled .marca {
-  background: rgb(255 255 255 / .84);
+  background: var(--fx-wash), rgb(255 255 255 / .84);
   -webkit-backdrop-filter: blur(16px) saturate(1.6);
   backdrop-filter: blur(16px) saturate(1.6);
   box-shadow: 0 12px 28px -16px rgb(17 31 74 / .45);
@@ -2110,7 +2135,7 @@ html { scroll-padding-top: 88px; }
 
 /* ——— Keyframes ——————————————————————————————————————————————————— */
 
-@keyframes fx-beam-drift { from { transform: translateX(-26px); opacity: .8; } to { transform: translateX(26px); opacity: 1; } }
+@keyframes fx-beam-drift { from { transform: translateX(-18px); } to { transform: translateX(18px); } }
 @keyframes fx-btn-shine { 0%, 55% { background-position: 160% 0; } 82%, 100% { background-position: -60% 0; } }
 @keyframes fx-spin { to { --fx-angle: 360deg; } }
 @keyframes fx-float-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-9%, 16%, 0) scale(1.14); } }
@@ -2125,12 +2150,9 @@ html { scroll-padding-top: 88px; }
 /* ——— Responsivo ————————————————————————————————————————————————— */
 
 @media (max-width: 992px) {
-  .portal-header .marca::before {
-    background: linear-gradient(117deg,
-      transparent 0 74%,
-      rgb(245 197 66 / .34) 74% 77%, transparent 77% 81%,
-      rgb(245 197 66 / .2) 81% 82.5%, transparent 82.5%);
-  }
+  /* sem botão: as faixas ficam discretas e sem o azul, para não competir com os links */
+  .portal-header { --fx-band-1: transparent; --fx-band-2: transparent; }
+  .portal-header .marca::before { opacity: .3; }
 }
 @media (max-width: 760px) {
   /* hero alto e estreito: gradiente mais vertical e sem trecho claro sob o texto pequeno */
