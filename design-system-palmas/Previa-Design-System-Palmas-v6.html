@@ -1971,7 +1971,7 @@ html { scroll-padding-top: 88px; }
   animation: fx-sweep 12s ease-in-out 2s infinite;
 }
 
-/* Dot Grid interativo */
+/* Dot Grid */
 .fx-dots {
   inset: 0;
   width: 100%;
@@ -1979,15 +1979,6 @@ html { scroll-padding-top: 88px; }
   -webkit-mask-image: radial-gradient(120% 140% at 82% 12%, #000 0%, rgb(0 0 0 / .55) 55%, rgb(0 0 0 / .32) 100%);
   mask-image: radial-gradient(120% 140% at 82% 12%, #000 0%, rgb(0 0 0 / .55) 55%, rgb(0 0 0 / .32) 100%);
 }
-
-/* luz que acompanha o cursor */
-.fx-spot {
-  inset: 0;
-  background: radial-gradient(340px circle at var(--hx, 50%) var(--hy, 50%), rgb(140 196 255 / .14), transparent 65%);
-  opacity: 0;
-  transition: opacity .4s;
-}
-.fx-spot.on { opacity: 1; }
 
 /* ——— Texto: Blur Text · Gradient Text · Shiny Text ——————————————— */
 
@@ -2189,7 +2180,7 @@ html.contraste .fx-shiny { background: none; -webkit-text-fill-color: currentCol
 </header>
 <main>
  <section class="faixa-escura portal-hero" aria-labelledby="portal-title">
-  <div class="fx-layer" aria-hidden="true"><i class="fx-blob fx-blob-a"></i><i class="fx-blob fx-blob-b"></i><i class="fx-blob fx-blob-c"></i><i class="fx-beams"></i><i class="fx-sweep"></i><canvas class="fx-dots"></canvas><i class="fx-spot"></i></div>
+  <div class="fx-layer" aria-hidden="true"><i class="fx-blob fx-blob-a"></i><i class="fx-blob fx-blob-b"></i><i class="fx-blob fx-blob-c"></i><i class="fx-beams"></i><i class="fx-sweep"></i><canvas class="fx-dots"></canvas></div>
   <div class="miolo">
   <div class="portal-hero-content"><p class="sobretitulo"><span class="fx-shiny">Sua cidade. Mais próxima.</span></p><h1 class="display" id="portal-title"><span class="fx-word" style="--i:0">O</span> <span class="fx-word" style="--i:1">que</span> <span class="fx-word" style="--i:2">você</span> <span class="fx-word" style="--i:3">precisa</span><br><span class="fx-word" style="--i:4">resolver</span> <span class="fx-grad" style="--i:5">hoje?</span></h1><p class="intro">Serviços da Prefeitura de Palmas, reunidos para facilitar a sua rotina.</p>
    <label class="portal-search-label" for="portal-query">Encontre um serviço</label>
@@ -2310,16 +2301,14 @@ html.contraste .fx-shiny { background: none; -webkit-text-fill-color: currentCol
   addEventListener('resize', place);
  }
 
- /* ——— Hero: Dot Grid interativo + luz do cursor ——— */
+ /* ——— Hero: Dot Grid (onda ambiente; só reage a clique, não ao cursor passando) ——— */
  const hero = $('.portal-hero');
  const canvas = hero && $('.fx-dots', hero);
- const spot = hero && $('.fx-spot', hero);
- const ptr = { x: -9999, y: -9999 };
  const ripples = [];
 
  if (hero && canvas && canvas.getContext) {
   const ctx = canvas.getContext('2d');
-  const GAP = 30, R = 1.5, PROX = 150;
+  const GAP = 30, R = 1.5;
   let w = 0, h = 0, cols = 0, rows = 0, ox = 0, oy = 0, offs = new Float32Array(0);
   let raf = 0, last = 0, visible = true;
 
@@ -2350,13 +2339,6 @@ html.contraste .fx-shiny { background: none; -webkit-text-fill-color: currentCol
      const wave = still ? 0.5 : 0.5 + 0.5 * Math.sin(bx * 0.0035 - by * 0.0025 - now * 0.0008);
      let heat = 0, tx = 0, ty = 0;
 
-     const dx = bx - ptr.x, dy = by - ptr.y;
-     const d = Math.hypot(dx, dy);
-     if (d < PROX) {
-      const p = 1 - d / PROX, s = p * p * (3 - 2 * p);
-      heat += s;
-      if (!still && d > 0.01) { tx += dx / d * s * 13; ty += dy / d * s * 13; }
-     }
      for (const rp of ripples) {
       const age = now - rp.t0;
       const rx = bx - rp.x, ry = by - rp.y;
@@ -2401,13 +2383,6 @@ html.contraste .fx-shiny { background: none; -webkit-text-fill-color: currentCol
   resize();
   sync();
 
-  hero.addEventListener('pointermove', e => {
-   if (e.pointerType === 'touch') return;
-   const r = hero.getBoundingClientRect();
-   ptr.x = e.clientX - r.left; ptr.y = e.clientY - r.top;
-   if (spot) { spot.style.setProperty('--hx', ptr.x + 'px'); spot.style.setProperty('--hy', ptr.y + 'px'); spot.classList.add('on'); }
-  });
-  hero.addEventListener('pointerleave', () => { ptr.x = ptr.y = -9999; spot && spot.classList.remove('on'); });
   hero.addEventListener('pointerdown', e => {
    if (noMotion()) return;
    const r = hero.getBoundingClientRect();
