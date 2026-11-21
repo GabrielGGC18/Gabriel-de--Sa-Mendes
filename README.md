@@ -53,7 +53,7 @@ Produtos que saem da software house que idealizei. Prints e demonstrações anim
 | **Mídia Startup** | Idealizador e entusiasta: Mídia 63, MidiaComercial, Agromidia, Mídia Finanças e Impulso63. |
 | **Hackrun · Equipe NidoQueen** | MidiaComercial: produto, arquitetura, agente de vendas e pitch de 90 segundos. |
 
-**Formação:** Engenharia de Software (Centro Universitário Católica do Tocantins) · Sistemas de Informação (Universidade Estadual do Tocantins, Unitins)
+**Formação:** cursando **Sistemas de Informação** (Universidade Estadual do Tocantins, Unitins) · já cursei Engenharia de Software (Centro Universitário Católica do Tocantins)
 
 ## IA e automação
 
