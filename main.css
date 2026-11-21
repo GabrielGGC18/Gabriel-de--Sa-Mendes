@@ -1059,3 +1059,26 @@ html[data-theme="light"] .holo { mix-blend-mode: soft-light; opacity: .55; }
   .fields dd, .confirm, .flow li::after, .pix-toast { opacity: 1; }
   .cursor { display: none; }
 }
+
+/* ---------- Demos ao lado da janela (sem tampar o sistema) ---------- */
+.demo {
+  position: relative; left: auto; bottom: auto; width: auto; margin: 16px 0 0;
+  box-shadow: none; background: var(--card-2);
+}
+.flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.flow li { flex-direction: column; align-items: flex-start; gap: 6px; font-size: .74rem; }
+.flow li::after { position: absolute; top: 8px; right: 9px; }
+.demo-voice { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 4px 14px; align-items: start; }
+.demo-voice .demo-title, .demo-voice .wave { grid-column: 1; }
+.demo-voice .speech { grid-column: 1; margin: 0; }
+.demo-voice .fields { grid-column: 2; grid-row: 1 / span 3; }
+.demo-voice .confirm { grid-column: 2; margin-top: 4px; justify-self: start; }
+.xp-chips { margin-top: 12px; }
+@media (max-width: 720px) {
+  .eco-pane .browser { margin-bottom: 30px; }
+  .demo { left: auto; bottom: auto; width: auto; }
+  .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .demo-voice { grid-template-columns: 1fr; }
+  .demo-voice .fields, .demo-voice .confirm { grid-column: 1; grid-row: auto; }
+  .demo-voice .fields { display: grid; }
+}

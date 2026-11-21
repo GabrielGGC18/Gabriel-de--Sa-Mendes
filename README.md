@@ -45,9 +45,11 @@ Produtos que saem da software house que idealizei. Prints e demonstrações anim
 
 | Onde | O que fiz |
 | --- | --- |
+| **Mídia 63** | Desenvolvi o site e o portal de ponta a ponta: site em React, painel da redação e API REST em Django, deploy na VPS e a esteira de agentes. |
 | **Portal do SEI** | Desenvolvi o Portal do SEI em **Django**: a porta de acesso para o **SEI** (Sistema Eletrônico de Informações). São sistemas diferentes: o SEI é em PHP, e o portal é por onde as pessoas chegam até ele. |
+| **Prefeitura de Palmas–TO** | Estágio em desenvolvimento: sistema de **IPTU**, **portal da Prefeitura**, **APIs REST de consultas** e **Diário Oficial**. |
 | **SEI** | Manutenção e evolução de telas e formulários no SEI, em **PHP**. |
-| **Prefeitura de Palmas–TO** | Estagiário de desenvolvimento: sistemas internos em Django e DRF. |
+| **Scripts de automação** | Python para tirar trabalho manual: cadastro automatizado de serviços, upload no WordPress e capturas agendadas pelo GitHub Actions. |
 | **Mídia Startup** | Idealizador e entusiasta: Mídia 63, MidiaComercial, Agromidia, Mídia Finanças e Impulso63. |
 | **Hackrun · Equipe NidoQueen** | MidiaComercial: produto, arquitetura, agente de vendas e pitch de 90 segundos. |
 
