@@ -2,13 +2,13 @@
 <html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Portfólio de Gabriel de Sá Mendes — Desenvolvedor Fullstack, CEO da Mídia Startup, acadêmico de Engenharia de Software e Sistemas de Informação.">
+    <meta name="description" content="Portfólio de Gabriel de Sá Mendes — desenvolvedor full stack em Palmas-TO, idealizador e entusiasta da Mídia Startup. Mídia 63, MidiaComercial, Portal do SEI e agentes de IA com aprovação humana.">
     <title>Gabriel de Sá Mendes — Desenvolvedor Fullstack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0d0b0a">
     <link rel="canonical" href="https://gabriel-de-sa-mendes.vercel.app/">
     <meta property="og:title" content="Gabriel de Sá Mendes — Desenvolvedor Fullstack">
-    <meta property="og:description" content="Desenvolvedor Fullstack & CEO da Mídia Startup. Python, Django, FastAPI, React e TypeScript.">
+    <meta property="og:description" content="Desenvolvedor full stack, idealizador e entusiasta da Mídia Startup. Django, React e IA em produção.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:url" content="https://gabriel-de-sa-mendes.vercel.app/">
@@ -34,7 +34,8 @@
       "url": "https://gabriel-de-sa-mendes.vercel.app/",
       "image": "https://gabriel-de-sa-mendes.vercel.app/assets/foto.webp",
       "address": { "@type": "PostalAddress", "addressLocality": "Palmas", "addressRegion": "TO", "addressCountry": "BR" },
-      "worksFor": { "@type": "Organization", "name": "Mídia Startup", "url": "https://midia-startup.midia63.com.br/" },
+      "email": "mailto:gabrieldesamendes@gmail.com",
+      "memberOf": { "@type": "Organization", "name": "Mídia Startup", "url": "https://midia-startup.midia63.com.br/" },
       "sameAs": [
         "https://github.com/GabrielGGC18",
         "https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/",
@@ -85,15 +86,15 @@
        </button>
 
        <ul class="nav-list" id="navList">
-         <li><a href="#sobre"><span class="nav-num">01</span>Sobre</a></li>
-         <li><a href="#stack"><span class="nav-num">02</span>Stack</a></li>
-         <li><a href="#formacao"><span class="nav-num">03</span>Formação</a></li>
-         <li><a href="#producao"><span class="nav-num">04</span>Produção</a></li>
-         <li><a href="#projects"><span class="nav-num">05</span>Projetos</a></li>
+         <li><a href="#ecossistema"><span class="nav-num">01</span>Ecossistema</a></li>
+         <li><a href="#ia"><span class="nav-num">02</span>IA</a></li>
+         <li><a href="#experiencia"><span class="nav-num">03</span>Experiência</a></li>
+         <li><a href="#sobre"><span class="nav-num">04</span>Sobre</a></li>
+         <li><a href="#projetos"><span class="nav-num">05</span>Projetos</a></li>
          <li><a href="#contato"><span class="nav-num">06</span>Contato</a></li>
          <li class="nav-tools">
-            <button class="icon-btn" id="paletteBtn" aria-label="Abrir busca rápida" title="Busca rápida (Ctrl + K)"><i class="fa-solid fa-magnifying-glass"></i><kbd id="paletteKbd">Ctrl K</kbd></button>
-            <button class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" aria-pressed="false" title="Alternar tema"><i class="fa-solid fa-moon"></i></button>
+            <button class="icon-btn" type="button" id="paletteBtn" aria-label="Abrir busca rápida" title="Busca rápida (Ctrl + K)"><i class="fa-solid fa-magnifying-glass"></i><kbd id="paletteKbd">Ctrl K</kbd></button>
+            <button class="icon-btn" type="button" id="themeBtn" aria-label="Alternar tema claro/escuro" aria-pressed="false" title="Alternar tema"><i class="fa-solid fa-moon"></i></button>
          </li>
          <li class="nav-socials">
             <a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
@@ -113,11 +114,14 @@
                 <p class="hero-role reveal d-2">
                   <span class="typed" id="typed" aria-live="polite"></span><span class="caret" aria-hidden="true"></span>
                 </p>
-                <p class="hero-sub reveal d-3">CEO da <a href="https://midia-startup.midia63.com.br/" target="_blank" rel="noopener" class="startup-link">Mídia Startup</a> · Acadêmico de Engenharia de Software e Sistemas de Informação<br>Estagiário na Prefeitura de Palmas-TO</p>
+                <p class="hero-sub reveal d-3">Idealizador e entusiasta da <a href="https://midia-startup.midia63.com.br/" target="_blank" rel="noopener" class="startup-link">Mídia Startup</a> · Acadêmico de Engenharia de Software e Sistemas de Informação<br>Estagiário na Prefeitura de Palmas-TO · desenvolvi o Portal do SEI</p>
                 <div class="hero-actions reveal d-4">
-                    <a class="btn primary magnetic" href="#projects">Ver projetos <i class="fa-solid fa-arrow-right"></i></a>
+                    <a class="btn primary magnetic" href="#ecossistema">Ver projetos <i class="fa-solid fa-arrow-right"></i></a>
                     <a class="btn ghost magnetic" id="contactBtn" href="#contato"><i class="fa-solid fa-envelope"></i> Contato</a>
-                    <a class="btn link" href="https://github.com/GabrielGGC18" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <span class="hero-socials">
+                      <a class="btn link" href="https://github.com/GabrielGGC18" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+                      <a class="btn link" href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    </span>
                 </div>
             </div>
 
@@ -143,7 +147,7 @@
   base:  <span class="s">"Palmas · TO"</span>,
   stack: [<span class="s">"Django"</span>, <span class="s">"React"</span>,
           <span class="s">"FastAPI"</span>, <span class="s">"TS"</span>],
-  agora: <span class="s">"ATOM Canvas"</span>,
+  agora: <span class="s">"Impulso63"</span>,
   cafe:  <span class="n">Infinity</span>,
 };</code></pre>
                       <div class="idcard-foot">
@@ -173,434 +177,581 @@
     </header>
 
     <!-- Conteúdo principal -->
-    <main class="container" id="conteudo" tabindex="-1">
+    <main id="conteudo" tabindex="-1">
 
-        <section id="sobre" class="section reveal">
-            <div class="section-head">
-                <span class="section-num">01</span>
-                <h2>Sobre <em>mim</em></h2>
-                <span class="section-line"></span>
-            </div>
-            <div class="about-grid">
-              <p class="about-text">Olá! Me chamo <strong>Gabriel</strong>. Sou <strong>desenvolvedor fullstack</strong> e <strong>CEO da Mídia Startup</strong>, software house do Tocantins,, com foco em arquitetura de software, integração de sistemas e automações. Trabalho com <strong>Python (Django / FastAPI)</strong>, <strong>JavaScript / TypeScript</strong>, <strong>React</strong> e <strong>PostgreSQL</strong>. Gosto de transformar processo manual em sistema — e de estudar o que ainda não sei.</p>
-              <aside class="about-card">
-                <h3><i class="fa-solid fa-terminal"></i> agora</h3>
-                <ul>
-                  <li><span>Liderando</span> Mídia Startup, software house</li>
-                  <li><span>Construindo</span> ATOM, agente pessoal de IA</li>
-                  <li><span>Mantendo</span> Mídia 63 em produção</li>
-                  <li><span>Estudando</span> Java / POO e arquitetura de APIs</li>
-                </ul>
-              </aside>
-            </div>
-        </section>
+        <!-- ============ 01 · Ecossistema Mídia Startup ============ -->
+        <section id="ecossistema" class="section">
+          <div class="container">
+            <div class="panel panel-glow reveal">
+              <header class="panel-head">
+                <p class="eyebrow"><span class="eyebrow-num">01</span> Ecossistema Mídia Startup</p>
+                <h2>Uma software house,<br><span class="hl">vários produtos no ar.</span></h2>
+                <p class="panel-lead">Sou idealizador e entusiasta da <strong>Mídia Startup</strong>. Estes são os produtos que saem dela: alguns rodando todo dia, um recém-lançado e um a caminho.</p>
+              </header>
 
-        <section id="stack" class="section reveal">
-            <div class="section-head">
-                <span class="section-num">02</span>
-                <h2>Stack e <em>ferramentas</em></h2>
-                <span class="section-line"></span>
-            </div>
-            <div class="stack-grid">
-              <article class="stack-card">
-                <h3><i class="fa-solid fa-server"></i> Backend</h3>
-                <div class="chips"><span>Python</span><span>Django</span><span>DRF</span><span>FastAPI</span><span>Java</span><span>Node.js</span></div>
-                <div class="bar"><i style="--lvl:88%"></i></div>
-              </article>
-              <article class="stack-card">
-                <h3><i class="fa-solid fa-display"></i> Frontend</h3>
-                <div class="chips"><span>React</span><span>TypeScript</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
-                <div class="bar"><i style="--lvl:80%"></i></div>
-              </article>
-              <article class="stack-card">
-                <h3><i class="fa-solid fa-database"></i> Dados</h3>
-                <div class="chips"><span>PostgreSQL</span><span>SQLite</span><span>SQL</span><span>Ciência de Dados</span></div>
-                <div class="bar"><i style="--lvl:75%"></i></div>
-              </article>
-              <article class="stack-card">
-                <h3><i class="fa-solid fa-gears"></i> DevOps &amp; Auto</h3>
-                <div class="chips"><span>Docker</span><span>GitHub Actions</span><span>Linux</span><span>Nginx</span><span>Scripts</span></div>
-                <div class="bar"><i style="--lvl:70%"></i></div>
-              </article>
-            </div>
-        </section>
-
-        <section id="formacao" class="section reveal">
-            <div class="section-head">
-                <span class="section-num">03</span>
-                <h2>Formação e <em>cursos</em></h2>
-                <span class="section-line"></span>
-            </div>
-            <div class="edu-grid">
-                <div class="edu-item">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <div>
-                        <strong>Engenharia de Software</strong>
-                        <span>Centro Universitário Católica do Tocantins</span>
-                    </div>
+              <div class="eco" id="eco">
+                <div class="eco-tabs" role="tablist" aria-label="Produtos da Mídia Startup">
+                  <button class="eco-tab" role="tab" id="tab-m63" aria-controls="pane-m63" aria-selected="true">
+                    <span class="eco-tab-bar"><i></i></span>
+                    <span class="eco-tab-name"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> Mídia 63</span>
+                    <span class="eco-tab-state is-live">no ar</span>
+                  </button>
+                  <button class="eco-tab" role="tab" id="tab-mc" aria-controls="pane-mc" aria-selected="false" tabindex="-1">
+                    <span class="eco-tab-bar"><i></i></span>
+                    <span class="eco-tab-name"><i class="fa-solid fa-store" aria-hidden="true"></i> MidiaComercial</span>
+                    <span class="eco-tab-state is-new">novo</span>
+                  </button>
+                  <button class="eco-tab" role="tab" id="tab-ms" aria-controls="pane-ms" aria-selected="false" tabindex="-1">
+                    <span class="eco-tab-bar"><i></i></span>
+                    <span class="eco-tab-name"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Mídia Startup</span>
+                    <span class="eco-tab-state is-live">no ar</span>
+                  </button>
+                  <button class="eco-tab" role="tab" id="tab-mf" aria-controls="pane-mf" aria-selected="false" tabindex="-1">
+                    <span class="eco-tab-bar"><i></i></span>
+                    <span class="eco-tab-name"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Mídia Finanças</span>
+                    <span class="eco-tab-state">interno</span>
+                  </button>
+                  <button class="eco-tab" role="tab" id="tab-i63" aria-controls="pane-i63" aria-selected="false" tabindex="-1">
+                    <span class="eco-tab-bar"><i></i></span>
+                    <span class="eco-tab-name"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Impulso63</span>
+                    <span class="eco-tab-state is-soon">em breve</span>
+                  </button>
                 </div>
-                <div class="edu-item">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <div>
-                        <strong>Sistemas de Informação</strong>
-                        <span>Universidade Estadual do Tocantins</span>
-                    </div>
-                </div>
-            </div>
-            <ul class="cursos-list">
-                <li><i class="fa-solid fa-chart-bar"></i> Ciências de Dados</li>
-                <li><i class="fa-solid fa-robot"></i> IA Generativa</li>
-                <li><i class="fa-solid fa-palette"></i> Canva</li>
-                <li><i class="fa-brands fa-figma"></i> Figma</li>
-                <li><i class="fa-brands fa-python"></i> Django</li>
-                <li><i class="fa-solid fa-database"></i> SQL</li>
-            </ul>
-        </section>
-
-        <section id="producao" class="section reveal">
-            <div class="section-head">
-                <span class="section-num">04</span>
-                <h2>Em <em>produção</em></h2>
-                <span class="section-line"></span>
-            </div>
-            <div class="showcase">
-              <div class="showcase-text">
-                <p class="showcase-lead">Produtos que eu construo e mantenho, <strong>rodando todos os dias</strong> com gente de verdade usando.</p>
-                <ol class="showcase-list" id="showcaseList">
-                  <li><button type="button" data-idx="0" aria-pressed="true">
-                    <i class="fa-solid fa-rocket" aria-hidden="true"></i>
-                    <span><strong>Mídia Startup</strong><small>Software house que fundei: sistemas web, SaaS, portais e automação com IA.</small></span>
-                  </button></li>
-                  <li><button type="button" data-idx="1" aria-pressed="false">
-                    <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
-                    <span><strong>Mídia 63</strong><small>Portal de notícias do Tocantins, de ponta a ponta: Django, React e painel da redação.</small></span>
-                  </button></li>
-                  <li><button type="button" data-idx="2" aria-pressed="false">
-                    <i class="fa-solid fa-film" aria-hidden="true"></i>
-                    <span><strong>Fábrica de Cortes</strong><small>Uma live vira até 20 cortes 9:16 com legenda para Reels e Shorts, sempre com aprovação humana.</small></span>
-                  </button></li>
-                  <li><button type="button" data-idx="3" aria-pressed="false">
-                    <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
-                    <span><strong>ATOM Canvas</strong><small>Canvas infinito para orquestrar agentes de IA (Claude Code, Codex) lado a lado. Open source.</small></span>
-                  </button></li>
-                </ol>
-              </div>
-
-              <div class="showcase-visual">
-                <div class="swap" id="swap">
-                  <figure class="swap-card" data-idx="0">
-                    <div class="swap-bar" aria-hidden="true"><span></span><span></span><span></span><em>midia-startup.midia63.com.br</em></div>
-                    <img class="img-dark" src="assets/midia-startup.webp" alt="Site da Mídia Startup" width="1200" height="750" loading="lazy" decoding="async">
-                    <img class="img-light" src="assets/midia-startup-claro.webp" alt="Site da Mídia Startup" width="1200" height="750" loading="lazy" decoding="async">
-                    <figcaption><i class="fa-solid fa-crown" aria-hidden="true"></i> CEO &amp; Fundador
-                      <a href="https://midia-startup.midia63.com.br/" target="_blank" rel="noopener">Visitar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></figcaption>
-                  </figure>
-                  <figure class="swap-card" data-idx="1">
-                    <div class="swap-bar" aria-hidden="true"><span></span><span></span><span></span><em>midia63.com.br</em></div>
-                    <img class="img-dark" src="assets/midia63.webp" alt="Capa do portal Mídia 63" width="1200" height="750" loading="lazy" decoding="async">
-                    <img class="img-light" src="assets/midia63-claro.webp" alt="Capa do portal Mídia 63" width="1200" height="750" loading="lazy" decoding="async">
-                    <figcaption><span class="status-dot"></span> Em produção
-                      <a href="https://www.midia63.com.br/" target="_blank" rel="noopener">Visitar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></figcaption>
-                  </figure>
-                  <figure class="swap-card" data-idx="2">
-                    <div class="swap-bar" aria-hidden="true"><span></span><span></span><span></span><em>Fábrica de Cortes · painel</em></div>
-                    <img src="assets/fabrica-cortes.webp" alt="Painel da Fábrica de Cortes que gera Reels e Shorts a partir de lives" width="1170" height="635" loading="lazy" decoding="async">
-                    <figcaption><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Redação com IA</figcaption>
-                  </figure>
-                  <figure class="swap-card" data-idx="3">
-                    <div class="swap-bar" aria-hidden="true"><span></span><span></span><span></span><em>ATOM Canvas</em></div>
-                    <img src="assets/atom-canvas.webp" alt="ATOM Canvas com terminais de agentes e notas lado a lado" width="1200" height="634" loading="lazy" decoding="async">
-                    <figcaption><i class="fa-brands fa-github" aria-hidden="true"></i> Open source
-                      <a href="https://github.com/GabrielGGC18/Atom-canvas" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></figcaption>
-                  </figure>
-                </div>
-                <div class="float-chip chip-a" aria-hidden="true"><i class="fa-brands fa-python"></i> Django + React</div>
-                <div class="float-chip chip-b" aria-hidden="true"><i class="fa-solid fa-user-check"></i> IA com aprovação humana</div>
-              </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section reveal">
-            <div class="section-head">
-                <span class="section-num">05</span>
-                <h2>Projetos e <em>repositórios</em></h2>
-                <span class="section-line"></span>
-            </div>
-
-            <div class="filters" id="filters" role="group" aria-label="Filtrar projetos">
-              <button class="filter is-active" data-filter="all" aria-pressed="true">Todos</button>
-              <button class="filter" data-filter="python" aria-pressed="false">Python</button>
-              <button class="filter" data-filter="django" aria-pressed="false">Django</button>
-              <button class="filter" data-filter="fastapi" aria-pressed="false">FastAPI</button>
-              <button class="filter" data-filter="react" aria-pressed="false">React</button>
-              <button class="filter" data-filter="java" aria-pressed="false">Java</button>
-              <button class="filter" data-filter="ia" aria-pressed="false">IA</button>
-              <button class="filter" data-filter="automacao" aria-pressed="false">Automação</button>
-            </div>
-
-            <div class="projects-grid" id="projectsGrid">
-
-                <!-- Mídia Startup (destaque) -->
-                <article class="project featured" data-tags="react django ia saas" data-title="Mídia Startup">
-                    <div class="project-img-wrapper">
-                        <img src="assets/midia-startup.webp" alt="Site da Mídia Startup" class="project-img project-img--top img-dark" loading="lazy" decoding="async" width="1200" height="750">
-                        <img src="assets/midia-startup-claro.webp" alt="Site da Mídia Startup" class="project-img project-img--top img-light" loading="lazy" decoding="async" width="1200" height="750">
-                        <div class="project-ceo-badge">
-                            <img src="assets/avatar.webp" alt="" class="ceo-avatar" width="64" height="64">
-                            <span>CEO &amp; Fundador</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Mídia Startup <span class="live-badge"><span class="status-dot"></span>no ar</span></h3>
-                        <p>Software house do Tocantins (ex-GSM Startup): sistemas web e SaaS, portais de notícias e automação com IA em Django e React. Do primeiro rascunho ao produto no ar, com suporte depois da entrega.</p>
-                        <div class="project-tags"><span>Django</span><span>React</span><span>SaaS</span><span>IA</span></div>
-                        <div class="project-links">
-                            <a href="https://midia-startup.midia63.com.br/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
-                            <span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span>
-                        </div>
-                    </div>
-                </article>
 
                 <!-- Mídia 63 -->
-                <article class="project" data-tags="python django react" data-title="Mídia 63">
-                    <div class="project-img-wrapper">
-                        <img src="assets/midia63.webp" alt="Capa do portal Mídia 63" class="project-img project-img--top img-dark" loading="lazy" decoding="async" width="1200" height="750">
-                        <img src="assets/midia63-claro.webp" alt="Capa do portal Mídia 63" class="project-img project-img--top img-light" loading="lazy" decoding="async" width="1200" height="750">
+                <div class="eco-pane" role="tabpanel" id="pane-m63" aria-labelledby="tab-m63" data-title="Mídia 63" data-tags="python django react ia automacao">
+                  <div class="eco-copy">
+                    <p class="eco-kicker"><span class="status-dot"></span> Em produção · midia63.com.br</p>
+                    <h3>Mídia 63</h3>
+                    <p>Portal de notícias do Tocantins de ponta a ponta: site em React, painel da redação e API em Django. Uma esteira de agentes leva a matéria do rascunho ao site, ao Instagram e ao YouTube. O <strong>Hermes</strong> reescreve e faz a triagem de capas, mas só o toque do editor publica.</p>
+                    <ul class="eco-points">
+                      <li><i class="fa-solid fa-robot" aria-hidden="true"></i> Hermes e bot de cortes pelo Telegram</li>
+                      <li><i class="fa-solid fa-film" aria-hidden="true"></i> Fábrica de Cortes: live vira Reels e Shorts</li>
+                      <li><i class="fa-solid fa-server" aria-hidden="true"></i> VPS com Nginx, systemd e rotinas agendadas</li>
+                    </ul>
+                    <div class="chips-sm"><span>Django 5.2</span><span>DRF</span><span>React 19</span><span>Tailwind 4</span><span>PostgreSQL</span></div>
+                    <div class="eco-links">
+                      <a class="btn primary" href="https://www.midia63.com.br/" target="_blank" rel="noopener">Visitar o portal <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                      <span class="lock"><i class="fa-solid fa-lock" aria-hidden="true"></i> código privado</span>
                     </div>
-                    <div class="project-body">
-                        <h3>Mídia 63 <span class="live-badge"><span class="status-dot"></span>em produção</span></h3>
-                        <p>Portal de notícias do Tocantins: capa com destaques, editorias, SEO, tema claro e escuro e painel editorial próprio. Django + DRF na VPS com Nginx e site React na Vercel.</p>
-                        <div class="project-tags"><span>Django</span><span>React</span><span>PostgreSQL</span><span>Nginx</span></div>
-                        <div class="project-links">
-                            <a href="https://www.midia63.com.br/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
-                            <span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span>
-                        </div>
+                  </div>
+                  <figure class="browser browser-live">
+                    <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><em>midia63.com.br</em></div>
+                    <div class="screen"><img class="scroll-shot img-dark" src="assets/midia63-tall.webp" alt="Portal Mídia 63 rolando: capa, destaques do dia, editorias e newsletter" width="960" height="3600" loading="lazy" decoding="async"><img class="scroll-shot img-light" src="assets/midia63-claro-tall.webp" alt="Portal Mídia 63 no tema claro rolando pela capa" width="960" height="3600" loading="lazy" decoding="async"><span class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z"/></svg></span></div>
+                    <div class="demo demo-flow" aria-hidden="true">
+                      <p class="demo-title"><span class="rec"></span> esteira de uma matéria</p>
+                      <ol class="flow">
+                        <li><i class="fa-solid fa-file-lines"></i><span>Rascunho</span></li>
+                        <li><i class="fa-solid fa-robot"></i><span>Hermes reescreve</span></li>
+                        <li><i class="fa-solid fa-user-check"></i><span>Editor aprova</span></li>
+                        <li><i class="fa-solid fa-satellite-dish"></i><span>Site · Insta · YouTube</span></li>
+                      </ol>
                     </div>
-                </article>
+                  </figure>
+                </div>
 
-                <!-- Fábrica de Cortes / Automação de notícias -->
-                <article class="project" data-tags="python django ia automacao" data-title="Fábrica de Cortes">
-                    <div class="project-img-wrapper">
-                        <img src="assets/fabrica-cortes.webp" alt="Painel da Fábrica de Cortes" class="project-img project-img--top" loading="lazy" decoding="async" width="1170" height="635">
+                <!-- MidiaComercial -->
+                <div class="eco-pane" role="tabpanel" id="pane-mc" aria-labelledby="tab-mc" data-title="MidiaComercial" data-tags="python django react ia" hidden>
+                  <div class="eco-copy">
+                    <p class="eco-kicker"><span class="status-dot"></span> No ar · Hackrun · Equipe NidoQueen</p>
+                    <h3>MidiaComercial</h3>
+                    <p>Inteligência comercial para lojistas de shopping. A conversa do balcão vira registro: o que o cliente <em>procurou e não tinha</em> é anotado por voz e cruzado com vendas, estoque e público. Saem no máximo 3 decisões com evidência, e um <strong>agente de vendas</strong> prepara a mensagem para o produto parado. A pessoa aprova e envia.</p>
+                    <ul class="eco-points">
+                      <li><i class="fa-solid fa-microphone" aria-hidden="true"></i> Balcão por voz, dados pessoais mascarados</li>
+                      <li><i class="fa-solid fa-user-check" aria-hidden="true"></i> Nada grava sem o ok de uma pessoa</li>
+                      <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Isolamento por loja e consentimento LGPD</li>
+                    </ul>
+                    <div class="chips-sm"><span>Django 5.2</span><span>Django Ninja</span><span>React 19</span><span>Tailwind 4</span><span>pytest · vitest</span></div>
+                    <div class="eco-links">
+                      <a class="btn primary" href="https://midia-comercial.midia63.com.br/" target="_blank" rel="noopener">Ver demonstração <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                      <a class="btn ghost" href="https://github.com/GabrielGGC18/MidiaComercial" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Código</a>
                     </div>
-                    <div class="project-body">
-                        <h3>Fábrica de Cortes</h3>
-                        <p>Esteira de redação com IA do Mídia 63: importa e reescreve notícias, gera os posts do Instagram e transforma lives em até 20 cortes 9:16 para Reels e Shorts. Nada vai ao ar sem aprovação humana.</p>
-                        <div class="project-tags"><span>Django</span><span>IA</span><span>FFmpeg</span><span>Instagram API</span></div>
-                        <div class="project-links"><span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span></div>
+                  </div>
+                  <figure class="browser browser-live">
+                    <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><em>midia-comercial.midia63.com.br</em></div>
+                    <div class="screen"><img class="scroll-shot img-dark" src="assets/midiacomercial-tall.webp" alt="Site do MidiaComercial rolando: Sua loja sabe o que vende, pesquisa de campo, como funciona e o passo a passo" width="960" height="3600" loading="lazy" decoding="async"><img class="scroll-shot img-light" src="assets/midiacomercial-claro-tall.webp" alt="Site do MidiaComercial no tema claro rolando" width="960" height="3600" loading="lazy" decoding="async"><span class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z"/></svg></span></div>
+                    <div class="demo demo-voice" aria-hidden="true">
+                      <p class="demo-title"><span class="rec"></span> balcão · gravando</p>
+                      <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                      <p class="speech"><span>“Procuraram calça jeans azul 42 e não tinha.”</span></p>
+                      <dl class="fields">
+                        <div><dt>Produto</dt><dd>Calça jeans</dd></div>
+                        <div><dt>Tamanho</dt><dd>42</dd></div>
+                        <div><dt>Motivo</dt><dd>sem estoque</dd></div>
+                      </dl>
+                      <span class="confirm"><i class="fa-solid fa-check"></i> Registrado com o seu ok</span>
                     </div>
-                </article>
+                  </figure>
+                </div>
 
-                <!-- ATOM Canvas -->
-                <article class="project" data-tags="python ia" data-title="ATOM Canvas">
-                    <div class="project-img-wrapper">
-                        <img src="assets/atom-canvas.webp" alt="ATOM Canvas com terminais de agentes de IA" class="project-img project-img--top" loading="lazy" decoding="async" width="1200" height="634">
+                <!-- Mídia Startup + Agromidia -->
+                <div class="eco-pane" role="tabpanel" id="pane-ms" aria-labelledby="tab-ms" data-title="Mídia Startup e Agromidia" data-tags="python django react" hidden>
+                  <div class="eco-copy">
+                    <p class="eco-kicker"><span class="status-dot"></span> No ar · Idealizador e entusiasta</p>
+                    <h3>Mídia Startup <span class="amp">&amp;</span> Agromidia</h3>
+                    <p>O site da software house (ex-GSM Startup) com serviços, consultoria e automações, e o painel da equipe com kanban, CRM e DevHub com o ATOM. Junto, a vertical agro <strong>Agromidia</strong>: loja do campo com produtos do produtor, retirada ou frete e pagamento via Pix.</p>
+                    <ul class="eco-points">
+                      <li><i class="fa-solid fa-table-columns" aria-hidden="true"></i> Kanban de planos, CRM e DevHub</li>
+                      <li><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Loja Agromidia com checkout Pix</li>
+                      <li><i class="fa-brands fa-docker" aria-hidden="true"></i> Django + DRF em Docker na VPS</li>
+                    </ul>
+                    <div class="chips-sm"><span>Django</span><span>DRF</span><span>React 19</span><span>Vite</span><span>Docker</span><span>Pix</span></div>
+                    <div class="eco-links">
+                      <a class="btn primary" href="https://midia-startup.midia63.com.br/" target="_blank" rel="noopener">Visitar o site <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                      <a class="btn ghost" href="https://midia-startup.midia63.com.br/catalogo" target="_blank" rel="noopener"><i class="fa-solid fa-store" aria-hidden="true"></i> Loja Agromidia</a>
                     </div>
-                    <div class="project-body">
-                        <h3>ATOM Canvas</h3>
-                        <p>Canvas infinito para orquestrar agentes de IA: terminais reais, notas e janelas lado a lado, com workspaces salvos. Roda local no Windows, Linux e macOS.</p>
-                        <div class="project-tags"><span>Python</span><span>aiohttp</span><span>xterm.js</span><span>Open source</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/Atom-canvas" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
+                  </div>
+                  <figure class="browser browser-live">
+                    <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><em>midia-startup.midia63.com.br</em></div>
+                    <div class="screen"><img class="scroll-shot" src="assets/midia-startup-tall.webp" alt="Site da Mídia Startup rolando: software sob medida, serviços e produtos em produção" width="960" height="3600" loading="lazy" decoding="async"><span class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z"/></svg></span></div>
+                    <div class="browser-peek">
+                      <img src="assets/agromidia.webp" alt="Loja Agromidia: Direto da roça para a sua mesa" width="1200" height="750" loading="lazy" decoding="async">
+                      <span class="pix-toast" aria-hidden="true"><i class="fa-solid fa-circle-check"></i> Pedido pago via Pix</span>
                     </div>
-                </article>
+                  </figure>
+                </div>
 
                 <!-- Mídia Finanças -->
-                <article class="project" data-tags="python django automacao" data-title="Mídia Finanças">
-                    <div class="project-placeholder ph-green"><i class="fa-solid fa-chart-line"></i></div>
-                    <div class="project-body">
-                        <h3>Mídia Finanças</h3>
-                        <p>Sistema de gestão financeira em Python: controle de receitas, despesas e relatórios para operação do Mídia 63.</p>
-                        <div class="project-tags"><span>Python</span><span>Django</span><span>Financeiro</span></div>
-                        <div class="project-links"><span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span></div>
+                <div class="eco-pane" role="tabpanel" id="pane-mf" aria-labelledby="tab-mf" data-title="Mídia Finanças" data-tags="python django automacao" hidden>
+                  <div class="eco-copy">
+                    <p class="eco-kicker"><i class="fa-solid fa-lock" aria-hidden="true"></i> Sistema interno</p>
+                    <h3>Mídia Finanças</h3>
+                    <p>Gestão financeira da operação do Mídia 63 em Python e Django: controle de receitas e despesas e relatórios para enxergar para onde vai cada real.</p>
+                    <ul class="eco-points">
+                      <li><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> Receitas e despesas organizadas</li>
+                      <li><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Relatórios da operação</li>
+                    </ul>
+                    <div class="chips-sm"><span>Python</span><span>Django</span><span>Financeiro</span></div>
+                    <div class="eco-links"><span class="lock"><i class="fa-solid fa-lock" aria-hidden="true"></i> uso interno · código privado</span></div>
+                  </div>
+                  <figure class="browser art-panel" aria-hidden="true">
+                    <div class="browser-bar"><span></span><span></span><span></span><em>Mídia Finanças · painel</em></div>
+                    <div class="fin">
+                      <div class="fin-kpis">
+                        <div><small>receitas</small><b class="up">▲</b></div>
+                        <div><small>despesas</small><b class="down">▼</b></div>
+                        <div><small>saldo</small><b>R$</b></div>
+                      </div>
+                      <div class="fin-chart">
+                        <i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:50%"></i><i style="--h:71%"></i><i style="--h:64%"></i><i style="--h:83%"></i><i style="--h:76%"></i><i style="--h:92%"></i>
+                      </div>
                     </div>
-                </article>
+                  </figure>
+                </div>
 
-                <!-- ATOM Agent -->
-                <article class="project" data-tags="python ia automacao" data-title="ATOM Agent">
-                    <div class="project-placeholder ph-violet"><i class="fa-solid fa-atom"></i></div>
-                    <div class="project-body">
-                        <h3>ATOM — Agente de IA</h3>
-                        <p>Agente pessoal de IA que orquestra sub-agentes e skills, gerencia memória persistente e roteia tarefas de desenvolvimento por domínio.</p>
-                        <div class="project-tags"><span>Python</span><span>IA</span><span>Agents</span><span>Automação</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/Atom-" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
+                <!-- Impulso63 -->
+                <div class="eco-pane" role="tabpanel" id="pane-i63" aria-labelledby="tab-i63" data-title="Impulso63" data-tags="em-breve" hidden>
+                  <div class="eco-copy">
+                    <p class="eco-kicker"><span class="soon-dot"></span> Em desenvolvimento</p>
+                    <h3>Impulso63</h3>
+                    <p>O próximo produto do ecossistema Mídia Startup, que começa a ser desenvolvido agora. Mesma base que já está em produção nos outros sistemas: Django, React, IA no fluxo e aprovação humana.</p>
+                    <ul class="eco-points">
+                      <li><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i> Em planejamento e arquitetura</li>
+                      <li><i class="fa-solid fa-bell" aria-hidden="true"></i> Novidades em breve por aqui</li>
+                    </ul>
+                    <div class="eco-links">
+                      <a class="btn ghost" href="#contato"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Quero saber quando lançar</a>
                     </div>
-                </article>
-
-                <!-- FastAPI -->
-                <article class="project" data-tags="python fastapi" data-title="FastAPI">
-                    <div class="project-placeholder ph-teal"><i class="fa-solid fa-bolt"></i></div>
-                    <div class="project-body">
-                        <h3>FastAPI</h3>
-                        <p>Estudo e construção de APIs REST com FastAPI: rotas assíncronas, Pydantic, versionamento e boas práticas de arquitetura.</p>
-                        <div class="project-tags"><span>Python</span><span>FastAPI</span><span>REST</span><span>Pydantic</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/FastAPI" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
+                  </div>
+                  <figure class="browser art-panel" aria-hidden="true">
+                    <div class="browser-bar"><span></span><span></span><span></span><em>impulso63 · em breve</em></div>
+                    <div class="soon">
+                      <span class="soon-orb"></span>
+                      <strong>Impulso<span>63</span></strong>
+                      <code class="typing">git init impulso63</code>
                     </div>
-                </article>
-
-                <!-- Java estudos -->
-                <article class="project" data-tags="java" data-title="Java Estudos">
-                    <div class="project-placeholder ph-red"><i class="fa-brands fa-java"></i></div>
-                    <div class="project-body">
-                        <h3>Java — Estudos</h3>
-                        <p>Revisão e aprofundamento em POO com Java: herança, interfaces, coleções e exercícios de fixação de skills.</p>
-                        <div class="project-tags"><span>Java</span><span>POO</span><span>Estudos</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/java-estudos" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Ticket Management -->
-                <article class="project" data-tags="automacao" data-title="Ticket Management">
-                    <div class="project-placeholder ph-blue"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="project-body">
-                        <h3>Ticket Management</h3>
-                        <p>Sistema de gerenciamento de tickets para controle e acompanhamento de chamados.</p>
-                        <div class="project-tags"><span>Web</span><span>Gestão</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/Ticket-management" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Áres Startup -->
-                <article class="project" data-tags="react ia" data-title="Áres Startup">
-                    <div class="project-img-wrapper">
-                        <img src="assets/ares.webp" alt="Projeto Áres" class="project-img" loading="lazy" decoding="async" width="900" height="467">
-                    </div>
-                    <div class="project-body">
-                        <h3>Áres Startup</h3>
-                        <p>Site da Áres Startup, empresa focada em soluções digitais com IA.</p>
-                        <div class="project-tags"><span>React</span><span>IA</span></div>
-                        <div class="project-links">
-                            <a href="https://ares-project.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
-                            <a href="https://github.com/GabrielGGC18/Ares-project" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repo</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Caminho e Fé Católica -->
-                <article class="project" data-tags="react" data-title="Caminho e Fé Católica">
-                    <div class="project-img-wrapper">
-                        <img src="assets/projetov1.webp" alt="Projeto Caminho e Fé Católica" class="project-img" loading="lazy" decoding="async" width="676" height="705">
-                    </div>
-                    <div class="project-body">
-                        <h3>Caminho e Fé Católica</h3>
-                        <p>Plataforma web voltada à fé católica, com conteúdos e recursos para a comunidade.</p>
-                        <div class="project-tags"><span>TypeScript</span><span>CSS</span><span>JS</span></div>
-                        <div class="project-links">
-                            <a href="https://projetov1-56sv.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
-                            <span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Force Up Fit -->
-                <article class="project" data-tags="react" data-title="Force Up Fit">
-                    <div class="project-img-wrapper">
-                        <img src="assets/forceup.webp" alt="Force Up Fit" class="project-img" loading="lazy" decoding="async" width="900" height="469">
-                    </div>
-                    <div class="project-body">
-                        <h3>Force Up Fit</h3>
-                        <p>Aplicação voltada para treinos e condicionamento físico.</p>
-                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-                        <div class="project-links">
-                            <a href="https://gabrielggc18.github.io/Force-up-Fit-new/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Site</a>
-                            <a href="https://github.com/GabrielGGC18/Force-up-Fit-new" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repo</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Blog Django -->
-                <article class="project" data-tags="python django" data-title="My First Blog Django">
-                    <div class="project-img-wrapper">
-                        <img src="assets/blog.webp" alt="Blog Django" class="project-img" loading="lazy" decoding="async" width="900" height="572">
-                    </div>
-                    <div class="project-body">
-                        <h3>My First Blog Django</h3>
-                        <p>Blog desenvolvido em Django como prática inicial com o framework.</p>
-                        <div class="project-tags"><span>Python</span><span>Django</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/My-first-blog-Django" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Game Battle -->
-                <article class="project" data-tags="python" data-title="Game Battle POO">
-                    <div class="project-img-wrapper">
-                        <img src="assets/game.webp" alt="Game Battle POO" class="project-img" loading="lazy" decoding="async" width="900" height="596">
-                    </div>
-                    <div class="project-body">
-                        <h3>Game Battle POO</h3>
-                        <p>Jogo de luta em Python com conceitos de programação orientada a objetos.</p>
-                        <div class="project-tags"><span>Python</span><span>POO</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/Game-battle-POO" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- WordPress Automação -->
-                <article class="project" data-tags="python automacao" data-title="Automação WordPress">
-                    <div class="project-placeholder ph-wp"><i class="fa-brands fa-wordpress"></i></div>
-                    <div class="project-body">
-                        <h3>Automação WordPress</h3>
-                        <p>Script Python que automatiza upload de fotos, vinculação como imagem destacada em posts e captura de screenshots via GitHub Actions.</p>
-                        <div class="project-tags"><span>Python</span><span>WordPress</span><span>GitHub Actions</span><span>Automação</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/GabrielGGC18/Script-Teste" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repositório</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Script Automação Serviços -->
-                <article class="project" data-tags="python automacao" data-title="Script de Automação Serviços">
-                    <div class="project-placeholder ph-dark"><i class="fa-solid fa-gears"></i></div>
-                    <div class="project-body">
-                        <h3>Script de Automação Serviços</h3>
-                        <p>Script Python para cadastro automatizado de serviços, otimizando processos administrativos e reduzindo trabalho manual.</p>
-                        <div class="project-tags"><span>Python</span><span>Automação</span><span>Scripts</span></div>
-                        <div class="project-links">
-                            <span class="private-badge"><i class="fa-solid fa-lock"></i> Repositório privado</span>
-                        </div>
-                    </div>
-                </article>
-
+                  </figure>
+                </div>
+              </div>
             </div>
-            <p class="empty-state" id="emptyState" hidden>Nenhum projeto com esse filtro.</p>
-            <div class="more-wrap">
-              <button class="btn ghost" id="showMore" hidden aria-controls="projectsGrid" aria-expanded="false"><i class="fa-solid fa-plus"></i> <span>Ver todos os projetos</span></button>
-            </div>
+          </div>
         </section>
 
-        <section id="contato" class="section reveal">
-            <div class="section-head">
-                <span class="section-num">06</span>
-                <h2><em>Contato</em></h2>
-                <span class="section-line"></span>
+        <!-- ============ 02 · IA e automação ============ -->
+        <section id="ia" class="section">
+          <div class="container">
+            <div class="panel reveal">
+              <header class="panel-head panel-head-row">
+                <div>
+                  <p class="eyebrow"><span class="eyebrow-num">02</span> IA e automação</p>
+                  <h2>A IA propõe.<br><span class="hl">Uma pessoa decide.</span></h2>
+                </div>
+                <p class="panel-lead">Ferramentas que eu uso para construir e operar os produtos: agentes com regras, vídeo automatizado e um canvas para orquestrar tudo.</p>
+              </header>
+
+              <div class="lab-grid">
+                <article class="lab-card lab-wide" data-title="ATOM Agent" data-tags="python ia automacao">
+                  <div class="lab-art art-atom" aria-hidden="true">
+                    <div class="atom"><span class="nucleus"></span><span class="orbit o1"><i></i></span><span class="orbit o2"><i></i></span><span class="orbit o3"><i></i></span></div>
+                    <code class="art-caption">ATOM ativo, Mestre.</code>
+                  </div>
+                  <div class="lab-body">
+                    <p class="eco-kicker"><span class="tag-new">v1.2</span> Orquestrador de agentes</p>
+                    <h3>ATOM Agent</h3>
+                    <p>Meu assistente pessoal sobre o Claude Code. Uma skill por stack (Django, React, PHP, Infra, Java), um subagente por domínio, um hook de guarda que bloqueia o que não pode rodar e uma memória compartilhada entre Claude, Codex, OpenCode e Copilot. Instala com um script e tem CI com evals.</p>
+                    <div class="chips-sm"><span>Claude Code</span><span>Skills</span><span>Subagentes</span><span>Hooks</span><span>ai-memory</span></div>
+                    <div class="eco-links">
+                      <a class="btn ghost" href="https://github.com/GabrielGGC18/Atom-" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Versão pública</a>
+                      <span class="lock"><i class="fa-solid fa-lock" aria-hidden="true"></i> v1.2 privada</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="lab-card" data-title="ATOM Canvas" data-tags="python ia">
+                  <figure class="lab-shot"><img src="assets/atom-canvas.webp" alt="ATOM Canvas com terminais de agentes e notas lado a lado" width="1200" height="634" loading="lazy" decoding="async"></figure>
+                  <div class="lab-body">
+                    <p class="eco-kicker"><i class="fa-brands fa-github" aria-hidden="true"></i> Open source</p>
+                    <h3>ATOM Canvas</h3>
+                    <p>Canvas infinito para orquestrar agentes (Claude Code, Codex) lado a lado, com terminais reais, notas e workspaces salvos.</p>
+                    <div class="chips-sm"><span>Python</span><span>aiohttp</span><span>xterm.js</span></div>
+                    <div class="eco-links"><a class="text-link" href="https://github.com/GabrielGGC18/Atom-canvas" target="_blank" rel="noopener">Repositório <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+                  </div>
+                </article>
+
+                <article class="lab-card" data-title="Fábrica de Cortes" data-tags="python django ia automacao">
+                  <figure class="lab-shot"><img src="assets/fabrica-cortes.webp" alt="Painel da Fábrica de Cortes que gera Reels e Shorts a partir de lives" width="1170" height="635" loading="lazy" decoding="async"></figure>
+                  <div class="lab-body">
+                    <p class="eco-kicker"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Dentro do Mídia 63</p>
+                    <h3>Fábrica de Cortes</h3>
+                    <p>Uma live vira até 20 cortes 9:16 com arte e legenda, ou um vídeo 16:9 para o YouTube. Fila no Postgres, worker sob systemd, publicação só depois da aprovação.</p>
+                    <div class="chips-sm"><span>Django</span><span>FFmpeg</span><span>YouTube API</span><span>Instagram API</span></div>
+                  </div>
+                </article>
+
+                <article class="lab-card" data-title="Midia-Editor" data-tags="react ia automacao">
+                  <div class="lab-art art-editor" aria-hidden="true">
+                    <div class="tl">
+                      <div class="tl-row"><i style="--w:38%;--x:4%"></i><i style="--w:22%;--x:46%"></i><i style="--w:24%;--x:72%"></i></div>
+                      <div class="tl-row alt"><i style="--w:56%;--x:10%"></i><i style="--w:18%;--x:70%"></i></div>
+                      <div class="tl-row wave"></div>
+                      <span class="playhead"></span>
+                    </div>
+                    <div class="phone"><span></span></div>
+                  </div>
+                  <div class="lab-body">
+                    <p class="eco-kicker"><span class="tag-new">novo</span> Estúdio local de vídeo</p>
+                    <h3>Midia-Editor</h3>
+                    <p>Transcreve palavra a palavra, marca trechos, gera verticais enquadrados no rosto e finaliza com a marca. A CLI headless é o acabamento que a Fábrica chama.</p>
+                    <div class="chips-sm"><span>React + TS</span><span>Node</span><span>FFmpeg</span><span>faster-whisper</span><span>GSAP</span></div>
+                  </div>
+                </article>
+              </div>
             </div>
-            <div class="contact-cta">
-              <div>
-                <h3>Tem um projeto, vaga ou <em>ideia</em>?</h3>
-                <p>Estou aberto a oportunidades, freelas e parcerias. Respondo por e-mail ou LinkedIn — geralmente no mesmo dia.</p>
+          </div>
+        </section>
+
+        <!-- ============ 03 · Experiência ============ -->
+        <section id="experiencia" class="section">
+          <div class="container">
+            <div class="panel reveal">
+              <header class="panel-head">
+                <p class="eyebrow"><span class="eyebrow-num">03</span> Experiência</p>
+                <h2>Sistemas em que <span class="hl">já coloquei a mão.</span></h2>
+              </header>
+
+              <div class="xp-grid">
+                <ol class="xp-list">
+                  <li class="xp-item xp-featured">
+                    <span class="xp-icon"><i class="fa-solid fa-door-open" aria-hidden="true"></i></span>
+                    <div>
+                      <p class="xp-meta">Django · DRF · desenvolvi</p>
+                      <h3>Portal do SEI</h3>
+                      <p>Desenvolvi o Portal do SEI: a porta de acesso para o <strong>SEI</strong> (Sistema Eletrônico de Informações). São sistemas diferentes: o SEI é em <strong>PHP</strong>, e o portal, em <strong>Django</strong>, é por onde as pessoas chegam até ele, com notícias, páginas e configurações próprias.</p>
+                      <div class="sei-flow" aria-hidden="true">
+                        <span class="sei-node"><i class="fa-solid fa-user"></i> Usuário</span>
+                        <span class="sei-arrow"></span>
+                        <span class="sei-node is-accent"><i class="fa-brands fa-python"></i> Portal do SEI · Django</span>
+                        <span class="sei-arrow"></span>
+                        <span class="sei-node"><i class="fa-brands fa-php"></i> SEI · PHP</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="xp-item">
+                    <span class="xp-icon"><i class="fa-brands fa-php" aria-hidden="true"></i></span>
+                    <div>
+                      <p class="xp-meta">PHP legado</p>
+                      <h3>SEI</h3>
+                      <p>Manutenção e evolução de telas e formulários no SEI, em PHP.</p>
+                    </div>
+                  </li>
+                  <li class="xp-item">
+                    <span class="xp-icon"><i class="fa-solid fa-landmark" aria-hidden="true"></i></span>
+                    <div>
+                      <p class="xp-meta">Prefeitura de Palmas–TO · estágio</p>
+                      <h3>Estagiário de desenvolvimento</h3>
+                      <p>Sistemas internos em Django e DRF, como o Agtec SaaS, um monólito modular com API REST.</p>
+                    </div>
+                  </li>
+                  <li class="xp-item">
+                    <span class="xp-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+                    <div>
+                      <p class="xp-meta">Mídia Startup · Tocantins</p>
+                      <h3>Idealizador e entusiasta</h3>
+                      <p>Software house por trás do Mídia 63, MidiaComercial, Agromidia, Mídia Finanças e Impulso63.</p>
+                    </div>
+                  </li>
+                  <li class="xp-item">
+                    <span class="xp-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></span>
+                    <div>
+                      <p class="xp-meta">Hackrun · Equipe NidoQueen</p>
+                      <h3>MidiaComercial</h3>
+                      <p>Produto, arquitetura, agente de vendas e pitch de 90 segundos, em equipe.</p>
+                    </div>
+                  </li>
+                </ol>
+
+                <aside class="edu">
+                  <h3 class="edu-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Formação</h3>
+                  <div class="edu-item">
+                    <strong>Engenharia de Software</strong>
+                    <span>Centro Universitário Católica do Tocantins</span>
+                  </div>
+                  <div class="edu-item">
+                    <strong>Sistemas de Informação</strong>
+                    <span>Universidade Estadual do Tocantins (Unitins)</span>
+                  </div>
+                  <h3 class="edu-title"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Cursos</h3>
+                  <ul class="edu-tags">
+                    <li>Ciência de Dados</li><li>IA Generativa</li><li>Django</li><li>SQL</li><li>Figma</li><li>Canva</li>
+                  </ul>
+                </aside>
               </div>
-              <div class="contact-cta-actions">
-                <button class="btn primary magnetic" id="openContact" type="button"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</button>
-                <button class="btn ghost" id="copyEmail" type="button" data-email="bexcbr@gmail.com"><i class="fa-regular fa-copy"></i> <span>bexcbr@gmail.com</span></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 04 · Sobre e stack ============ -->
+        <section id="sobre" class="section">
+          <div class="container">
+            <div class="panel reveal">
+              <header class="panel-head">
+                <p class="eyebrow"><span class="eyebrow-num">04</span> Sobre e stack</p>
+                <h2>Transformo processo manual <span class="hl">em sistema.</span></h2>
+              </header>
+              <div class="about2">
+                <div class="about2-text">
+                  <p>Olá! Me chamo <strong>Gabriel</strong>, sou desenvolvedor full stack em Palmas, Tocantins. Trabalho com arquitetura de software, APIs REST, integração de sistemas e automação, do banco ao deploy.</p>
+                  <p>Uso IA como parte do fluxo, não como atalho: agentes que propõem, pessoas que aprovam e testes no CI para garantir que nada sai do trilho.</p>
+                  <div class="steps">
+                    <div><b>Ouvir</b><span>Entender o processo real de quem usa</span></div>
+                    <div><b>Construir</b><span>Django, React e IA onde faz sentido</span></div>
+                    <div><b>Entregar</b><span>No ar, documentado e com suporte</span></div>
+                  </div>
+                </div>
+                <aside class="now">
+                  <p class="now-title"><i class="fa-solid fa-terminal" aria-hidden="true"></i> agora</p>
+                  <ul>
+                    <li><span>impulsionando</span> Mídia Startup e Agromidia</li>
+                    <li><span>mantendo</span> Mídia 63 e a esteira do Hermes</li>
+                    <li><span>lançando</span> MidiaComercial</li>
+                    <li><span>começando</span> Impulso63</li>
+                    <li><span>evoluindo</span> ATOM Agent v1.2</li>
+                  </ul>
+                </aside>
               </div>
-              <ul class="contact-cta-links">
-                <li><a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
-                <li><a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
-                <li><a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+
+              <div class="stack2">
+                <div class="stack2-row"><span class="stack2-label"><i class="fa-solid fa-server" aria-hidden="true"></i> Backend</span><div class="chips-sm"><span>Python</span><span>Django</span><span>DRF</span><span>Django Ninja</span><span>FastAPI</span><span>Java</span><span>Quarkus</span><span>PHP</span><span>Node.js</span></div></div>
+                <div class="stack2-row"><span class="stack2-label"><i class="fa-solid fa-display" aria-hidden="true"></i> Frontend</span><div class="chips-sm"><span>React 19</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>GSAP</span><span>HTML / CSS</span></div></div>
+                <div class="stack2-row"><span class="stack2-label"><i class="fa-solid fa-database" aria-hidden="true"></i> Dados</span><div class="chips-sm"><span>PostgreSQL</span><span>SQLite</span><span>Hibernate Panache</span><span>Ciência de Dados</span></div></div>
+                <div class="stack2-row"><span class="stack2-label"><i class="fa-solid fa-gears" aria-hidden="true"></i> DevOps</span><div class="chips-sm"><span>Docker</span><span>Nginx</span><span>systemd</span><span>GitHub Actions</span><span>Vercel</span><span>Linux</span></div></div>
+                <div class="stack2-row"><span class="stack2-label"><i class="fa-solid fa-brain" aria-hidden="true"></i> IA</span><div class="chips-sm"><span>Claude Code</span><span>Skills &amp; Hooks</span><span>Subagentes</span><span>faster-whisper</span><span>pytest · vitest · ruff</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 05 · Projetos ============ -->
+        <section id="projetos" class="section">
+          <div class="container">
+            <div class="panel reveal">
+              <header class="panel-head panel-head-row">
+                <div>
+                  <p class="eyebrow"><span class="eyebrow-num">05</span> Mais projetos</p>
+                  <h2>Clientes, estudos <span class="hl">e experimentos.</span></h2>
+                </div>
+                <div class="filters" id="filters" role="group" aria-label="Filtrar projetos">
+                  <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">Todos <span class="count"></span></button>
+                  <button class="filter" type="button" data-filter="python" aria-pressed="false">Python <span class="count"></span></button>
+                  <button class="filter" type="button" data-filter="django" aria-pressed="false">Django <span class="count"></span></button>
+                  <button class="filter" type="button" data-filter="react" aria-pressed="false">Web <span class="count"></span></button>
+                  <button class="filter" type="button" data-filter="java" aria-pressed="false">Java <span class="count"></span></button>
+                  <button class="filter" type="button" data-filter="automacao" aria-pressed="false">Automação <span class="count"></span></button>
+                </div>
+              </header>
+
+              <div class="projects-grid" id="projectsGrid">
+                <article class="project" data-tags="python django" data-title="Agtec SaaS">
+                  <div class="p-cover ph-teal"><i class="fa-solid fa-landmark" aria-hidden="true"></i><span class="p-new">novo</span></div>
+                  <div class="p-body">
+                    <h3>Agtec SaaS</h3>
+                    <p>SaaS modular para a Prefeitura de Palmas: monólito modular por apps Django, API REST com DRF, atendimento e agendamentos.</p>
+                    <div class="chips-sm"><span>Django 5.2</span><span>DRF</span><span>Docker</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/agtec_saas" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="python django" data-title="Portal P1 News">
+                  <div class="p-cover ph-blue"><i class="fa-solid fa-newspaper" aria-hidden="true"></i><span class="p-new">novo</span></div>
+                  <div class="p-body">
+                    <h3>Portal P1 News</h3>
+                    <p>Portal de notícias para cliente em Django 5.2 e PostgreSQL, com documentação de arquitetura e tarefas organizadas para agentes de IA.</p>
+                    <div class="chips-sm"><span>Django 5.2</span><span>PostgreSQL</span><span>uv</span></div>
+                    <div class="p-links"><span class="lock"><i class="fa-solid fa-lock" aria-hidden="true"></i> privado</span></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="java" data-title="Loja de Violas API">
+                  <div class="p-cover ph-red"><i class="fa-solid fa-guitar" aria-hidden="true"></i><span class="p-new">novo</span></div>
+                  <div class="p-body">
+                    <h3>Loja de Violas · API</h3>
+                    <p>API REST de e-commerce com Quarkus: entidades com Hibernate Panache, camada de serviço, PostgreSQL e Swagger via OpenAPI.</p>
+                    <div class="chips-sm"><span>Java</span><span>Quarkus</span><span>PostgreSQL</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/e-commerce-loja-viola" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="react" data-title="Fundo de Vila">
+                  <div class="p-cover ph-green ph-pixel"><i class="fa-solid fa-cubes" aria-hidden="true"></i><span class="p-new">novo</span></div>
+                  <div class="p-body">
+                    <h3>Fundo de Vila</h3>
+                    <p>Põe sua foto numa vila estilo Minecraft: remoção de fundo, varinha e pincel, efeito pixel, hora do dia e formatos 16:9, celular e quadrado.</p>
+                    <div class="chips-sm"><span>HTML</span><span>Canvas</span><span>JS</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/Fundo-vila" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="python fastapi" data-title="FastAPI">
+                  <div class="p-cover ph-teal"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                  <div class="p-body">
+                    <h3>FastAPI</h3>
+                    <p>APIs REST com rotas assíncronas, Pydantic, versionamento e boas práticas de arquitetura.</p>
+                    <div class="chips-sm"><span>Python</span><span>FastAPI</span><span>Pydantic</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/FastAPI" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="react" data-title="Áres Startup">
+                  <div class="p-cover"><img src="assets/ares.webp" alt="Site da Áres Startup" loading="lazy" decoding="async" width="900" height="467"></div>
+                  <div class="p-body">
+                    <h3>Áres Startup <span class="live-sm"><span class="status-dot"></span>no ar</span></h3>
+                    <p>Site da Áres Startup, empresa de soluções digitais com IA.</p>
+                    <div class="chips-sm"><span>React</span><span>IA</span></div>
+                    <div class="p-links">
+                      <a href="https://ares-project.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Site</a>
+                      <a href="https://github.com/GabrielGGC18/Ares-project" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repo</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="react" data-title="Caminho e Fé Católica">
+                  <div class="p-cover"><img src="assets/projetov1.webp" alt="Plataforma Caminho e Fé Católica" loading="lazy" decoding="async" width="676" height="705"></div>
+                  <div class="p-body">
+                    <h3>Caminho e Fé Católica <span class="live-sm"><span class="status-dot"></span>no ar</span></h3>
+                    <p>Plataforma web voltada à fé católica, com conteúdos e recursos para a comunidade.</p>
+                    <div class="chips-sm"><span>TypeScript</span><span>CSS</span></div>
+                    <div class="p-links"><a href="https://projetov1-56sv.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Site</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="react" data-title="Force Up Fit">
+                  <div class="p-cover"><img src="assets/forceup.webp" alt="Force Up Fit" loading="lazy" decoding="async" width="900" height="469"></div>
+                  <div class="p-body">
+                    <h3>Force Up Fit <span class="live-sm"><span class="status-dot"></span>no ar</span></h3>
+                    <p>Site de treinos e condicionamento físico.</p>
+                    <div class="chips-sm"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                    <div class="p-links">
+                      <a href="https://gabrielggc18.github.io/Force-up-Fit-new/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Site</a>
+                      <a href="https://github.com/GabrielGGC18/Force-up-Fit-new" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repo</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="python automacao" data-title="Automação WordPress">
+                  <div class="p-cover ph-wp"><i class="fa-brands fa-wordpress" aria-hidden="true"></i></div>
+                  <div class="p-body">
+                    <h3>Automação WordPress</h3>
+                    <p>Sobe fotos, vincula como imagem destacada nos posts e captura screenshots via GitHub Actions.</p>
+                    <div class="chips-sm"><span>Python</span><span>WordPress</span><span>Actions</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/Script-Teste" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="python automacao" data-title="Automação de Serviços">
+                  <div class="p-cover ph-dark"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                  <div class="p-body">
+                    <h3>Automação de Serviços</h3>
+                    <p>Cadastro automatizado de serviços para tirar trabalho manual de processos administrativos.</p>
+                    <div class="chips-sm"><span>Python</span><span>Automação</span></div>
+                    <div class="p-links"><span class="lock"><i class="fa-solid fa-lock" aria-hidden="true"></i> privado</span></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="java" data-title="Java Estudos">
+                  <div class="p-cover ph-red"><i class="fa-brands fa-java" aria-hidden="true"></i></div>
+                  <div class="p-body">
+                    <h3>Java · Estudos</h3>
+                    <p>POO com Java: herança, interfaces, coleções e exercícios de fixação.</p>
+                    <div class="chips-sm"><span>Java</span><span>POO</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/java-estudos" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="react" data-title="Ticket Management">
+                  <div class="p-cover ph-blue"><i class="fa-solid fa-ticket" aria-hidden="true"></i></div>
+                  <div class="p-body">
+                    <h3>Ticket Management</h3>
+                    <p>Gerenciamento de chamados em PHP, com controle e acompanhamento de tickets.</p>
+                    <div class="chips-sm"><span>PHP</span><span>Web</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/Ticket-management" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="python django" data-title="My First Blog Django">
+                  <div class="p-cover"><img src="assets/blog.webp" alt="Blog em Django" loading="lazy" decoding="async" width="900" height="572"></div>
+                  <div class="p-body">
+                    <h3>My First Blog Django</h3>
+                    <p>Blog em Django, primeira prática com o framework.</p>
+                    <div class="chips-sm"><span>Python</span><span>Django</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/My-first-blog-Django" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+
+                <article class="project" data-tags="python" data-title="Game Battle POO">
+                  <div class="p-cover"><img src="assets/game.webp" alt="Game Battle POO" loading="lazy" decoding="async" width="900" height="596"></div>
+                  <div class="p-body">
+                    <h3>Game Battle POO</h3>
+                    <p>Jogo de luta em Python com programação orientada a objetos.</p>
+                    <div class="chips-sm"><span>Python</span><span>POO</span></div>
+                    <div class="p-links"><a href="https://github.com/GabrielGGC18/Game-battle-POO" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Repositório</a></div>
+                  </div>
+                </article>
+              </div>
+              <p class="empty-state" id="emptyState" hidden>Nenhum projeto com esse filtro.</p>
+              <div class="more-wrap">
+                <button class="btn ghost" id="showMore" type="button" hidden aria-controls="projectsGrid" aria-expanded="false"><i class="fa-solid fa-plus" aria-hidden="true"></i> <span>Ver todos</span></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ 06 · Contato ============ -->
+        <section id="contato" class="section">
+          <div class="container">
+            <div class="cta reveal">
+              <span class="cta-orb" aria-hidden="true"></span>
+              <p class="eyebrow eyebrow-center"><span class="eyebrow-num">06</span> Contato</p>
+              <h2>Escolha seu <span class="hl">caminho.</span></h2>
+              <p class="cta-sub">Vaga, freela, parceria ou uma ideia. Respondo geralmente no mesmo dia.</p>
+              <ul class="cta-list">
+                <li><a href="mailto:gabrieldesamendes@gmail.com"><span><i class="fa-solid fa-envelope" aria-hidden="true"></i> gabrieldesamendes@gmail.com</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+                <li><button type="button" id="openContact"><span><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Escrever uma mensagem</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></li>
+                <li><a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener"><span><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+                <li><a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener"><span><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+                <li><button type="button" id="copyEmail" data-email="gabrieldesamendes@gmail.com"><span><i class="fa-regular fa-copy" aria-hidden="true"></i> Copiar e-mail</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></li>
               </ul>
             </div>
+          </div>
         </section>
 
     </main>
@@ -608,22 +759,29 @@
     <!-- Rodapé -->
     <footer class="site-footer">
         <div class="footer-inner">
-          <small>© <span id="year"></span> Gabriel de Sá Mendes — feito com café e código</small>
+          <div class="footer-brand">
+            <strong>gabriel<em>.mendes</em></strong>
+            <small>Desenvolvedor full stack · Palmas, Tocantins</small>
+          </div>
+          <nav class="footer-links" aria-label="Rodapé">
+            <a href="#ecossistema">Ecossistema</a><a href="#ia">IA</a><a href="#experiencia">Experiência</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a>
+          </nav>
           <div class="socials">
             <a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           </div>
         </div>
+        <div class="footer-bottom"><small>© <span id="year"></span> Gabriel de Sá Mendes · feito com café e código</small></div>
     </footer>
 
-    <button id="backToTop" title="Voltar ao topo" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+    <button id="backToTop" type="button" title="Voltar ao topo" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
 
     <!-- Command palette -->
     <div class="modal palette" id="paletteModal" role="dialog" aria-modal="true" aria-label="Busca rápida" aria-hidden="true">
       <div class="modal-content palette-box">
         <div class="palette-input">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           <input type="text" id="paletteInput" role="combobox" aria-expanded="true" aria-controls="paletteResults" aria-autocomplete="list" placeholder="Buscar seção, projeto ou link…" autocomplete="off" aria-label="Buscar">
           <kbd>ESC</kbd>
         </div>
@@ -634,29 +792,30 @@
     <!-- Modal Foto -->
     <div class="modal" id="modalFoto" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
       <div class="modal-content foto-modal">
-        <button class="modal-close" id="closeFoto" aria-label="Fechar">×</button>
-        <img src="assets/foto.webp" alt="Foto de Gabriel de Sá Mendes" class="foto-expandida" width="768" height="960" loading="lazy">
+        <button class="modal-close" id="closeFoto" type="button" aria-label="Fechar">×</button>
+        <img src="assets/foto.webp" alt="Foto de Gabriel de Sá Mendes" class="foto-expandida" loading="lazy">
       </div>
     </div>
 
     <!-- Modal Contato -->
     <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
       <div class="modal-content">
-        <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
-        <h3 id="contactTitle">Entre em Contato</h3>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Fechar">×</button>
+        <h3 id="contactTitle">Entre em contato</h3>
         <form class="contact-form" id="contactForm">
           <label for="nome">Nome</label>
           <input type="text" id="nome" placeholder="Seu nome" autocomplete="name" required>
-          <label for="email">E-mail</label>
-          <input type="email" id="email" placeholder="seu@email.com" autocomplete="email" required>
+          <label for="assunto">Assunto</label>
+          <select id="assunto">
+            <option>Oportunidade de trabalho</option>
+            <option>Projeto / freela</option>
+            <option>Parceria</option>
+            <option>Outro</option>
+          </select>
           <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" rows="4" placeholder="Sua mensagem..." required></textarea>
-          <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar por e-mail</button>
-          <div class="contact-links">
-            <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/GabrielGGC18" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-            <a href="https://www.instagram.com/gabrieldsa_mendes/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
-          </div>
+          <textarea id="mensagem" rows="4" placeholder="Conte um pouco sobre o que você precisa…" required></textarea>
+          <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Abrir no seu e-mail</button>
+          <p class="form-note">Vai para <strong>gabrieldesamendes@gmail.com</strong></p>
         </form>
       </div>
     </div>
