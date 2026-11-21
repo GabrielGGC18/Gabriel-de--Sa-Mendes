@@ -47,7 +47,7 @@ Produtos que saem da software house que idealizei. Prints e demonstrações anim
 | --- | --- |
 | **Portal do SEI** | Desenvolvi o Portal do SEI em **Django**: a porta de acesso para o **SEI** (Sistema Eletrônico de Informações). São sistemas diferentes: o SEI é em PHP, e o portal é por onde as pessoas chegam até ele. |
 | **SEI** | Manutenção e evolução de telas e formulários no SEI, em **PHP**. |
-| **Prefeitura de Palmas–TO** | Estagiário de desenvolvimento: sistemas internos em Django e DRF, como o [Agtec SaaS](https://github.com/GabrielGGC18/agtec_saas). |
+| **Prefeitura de Palmas–TO** | Estagiário de desenvolvimento: sistemas internos em Django e DRF. |
 | **Mídia Startup** | Idealizador e entusiasta: Mídia 63, MidiaComercial, Agromidia, Mídia Finanças e Impulso63. |
 | **Hackrun · Equipe NidoQueen** | MidiaComercial: produto, arquitetura, agente de vendas e pitch de 90 segundos. |
 
@@ -66,8 +66,6 @@ Produtos que saem da software house que idealizei. Prints e demonstrações anim
 
 | Projeto | Descrição | Stack |
 | --- | --- | --- |
-| [**Agtec SaaS**](https://github.com/GabrielGGC18/agtec_saas) | SaaS modular para a Prefeitura de Palmas, com API REST. | Django 5.2, DRF, Docker |
-| **Portal P1 News** | Portal de notícias para cliente. | Django 5.2, PostgreSQL |
 | [**Loja de Violas · API**](https://github.com/GabrielGGC18/e-commerce-loja-viola) | API REST de e-commerce com Hibernate Panache e Swagger. | Java, Quarkus, PostgreSQL |
 | [**Fundo de Vila**](https://github.com/GabrielGGC18/Fundo-vila) | Põe sua foto numa vila estilo Minecraft, com remoção de fundo e efeito pixel. | HTML, Canvas, JS |
 | [**FastAPI**](https://github.com/GabrielGGC18/FastAPI) | APIs REST assíncronas com Pydantic e versionamento. | Python, FastAPI |
