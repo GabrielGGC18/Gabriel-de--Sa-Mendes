@@ -79,11 +79,12 @@
   const typed = $('#typed');
   if (typed) {
     const roles = [
-      'Desenvolvedor Fullstack',
+      'Desenvolvedor Full Stack',
       'Python · Django · FastAPI',
       'React · TypeScript',
       'Automação & Integrações',
-      'CEO da Mídia Startup'
+      'Idealizador da Mídia Startup',
+      'Portal do SEI · Django'
     ];
     if (reduced) {
       typed.textContent = roles[0];
@@ -128,93 +129,6 @@
 
   if (backToTop) backToTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ---------- Cards: holofote + inclinação 3D com reflexo ----------
-     Mesma ideia do SpotlightCard/TiltedCard da Mídia Startup: o brilho segue
-     o mouse e o card inclina em perspectiva. Só com mouse; no toque é card comum. */
-  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (!reduced) {
-    $$('.project').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-        if (!finePointer) return;
-        card.style.setProperty('--gx', (px + 0.5) * 100 + '%');
-        card.style.setProperty('--gy', (py + 0.5) * 100 + '%');
-        // cards grandes inclinam menos para não exagerar
-        const amp = Math.min(8, 2600 / r.width);
-        card.style.transform = `perspective(900px) rotateX(${(-py * amp).toFixed(2)}deg) rotateY(${(px * amp).toFixed(2)}deg) scale(1.02)`;
-      });
-      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-    });
-  }
-
-  /* ---------- Entrada dos cards em cascata ---------- */
-  const animateIn = (cards) => {
-    if (reduced) return;
-    cards.forEach((card, i) => {
-      card.classList.remove('card-in');
-      card.style.setProperty('--d', Math.min(i, 8) * 60 + 'ms');
-      void card.offsetWidth; // reinicia a animação
-      card.classList.add('card-in');
-    });
-  };
-  if (!reduced && 'IntersectionObserver' in window) {
-    const cardObs = new IntersectionObserver((entries) => {
-      const batch = entries.filter((en) => en.isIntersecting).map((en) => en.target);
-      batch.forEach((c) => { c.classList.remove('card-wait'); cardObs.unobserve(c); });
-      animateIn(batch);
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px' });
-    $$('.project').forEach((c) => { c.classList.add('card-wait'); cardObs.observe(c); });
-  }
-
-  /* ---------- Filtros de projeto ---------- */
-  const grid = $('#projectsGrid'), emptyState = $('#emptyState'), showMore = $('#showMore');
-  const LIMIT = 8;
-  let filter = 'all', expanded = false;
-  const renderProjects = () => {
-    let matched = 0;
-    const appeared = [];
-    $$('.project', grid).forEach((card) => {
-      const tags = (card.dataset.tags || '').split(' ');
-      const ok = filter === 'all' || tags.includes(filter);
-      if (ok) matched++;
-      // em "Todos" mostramos só os primeiros até o usuário pedir o resto
-      const collapsed = filter === 'all' && !expanded && matched > LIMIT;
-      const hide = !ok || collapsed;
-      if (!hide && card.classList.contains('is-hidden') && !card.classList.contains('card-wait')) appeared.push(card);
-      card.classList.toggle('is-hidden', hide);
-    });
-    animateIn(appeared);
-    if (emptyState) emptyState.hidden = matched > 0;
-    if (showMore) {
-      const extra = matched - LIMIT;
-      showMore.hidden = filter !== 'all' || extra <= 0 || expanded;
-      showMore.querySelector('span').textContent = `Ver todos os projetos (+${extra})`;
-      showMore.setAttribute('aria-expanded', String(expanded));
-    }
-  };
-  $$('#filters .filter').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      $$('#filters .filter').forEach((b) => {
-        b.classList.toggle('is-active', b === btn);
-        b.setAttribute('aria-pressed', String(b === btn));
-      });
-      filter = btn.dataset.filter;
-      renderProjects();
-    });
-  });
-  if (showMore) showMore.addEventListener('click', () => {
-    const firstHidden = $('.project.is-hidden', grid);
-    expanded = true;
-    renderProjects();
-    // leva o foco para o primeiro card revelado
-    const focusable = firstHidden && firstHidden.querySelector('a');
-    if (focusable) focusable.focus({ preventScroll: true });
-  });
-  renderProjects();
 
   /* ---------- Cartão de identidade: tilt + virada automática ----------
      Gira sozinho entre a foto e o crachá dev a cada FLIP_MS. Pausa com o mouse
@@ -452,64 +366,6 @@
     });
   }
 
-  /* ---------- Em produção: pilha de cards que se revezam (CardSwap) ----------
-     O card da frente vai para o fundo a cada INTERVAL. Pausa com mouse/foco em
-     cima ou fora da tela; clicar num card de trás (ou na lista) traz ele à frente. */
-  const swap = $('#swap'), showList = $('#showcaseList');
-  if (swap) {
-    const cards = $$('.swap-card', swap);
-    const buttons = showList ? $$('button', showList) : [];
-    const INTERVAL = 4200;
-    let order = cards.map((_, i) => i), timer = null, hovering = false, onScreen = false;
-    const paint = () => {
-      cards.forEach((card, i) => {
-        const pos = order.indexOf(i);
-        card.style.setProperty('--pos', pos);
-        card.style.zIndex = cards.length - pos;
-        card.classList.toggle('is-front', pos === 0);
-        card.inert = pos !== 0;
-        card.setAttribute('aria-hidden', String(pos !== 0));
-      });
-      buttons.forEach((btn) => {
-        const on = Number(btn.dataset.idx) === order[0];
-        btn.classList.toggle('is-active', on);
-        btn.setAttribute('aria-pressed', String(on));
-        if (on) { btn.classList.remove('is-timing'); void btn.offsetWidth; }
-      });
-      syncTimer();
-    };
-    const bringFront = (idx) => { order = [idx, ...order.filter((i) => i !== idx)]; paint(); };
-    const next = () => { order = [...order.slice(1), order[0]]; paint(); };
-    function syncTimer() {
-      clearInterval(timer); timer = null;
-      const running = !reduced && !hovering && onScreen;
-      buttons.forEach((b) => b.classList.toggle('is-timing', running && b.classList.contains('is-active')));
-      showList && showList.style.setProperty('--swap-ms', INTERVAL + 'ms');
-      if (running) timer = setInterval(next, INTERVAL);
-    }
-    // o card inteiro fica 'inert' quando está atrás; o clique é capturado na pilha
-    swap.addEventListener('click', (e) => {
-      if (e.target.closest('a')) return;
-      const rect = (c) => c.getBoundingClientRect();
-      const hit = [...cards].sort((a, b) => order.indexOf(a.dataset.idx * 1) - order.indexOf(b.dataset.idx * 1))
-        .find((c) => { const r = rect(c); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; });
-      if (hit && !hit.classList.contains('is-front')) bringFront(Number(hit.dataset.idx));
-    });
-    buttons.forEach((btn) => btn.addEventListener('click', () => bringFront(Number(btn.dataset.idx))));
-    const pause = (v) => { hovering = v; syncTimer(); };
-    [swap, showList].forEach((el) => {
-      if (!el) return;
-      el.addEventListener('pointerenter', () => pause(true));
-      el.addEventListener('pointerleave', () => pause(false));
-      el.addEventListener('focusin', () => pause(true));
-      el.addEventListener('focusout', () => pause(false));
-    });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; syncTimer(); }, { threshold: 0.3 }).observe(swap);
-    }
-    paint();
-  }
-
   /* ---------- Cursor glow ---------- */
   const glow = $('#cursorGlow');
   if (glow && !reduced) {
@@ -625,60 +481,178 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
   };
 
-  /* ---------- Formulário de contato (mailto) ---------- */
-  const form = $('#contactForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nome = $('#nome').value.trim();
-      const email = $('#email').value.trim();
-      const msg = $('#mensagem').value.trim();
-      if (!nome || !email || !msg) { toast('Preencha todos os campos.'); return; }
-      const body = encodeURIComponent(`Nome: ${nome}\r\nE-mail: ${email}\r\n\r\n${msg}`);
-      location.href = `mailto:bexcbr@gmail.com?subject=${encodeURIComponent('Contato via portfólio — ' + nome)}&body=${body}`;
-      toast('Abrindo seu cliente de e-mail…');
+
+  /* ---------- Sistemas "funcionando": as animações só rodam quando visíveis ---------- */
+  const lives = $$('.browser-live');
+  const playObs = 'IntersectionObserver' in window && !reduced
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((en) => en.target.classList.toggle('in-view', en.isIntersecting));
+        syncPlaying();
+      }, { threshold: 0.2 })
+    : null;
+  function syncPlaying() {
+    lives.forEach((b) => {
+      const pane = b.closest('.eco-pane');
+      const visible = !pane || !pane.hidden;
+      b.classList.toggle('is-playing', !reduced && visible && b.classList.contains('in-view'));
     });
   }
+  lives.forEach((b) => { if (playObs) playObs.observe(b); });
 
-  /* ---------- Copiar e-mail ---------- */
-  const copyEmail = $('#copyEmail');
-  if (copyEmail) copyEmail.addEventListener('click', async () => {
-    const addr = copyEmail.dataset.email;
-    try {
-      await navigator.clipboard.writeText(addr);
-      toast('E-mail copiado!');
-    } catch {
-      location.href = 'mailto:' + addr;
+  /* ---------- Ecossistema: abas com autoplay ----------
+     Troca sozinha de produto a cada ECO_MS (a barrinha da aba marca o tempo).
+     Pausa com mouse/foco em cima, fora da tela ou depois que a pessoa escolhe. */
+  const eco = $('#eco');
+  if (eco) {
+    const tabs = $$('.eco-tab', eco);
+    const panes = tabs.map((t) => $('#' + t.getAttribute('aria-controls')));
+    const ECO_MS = 9000;
+    let idx = 0, timer = null, hovering = false, onScreen = false, userPicked = false;
+    eco.style.setProperty('--eco-ms', ECO_MS + 'ms');
+
+    const show = (i, focus) => {
+      idx = (i + tabs.length) % tabs.length;
+      tabs.forEach((t, k) => {
+        const on = k === idx;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panes[k].hidden = !on;
+      });
+      if (focus) tabs[idx].focus();
+      // reinicia a barrinha da aba ativa
+      const bar = $('.eco-tab-bar i', tabs[idx]);
+      if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+      syncPlaying();
+      schedule();
+    };
+    const schedule = () => {
+      clearTimeout(timer);
+      const auto = !reduced && !userPicked && onScreen && !document.hidden;
+      eco.classList.toggle('is-auto', auto);
+      eco.classList.toggle('is-paused', auto && hovering);
+      if (auto && !hovering) timer = setTimeout(() => show(idx + 1), ECO_MS);
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => { userPicked = true; show(i); });
+      t.addEventListener('keydown', (e) => {
+        const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (k) { e.preventDefault(); userPicked = true; show(idx + k, true); }
+        else if (e.key === 'Home') { e.preventDefault(); userPicked = true; show(0, true); }
+        else if (e.key === 'End') { e.preventDefault(); userPicked = true; show(tabs.length - 1, true); }
+      });
+    });
+    eco.addEventListener('pointerenter', () => { hovering = true; schedule(); });
+    eco.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+    eco.addEventListener('focusin', () => { hovering = true; schedule(); });
+    eco.addEventListener('focusout', () => { hovering = false; schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; schedule(); }, { threshold: 0.25 }).observe(eco);
     }
+    show(0);
+  }
+
+  /* ---------- Projetos: filtros ---------- */
+  const grid = $('#projectsGrid'), emptyState = $('#emptyState'), showMore = $('#showMore');
+  const projects = grid ? $$('.project', grid) : [];
+  const LIMIT = 9;
+  let filter = 'all', expanded = false;
+  const tagsOf = (el) => (el.dataset.tags || '').split(' ');
+  $$('#filters .filter').forEach((btn) => {
+    const f = btn.dataset.filter;
+    const n = f === 'all' ? projects.length : projects.filter((p) => tagsOf(p).includes(f)).length;
+    const span = $('.count', btn);
+    if (span) span.textContent = n;
+    if (!n) btn.hidden = true;
   });
+  const renderProjects = (animate) => {
+    let matched = 0;
+    projects.forEach((card) => {
+      const ok = filter === 'all' || tagsOf(card).includes(filter);
+      if (ok) matched++;
+      const hide = !ok || (filter === 'all' && !expanded && matched > LIMIT);
+      card.classList.toggle('is-hidden', hide);
+      if (animate && !hide && !reduced) { card.classList.remove('pop'); void card.offsetWidth; card.classList.add('pop'); }
+    });
+    if (emptyState) emptyState.hidden = matched > 0;
+    if (showMore) {
+      const extra = matched - LIMIT;
+      showMore.hidden = !(filter === 'all' && extra > 0);
+      showMore.setAttribute('aria-expanded', String(expanded));
+      $('span', showMore).textContent = expanded ? 'Mostrar menos' : `Ver todos os projetos (+${extra})`;
+      $('i', showMore).className = expanded ? 'fa-solid fa-minus' : 'fa-solid fa-plus';
+    }
+  };
+  const setFilter = (f) => {
+    filter = f;
+    $$('#filters .filter').forEach((b) => {
+      const on = b.dataset.filter === f;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    renderProjects(true);
+  };
+  $$('#filters .filter').forEach((b) => b.addEventListener('click', () => setFilter(b.dataset.filter)));
+  if (showMore) showMore.addEventListener('click', () => { expanded = !expanded; renderProjects(true); });
+  renderProjects(false);
+
+  /* ---------- Contato ---------- */
+  const EMAIL = 'gabrieldesamendes@gmail.com';
+  const form = $('#contactForm');
+  if (form) form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nome = $('#nome').value.trim();
+    const assunto = $('#assunto').value;
+    const msg = $('#mensagem').value.trim();
+    if (!nome || !msg) { toast('Preencha nome e mensagem.'); return; }
+    const subject = encodeURIComponent(`${assunto} · ${nome}`);
+    const body = encodeURIComponent(`${msg}\r\n\r\n${nome}`);
+    location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    closeModal(contactModal);
+    form.reset();
+    toast('Abrindo seu cliente de e-mail…');
+  });
+  const copyBtn = $('#copyEmail');
+  const copyEmail = async () => {
+    try { await navigator.clipboard.writeText(EMAIL); toast('E-mail copiado: ' + EMAIL); }
+    catch { location.href = 'mailto:' + EMAIL; }
+  };
+  if (copyBtn) copyBtn.addEventListener('click', copyEmail);
 
   /* ---------- Command palette (Ctrl/Cmd + K) ---------- */
   const paletteInput = $('#paletteInput'), paletteResults = $('#paletteResults');
+  const go = (hash) => { const t = $(hash); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); };
   const items = [
-    { icon: 'fa-solid fa-user',        label: 'Sobre Mim',        hint: 'seção', action: () => go('#sobre') },
-    { icon: 'fa-solid fa-layer-group', label: 'Stack e Ferramentas', hint: 'seção', action: () => go('#stack') },
-    { icon: 'fa-solid fa-graduation-cap', label: 'Formação e Cursos', hint: 'seção', action: () => go('#formacao') },
-    { icon: 'fa-solid fa-rocket',      label: 'Em produção',      hint: 'seção', action: () => go('#producao') },
-    { icon: 'fa-solid fa-folder-open', label: 'Projetos',         hint: 'seção', action: () => go('#projects') },
-    { icon: 'fa-solid fa-at',          label: 'Contato',          hint: 'seção', action: () => go('#contato') },
-    { icon: 'fa-solid fa-envelope',    label: 'Abrir contato',    hint: 'ação',  action: () => openModal(contactModal) },
-    { icon: 'fa-solid fa-circle-half-stroke', label: 'Alternar tema', hint: 'ação', action: () => themeBtn && themeBtn.click() },
-    { icon: 'fa-brands fa-github',     label: 'GitHub',           hint: 'link',  action: () => open('https://github.com/GabrielGGC18', '_blank') },
-    { icon: 'fa-brands fa-linkedin',   label: 'LinkedIn',         hint: 'link',  action: () => open('https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/', '_blank') }
+    { icon: 'fa-solid fa-rocket',        label: 'Ecossistema Mídia Startup', hint: 'seção', action: () => go('#ecossistema') },
+    { icon: 'fa-solid fa-robot',         label: 'IA e automação',            hint: 'seção', action: () => go('#ia') },
+    { icon: 'fa-solid fa-briefcase',     label: 'Experiência e formação',    hint: 'seção', action: () => go('#experiencia') },
+    { icon: 'fa-solid fa-user',          label: 'Sobre e stack',             hint: 'seção', action: () => go('#sobre') },
+    { icon: 'fa-solid fa-folder-open',   label: 'Mais projetos',             hint: 'seção', action: () => go('#projetos') },
+    { icon: 'fa-solid fa-at',            label: 'Contato',                   hint: 'seção', action: () => go('#contato') },
+    { icon: 'fa-solid fa-door-open',     label: 'Portal do SEI',             hint: 'experiência', action: () => go('#experiencia') },
+    { icon: 'fa-solid fa-envelope',      label: 'Escrever mensagem',         hint: 'ação',  action: () => openModal(contactModal) },
+    { icon: 'fa-regular fa-copy',        label: 'Copiar e-mail',             hint: 'ação',  action: copyEmail },
+    { icon: 'fa-solid fa-circle-half-stroke', label: 'Alternar tema',        hint: 'ação',  action: () => themeBtn && themeBtn.click() },
+    { icon: 'fa-brands fa-github',       label: 'GitHub',                    hint: 'link',  action: () => open('https://github.com/GabrielGGC18', '_blank', 'noopener') },
+    { icon: 'fa-brands fa-linkedin',     label: 'LinkedIn',                  hint: 'link',  action: () => open('https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/', '_blank', 'noopener') },
   ];
-  $$('.project').forEach((card) => {
-    const link = card.querySelector('.project-links a');
-    if (!link) return;
+  // produtos do ecossistema abrem a aba certa
+  $$('.eco-pane').forEach((pane) => {
+    const tab = $('#' + pane.getAttribute('aria-labelledby'));
+    items.push({ icon: 'fa-solid fa-star', label: pane.dataset.title, hint: 'produto', action: () => { go('#ecossistema'); if (tab) tab.click(); } });
+  });
+  $$('.lab-card, .project').forEach((card) => {
     items.push({
-      icon: 'fa-solid fa-code-branch',
-      label: card.dataset.title || card.querySelector('h3').textContent.trim(),
-      hint: 'projeto',
-      action: () => open(link.href, '_blank')
+      icon: card.classList.contains('lab-card') ? 'fa-solid fa-microchip' : 'fa-solid fa-code-branch',
+      label: card.dataset.title, hint: 'projeto',
+      action: () => {
+        if (card.classList.contains('is-hidden')) { expanded = true; setFilter('all'); }
+        card.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+      }
     });
   });
-
+  const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   let sel = 0, filtered = items;
-  const go = (hash) => { const t = $(hash); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); };
   const renderPalette = () => {
     paletteResults.innerHTML = '';
     filtered.forEach((it, i) => {
@@ -687,7 +661,7 @@
       li.id = 'pal-' + i;
       li.setAttribute('role', 'option');
       li.setAttribute('aria-selected', String(i === sel));
-      li.innerHTML = `<i class="${it.icon}"></i><span></span><small>${it.hint}</small>`;
+      li.innerHTML = `<i class="${it.icon}" aria-hidden="true"></i><span></span><small>${it.hint}</small>`;
       li.querySelector('span').textContent = it.label;
       li.addEventListener('click', () => { closeModal(paletteModal); it.action(); });
       paletteResults.appendChild(li);
@@ -696,12 +670,12 @@
       const li = document.createElement('li');
       li.textContent = 'Nada encontrado.';
       paletteResults.appendChild(li);
+      paletteInput.removeAttribute('aria-activedescendant');
+      return;
     }
-    if (filtered.length) {
-      paletteInput.setAttribute('aria-activedescendant', 'pal-' + sel);
-      const cur = $('#pal-' + sel);
-      if (cur) cur.scrollIntoView({ block: 'nearest' });
-    } else paletteInput.removeAttribute('aria-activedescendant');
+    paletteInput.setAttribute('aria-activedescendant', 'pal-' + sel);
+    const cur = $('#pal-' + sel);
+    if (cur) cur.scrollIntoView({ block: 'nearest' });
   };
   const openPalette = () => {
     sel = 0; filtered = items;
@@ -713,21 +687,20 @@
   const paletteBtn = $('#paletteBtn'), paletteKbd = $('#paletteKbd');
   if (paletteKbd && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) paletteKbd.textContent = '⌘K';
   if (paletteBtn) paletteBtn.addEventListener('click', openPalette);
-
   if (paletteInput) {
     paletteInput.addEventListener('input', () => {
-      const q = paletteInput.value.toLowerCase().trim();
-      filtered = items.filter((it) => it.label.toLowerCase().includes(q) || it.hint.includes(q));
+      const q = norm(paletteInput.value.trim());
+      filtered = items.filter((it) => norm(it.label).includes(q) || it.hint.includes(q));
       sel = 0;
       renderPalette();
     });
     paletteInput.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown') { e.preventDefault(); sel = (sel + 1) % Math.max(filtered.length, 1); renderPalette(); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); sel = (sel - 1 + filtered.length) % Math.max(filtered.length, 1); renderPalette(); }
-      else if (e.key === 'Enter' && filtered[sel]) { e.preventDefault(); closeModal(paletteModal); filtered[sel].action(); }
+      if (!filtered.length) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); sel = (sel + 1) % filtered.length; renderPalette(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); sel = (sel - 1 + filtered.length) % filtered.length; renderPalette(); }
+      else if (e.key === 'Enter') { e.preventDefault(); closeModal(paletteModal); filtered[sel].action(); }
     });
   }
-
   addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
     if (e.key === 'Escape') {

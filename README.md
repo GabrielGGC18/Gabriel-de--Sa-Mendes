@@ -4,7 +4,7 @@
 
 <br><br>
 
-<a href="https://gabrielggc18.github.io/Gabriel-de--Sa-Mendes/"><img src="https://img.shields.io/badge/Portfólio-0d0b0a?style=for-the-badge&logo=googlechrome&logoColor=f2b33d" alt="Portfólio"></a>
+<a href="https://gabriel-de-sa-mendes.vercel.app/"><img src="https://img.shields.io/badge/Portfólio-0d0b0a?style=for-the-badge&logo=googlechrome&logoColor=f2b33d" alt="Portfólio"></a>
 <a href="https://www.linkedin.com/in/gabriel-de-s%C3%A1-640314211/"><img src="https://img.shields.io/badge/LinkedIn-0d0b0a?style=for-the-badge&logo=linkedin&logoColor=ff6a3d" alt="LinkedIn"></a>
 <a href="https://www.instagram.com/gabrieldsa_mendes/"><img src="https://img.shields.io/badge/Instagram-0d0b0a?style=for-the-badge&logo=instagram&logoColor=3fd6b8" alt="Instagram"></a>
 
@@ -21,7 +21,8 @@ class Gabriel:
     base     = "Palmas, Tocantins 🇧🇷"
     cargo    = "Desenvolvedor Full Stack · Estagiário na Prefeitura de Palmas"
     foco     = "Arquitetura de software, integrações e automações"
-    agora    = "Construindo o ATOM, meu agente pessoal de IA"
+    agora    = "Mídia Startup, MidiaComercial e o Impulso63"
+    contato  = "gabrieldesamendes@gmail.com"
     lema     = "Do conceito ao deploy."
 ```
 
@@ -77,12 +78,13 @@ class Gabriel:
 
 | Projeto | Descrição | Stack |
 | --- | --- | --- |
-| [**GSM Startup**](https://gsm-startup.vercel.app/) | Startup de tecnologia focada em SaaS, AgroTech, automação e marketing digital. Do campo ao digital. | Django, React |
-| **Mídia 63** | Portal de notícias em produção: publicação editorial, área administrativa, integrações e deploy em VPS. | Django, PostgreSQL, Nginx |
-| [**ATOM**](https://github.com/GabrielGGC18/Atom-) | Agente pessoal de IA que orquestra sub-agentes e skills, com memória persistente e roteamento de tarefas. | Python, IA |
-| [**Force Up Fit**](https://gabrielggc18.github.io/Force-up-Fit-new/) | Aplicação voltada para treinos e condicionamento físico. | HTML, CSS, JavaScript |
-| [**FastAPI**](https://github.com/GabrielGGC18/FastAPI) | APIs REST com rotas assíncronas, Pydantic, versionamento e boas práticas de arquitetura. | Python, FastAPI |
-| [**Portfólio**](https://github.com/GabrielGGC18/Gabriel-de--Sa-Mendes) | Este repositório: meu site autoral, vitrine dos meus projetos. | HTML, CSS, JavaScript |
+| [**Mídia 63**](https://www.midia63.com.br/) | Portal de notícias do Tocantins em produção: site, painel da redação, API e uma esteira de agentes (Hermes) com aprovação humana. | Django, DRF, React, PostgreSQL |
+| [**MidiaComercial**](https://midia-comercial.midia63.com.br/) | Inteligência comercial para lojistas de shopping, com balcão por voz e agente de vendas. Hackrun, Equipe NidoQueen. | Django Ninja, React, Tailwind |
+| [**Mídia Startup**](https://midia-startup.midia63.com.br/) | Software house que idealizei, com a loja Agromidia (checkout Pix), Mídia Finanças e o Impulso63 a caminho. | Django, React, Docker |
+| **Portal do SEI** | Porta de acesso para o SEI (PHP), desenvolvida em Django. | Django, DRF |
+| [**ATOM**](https://github.com/GabrielGGC18/Atom-) | Orquestrador de agentes sobre o Claude Code: skills, subagentes, hooks de guarda e memória compartilhada. | Claude Code, Python |
+| [**ATOM Canvas**](https://github.com/GabrielGGC18/Atom-canvas) | Canvas infinito para orquestrar agentes de IA lado a lado. | Python, xterm.js |
+| [**Portfólio**](https://gabriel-de-sa-mendes.vercel.app/) | Este repositório: meu site autoral, vitrine dos meus projetos. | HTML, CSS, JavaScript |
 
 ## Números
 
