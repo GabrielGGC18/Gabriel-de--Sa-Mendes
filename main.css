@@ -1085,3 +1085,144 @@ html[data-theme="light"] .holo { mix-blend-mode: soft-light; opacity: .55; }
 .edu-now { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
 .edu-badge { margin-left: 6px; font-style: normal; font-family: var(--font-mono); font-size: .62rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; vertical-align: 2px; color: var(--accent-3); border: 1px solid color-mix(in srgb, var(--accent-3) 40%, transparent); }
 .edu-badge.is-past { color: var(--muted); border-color: var(--card-border); }
+
+/* ===========================================================
+   v5 · linguagem editorial (tipografia gigante e condensada,
+   fita inclinada, listas numeradas, botões pill).
+   Mantém a identidade Jalapão e as animações dos sistemas.
+   =========================================================== */
+.hero h1, .panel h2, .cta h2, .path-t, .num-card b, .eco-copy h3, .lab-wide .lab-body h3, .footer-brand strong {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  font-stretch: 75%; font-variation-settings: 'wdth' 75; letter-spacing: -.005em; line-height: .9;
+}
+.hero h1 { font-size: clamp(3.4rem, 9.4vw, 7.6rem); margin-bottom: 26px; }
+.hero h1 .serif, .hl {
+  font-family: inherit; font-style: normal; font-weight: inherit; letter-spacing: inherit; padding: 0;
+  background: none; -webkit-background-clip: border-box; background-clip: border-box; animation: none;
+  color: var(--accent); -webkit-text-fill-color: currentColor;
+}
+.panel h2, .cta h2 { font-size: clamp(2.6rem, 8vw, 6.4rem); }
+.eco-copy h3 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: .92; }
+.lab-wide .lab-body h3 { font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: .92; }
+.amp { font-family: inherit; font-style: normal; }
+
+/* nav mais seca */
+.nav-list > li > a { text-transform: uppercase; letter-spacing: .09em; font-size: .7rem; }
+.nav-num { font-size: .62rem; }
+
+/* botões pill */
+.btn { text-transform: uppercase; letter-spacing: .07em; font-size: .74rem; font-weight: 600; padding: 15px 24px; }
+.btn.primary { background: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 40%, transparent); }
+
+/* seções abertas, separadas por linhas finas */
+.section { padding: clamp(48px, 8vw, 104px) 0 0; }
+#ecossistema { padding-top: clamp(48px, 8vw, 104px); }
+.panel {
+  background: none; border: 0; border-top: 1px solid var(--card-border); border-radius: 0;
+  box-shadow: none; padding: clamp(28px, 4vw, 48px) 0 0; overflow: visible;
+}
+.panel::before, .panel::after { display: none; }
+.panel-head { max-width: none; margin-bottom: clamp(32px, 5vw, 60px); }
+.panel-head h2 { max-width: 14ch; }
+.panel-head-row { align-items: flex-end; }
+.panel-head-row > div { max-width: 820px; }
+.panel-lead { color: var(--muted); }
+
+.eyebrow { color: var(--muted); letter-spacing: .14em; font-size: .68rem; gap: 10px; margin-bottom: 20px; }
+.eyebrow-num { color: var(--accent); }
+.eyebrow-num::before { content: '('; opacity: 1; }
+.eyebrow-num::after { content: ')'; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none; }
+
+/* fita inclinada com tecnologias */
+.ribbons { position: relative; height: 170px; margin-top: 44px; overflow: hidden; }
+.ribbon { position: absolute; left: -6%; width: 112%; overflow: hidden; white-space: nowrap; padding: 15px 0; }
+.ribbon-front {
+  top: 54px; background: var(--accent); color: var(--on-accent); transform: rotate(-2.4deg); z-index: 2;
+  box-shadow: 0 18px 40px -18px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.ribbon-back { top: 40px; background: var(--card); color: var(--muted); transform: rotate(1.8deg); border-block: 1px solid var(--card-border); }
+.ribbon-track { display: flex; gap: 34px; width: max-content; animation: slide 32s linear infinite; }
+.ribbon-back .ribbon-track { animation-direction: reverse; animation-duration: 46s; }
+.ribbon span {
+  font-family: var(--font-display); font-stretch: 75%; font-variation-settings: 'wdth' 75;
+  font-weight: 800; text-transform: uppercase; font-size: clamp(1.2rem, 2.4vw, 1.7rem); line-height: 1;
+  display: inline-flex; align-items: center; gap: 34px;
+}
+.ribbon span::after { content: '✦'; font-size: .7em; }
+.ribbon:hover .ribbon-track { animation-play-state: paused; }
+
+/* O que eu faço: linhas numeradas com palavras enormes */
+.section-paths { padding-top: clamp(36px, 6vw, 72px); }
+.paths-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; }
+.paths-head .eyebrow { margin: 0; }
+.paths-count { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+.paths { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--card-border); }
+.path { border-bottom: 1px solid var(--card-border); }
+.path a {
+  display: grid; grid-template-columns: 48px minmax(0, 1.6fr) minmax(0, 1fr) 60px; gap: 24px; align-items: center;
+  padding: clamp(22px, 3.4vw, 40px) 0; text-decoration: none; color: var(--ink);
+}
+.path-n { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); align-self: start; padding-top: .5em; }
+.path-t { font-size: clamp(2.6rem, 7vw, 5.6rem); transition: transform .5s cubic-bezier(.16,1,.3,1); overflow-wrap: anywhere; }
+.path-t em { font-style: normal; color: var(--accent); }
+.path-d { color: var(--muted); font-size: .95rem; max-width: 36ch; }
+.path-d strong { color: var(--ink); font-weight: 500; }
+.path-go {
+  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; justify-self: end;
+  border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  transition: background .3s, color .3s, border-color .3s, transform .4s cubic-bezier(.16,1,.3,1);
+}
+.path a:hover .path-t { transform: translateX(14px); }
+.path a:hover .path-go { background: var(--accent); color: var(--on-accent); border-color: var(--accent); transform: rotate(-45deg); }
+.path a:focus-visible { outline-offset: 6px; }
+
+/* números */
+.numbers { margin-top: clamp(48px, 8vw, 96px); }
+.numbers-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.num-card {
+  padding: 22px; border: 1px solid var(--card-border); border-radius: 1.25rem; background: var(--card);
+  display: grid; gap: 34px; align-content: space-between; min-height: 170px;
+  transition: border-color .3s, transform .4s cubic-bezier(.16,1,.3,1);
+}
+.num-card:hover { border-color: color-mix(in srgb, var(--accent) 50%, transparent); transform: translateY(-4px); }
+.num-card small { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+.num-card b { font-size: clamp(3.4rem, 6.5vw, 5.4rem); }
+.num-card b::after { content: '+'; color: var(--accent); }
+
+/* contato gigante e rodapé */
+.cta h2 { font-size: clamp(3rem, 11vw, 8.4rem); }
+.cta-sub { max-width: 46ch; }
+.footer-brand strong { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1; }
+.footer-brand em { font-style: normal; color: var(--accent); font-family: inherit; }
+
+@media (max-width: 1080px) {
+  .numbers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 940px) {
+  .hero h1 { font-size: clamp(3.4rem, 15vw, 6.4rem); }
+  .panel-head h2 { max-width: none; }
+}
+@media (max-width: 720px) {
+  .path a { grid-template-columns: 30px minmax(0, 1fr) 46px; gap: 6px 14px; }
+  .path-t { font-size: clamp(2.5rem, 13vw, 4rem); }
+  .path-d { grid-column: 2 / -1; max-width: none; font-size: .9rem; }
+  .path-go { width: 46px; height: 46px; grid-column: 3; grid-row: 1; }
+  .path-n { padding-top: .3em; }
+  .path a:hover .path-t { transform: none; }
+  .ribbons { height: 130px; margin-top: 30px; }
+  .ribbon-front { top: 42px; }
+  .ribbon-back { top: 30px; }
+  .num-card { min-height: 140px; padding: 18px; gap: 22px; }
+  .num-card small { font-size: .62rem; }
+  .cta h2 { font-size: clamp(2.8rem, 15vw, 5rem); }
+}
+@media (max-width: 380px) {
+  .hero h1 { font-size: 3.3rem; }
+  .btn { padding: 14px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-track { animation: none !important; }
+  .path-t, .path-go, .num-card { transition: none !important; }
+}

@@ -709,6 +709,36 @@
     }
   });
 
+  /* ---------- Números (calculados do próprio HTML) ---------- */
+  (() => {
+    const all = [...$$('.eco-pane'), ...$$('.lab-card'), ...$$('.project')];
+    const stackSet = new Set($$('.stack2 .chips-sm span').map((e) => e.textContent.trim().toLowerCase()));
+    const counts = {
+      eco: $$('.eco-tab').length,
+      projects: all.length,
+      ia: all.filter((c) => (c.dataset.tags || '').split(' ').includes('ia')).length,
+      stack: stackSet.size,
+    };
+    const run = (el) => {
+      const target = counts[el.dataset.count] || 0;
+      if (reduced) { el.textContent = target; return; }
+      const t0 = performance.now(), dur = 1300;
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / dur);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const els = $$('[data-count]');
+    if ('IntersectionObserver' in window) {
+      const o = new IntersectionObserver((es) => es.forEach((en) => {
+        if (en.isIntersecting) { run(en.target); o.unobserve(en.target); }
+      }), { threshold: 0.4 });
+      els.forEach((e) => o.observe(e));
+    } else els.forEach(run);
+  })();
+
   /* ---------- Assinatura no console ---------- */
   console.log('%cGabriel de Sá Mendes', 'font:700 18px sans-serif;color:#f2b33d');
   console.log('%cCurioso? Dá uma olhada no código: https://github.com/GabrielGGC18', 'color:#a69a8b');
